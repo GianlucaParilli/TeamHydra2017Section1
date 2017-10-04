@@ -5,6 +5,7 @@ public class Game {
 		// TODO Auto-generated method stub
 		System.out.println("new git hub");
 		System.out.println("testing push");
+		System.out.println("getting the hang of it");
 	}
 
 }
