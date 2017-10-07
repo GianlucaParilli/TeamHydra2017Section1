@@ -1,4 +1,3 @@
-import javafx.application.Application;
 import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -7,7 +6,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-public class Login extends Application{
+public class Login extends GUI{
 	public void start(Stage primaryStage) throws InterruptedException {
 		BorderPane bPane = new BorderPane();
 		bPane.setCenter(vpane());
@@ -18,6 +17,7 @@ public class Login extends Application{
 		primaryStage.setScene(scene); // Place the scene in the stage
 		primaryStage.setWidth(240);
 		primaryStage.setHeight(300);
+		primaryStage.setResizable(false);
 		primaryStage.show(); // Display the stage
 	}
 
@@ -38,6 +38,16 @@ public class Login extends Application{
 		vpane.getChildren().add(loadGameButton);
 		vpane.getChildren().add(exitButton);
 		
+		newGameButton.setOnAction(e ->{
+			 GUI newGame = new GUI();
+			 try {
+				newGame.start(guiStage);
+				//remember to close previous stage
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
 		exitButton.setOnAction(e -> {
 			//quits and closes the gui 
 			Stage stage = (Stage) exitButton.getScene().getWindow();

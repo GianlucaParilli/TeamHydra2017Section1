@@ -13,8 +13,12 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class GUI extends Application{
+	 static Stage guiStage = new Stage();
+
 	public void start(Stage primaryStage) throws InterruptedException {
 		BorderPane bPane = new BorderPane();
+		 guiStage = primaryStage ;
+
 		// Place nodes in the pane
 		//bPane.setLeft(textPane());
 		//bPane.setCenter(BackgroundPane());
