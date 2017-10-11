@@ -1,129 +1,176 @@
-import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Optional;
+import javafx.geometry.*;
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class Login extends Application{
+public class Login extends GUI {
+	TextField userInput;
+	protected ArrayList<String> usernamesArray = new ArrayList<>();
+	protected ArrayList<Button> arrayButtons = new ArrayList<>();
+	
+
 	public void start(Stage primaryStage) throws InterruptedException {
 		BorderPane bPane = new BorderPane();
-		// Place nodes in the pane
-		//bPane.setLeft(textPane());
-		//bPane.setCenter(BackgroundPane());
-		//bPane.setTop(TitlePane());
-		//bPane.setBottom(navButtonPane());
-		
-		bPane.setTop(topPane());
-		bPane.setCenter(buttonHPane());
-		bPane.setBottom(vpane());
-       // bPane.setLeft(ButtonPane());
+		bPane.setCenter(mainPane());
+
 		// Create a scene and place it in the stage
 		Scene scene = new Scene(bPane);
-		primaryStage.setTitle("Text-Based Game"); // Set the stage title
+		primaryStage.setTitle("The Lost Treasure"); // Set the stage title
 		primaryStage.setScene(scene); // Place the scene in the stage
-		primaryStage.setWidth(720);
-		primaryStage.setHeight(420);
+		primaryStage.setWidth(240);
+		primaryStage.setHeight(300);
+		primaryStage.setResizable(false);
 		primaryStage.show(); // Display the stage
-		
-
 	}
 
-	private Pane ButtonPane() {
-		GridPane pane = new GridPane();
-		// makes sure that only one is selected
-		Button optionButtonUp = new Button("North");
-		Button optionButtonDown = new Button("South");
-		Button optionButtonLeft = new Button("West");
-		Button optionButtonRight = new Button("East");
-
-		pane.add(optionButtonUp, 3, 1);
-		pane.add(optionButtonDown, 3, 5);
-		pane.add(optionButtonLeft, 2, 3);
-		pane.add(optionButtonRight, 4, 3);
-		return pane;
-	}
-
-	private HBox buttonHPane() {
-	    HBox hBox = new HBox(5);
-	    Button button1 = new Button("Examine Room");
-		Button button2 = new Button("Fight");
-		Button button3 = new Button("Flee");
-		Button button4 = new Button("something");
-		Button buttonInventory = new Button("Show Inventory");
-		Label health = new Label("Health: 30/30 HP");
-
-		buttonInventory.setTranslateX(150);
-		health.setTranslateX(150);
-		
-		health.setTranslateY(5);
-		
-	    hBox.getChildren().add(button1);
-	    hBox.getChildren().add(button2);
-	    hBox.getChildren().add(button3);
-	    hBox.getChildren().add(button4);
-	    hBox.getChildren().add(buttonInventory);
-	    hBox.getChildren().add(health);
-	    //hBox.getChildren().add(inventoryPane());
-
-
-	    return hBox;
-	  }
-	private VBox vpane(){
+	// adds all the buttons to a V box
+	// sets the text for the buttons
+	// adds the topPane method(picture) to the v pane
+	// sets all the listeners for the buttons
+	private VBox mainPane() {
 		VBox vpane = new VBox();
-		TextField text = new TextField();
-		text.setText("Enter New Username");
-		vpane.getChildren().add(text);
-		return vpane;
-	}
-	private HBox topPane() {
-	    HBox hBox = new HBox(15);
-	    Label text = new Label();
-	  	text.setText("Description");
-	  	
-	    hBox.setPadding(new Insets(15, 15, 15, 15));
-	    
-	    hBox.getChildren().add(text);
-	    ImageView imageView = new ImageView(new Image("mapf1.png"));
-	    imageView.setFitHeight(200);
-	    imageView.setFitWidth(200);
-	    imageView.setTranslateX(400);
-	    hBox.getChildren().add(imageView);
-	    return hBox;
-	  }
+		Button newGameButton = new Button("  New Game  ");
+		Button loadGameButton = new Button("  Load  ");
+		Button exitButton = new Button("  Exit  ");
+		newGameButton.setTranslateX(70);
+		loadGameButton.setTranslateX(87);
+		exitButton.setTranslateX(91);
+		vpane.getChildren().add(topPane());
+		vpane.getChildren().add(newGameButton);
+		vpane.getChildren().add(loadGameButton);
+		vpane.getChildren().add(exitButton);
 
-	private HBox bottomPane() {
-	    HBox hBox = new HBox(15);
-	    Button exitButton = new Button("  Exit  ");
-	    exitButton.setTranslateX(400);
-	    exitButton.setTranslateY(40);
-		
-	    hBox.setPadding(new Insets(15, 15, 15, 15));
-	    hBox.getChildren().add(ButtonPane());
+		newGameButton.setOnAction(e -> {
 
-	    hBox.getChildren().add(exitButton);
-	    
-	    exitButton.setOnAction(e -> {
+			Alert popUp = new Alert(AlertType.CONFIRMATION);
+			popUp.getDialogPane().setContent(popUpPane());
+			popUp.setTitle("Results");
+			Optional<ButtonType> result = popUp.showAndWait();
+			ButtonType button = result.orElse(ButtonType.CANCEL);
+
+			if (button == ButtonType.OK) {
+				String usernameString = userInput.getText();
+
+				for(int i = usernamesArray.size()-1; i>0 ; i--){//String temp: usernamesArray){
+					if(usernamesArray.get(i).equals(userInput.getText())){
+						//usernamesArray.remove(usernamesArray.size()-1);
+						System.out.println("error duplicate");
+					    usernamesArray.remove(userInput.getText());
+						//break;
+						
+						
+					}
+					
+				}
+				usernamesArray.add(usernameString);
+
+
+				writer(usernamesArray);
+				/*
+				 * GUI newGame = new GUI(); try { newGame.start(guiStage); //
+				 * remember to close previous stage } catch
+				 * (InterruptedException e1) { // TODO Auto-generated catch
+				 * block e1.printStackTrace(); }
+				 */
+			} else {
+				System.out.println("canceled");
+			}
+
+		});
+		loadGameButton.setOnAction(e -> {
+			if (usernamesArray.size() == 0) {
+				Alert errorPopUp = new Alert(AlertType.ERROR);
+				errorPopUp.setHeaderText("there are no saved profiles");
+				errorPopUp.show();
+			} else {
+				loadPopUp(usernamesArray);
+
+			}
+		});
+		exitButton.setOnAction(e -> {
+			// quits and closes the gui
 			Stage stage = (Stage) exitButton.getScene().getWindow();
 			stage.close();
 		});
-	    return hBox;
-	  }
 
-	
+		return vpane;
+	}
+
+	private void loadPopUp(ArrayList<String> userStringtemp) {
+		Alert popUp = new Alert(AlertType.INFORMATION);
+		popUp.setTitle("Load Game");
+		VBox pop = new VBox();
+		pop.setPadding(new Insets(20, 20, 20, 20));
+		Button b = new Button();
+
+		for (String temp : userStringtemp) {
+			b = new Button(temp);
+			pop.getChildren().add(b);
+			if(temp.equals(b.getText())){
+				b.setOnAction(e->{
+				System.out.println(temp);
+			});
+			}
+			
+		}
+		popUp.getDialogPane().setContent(pop);
+
+		popUp.show();
+	}
+
+	// add an image view into a H box
+	// sets image size and placement inside the hbox
+	private HBox topPane() {
+		HBox hBox = new HBox(15);
+		hBox.setPadding(new Insets(15, 15, 15, 15));
+		ImageView imageView = new ImageView(new Image("logo.png"));
+		imageView.setFitHeight(130);
+		imageView.setFitWidth(130);
+		imageView.setTranslateX(40);
+		hBox.getChildren().add(imageView);
+		return hBox;
+	}
+
+	private VBox popUpPane() {
+		VBox vBox = new VBox();
+		// organizes the form into a h box within a v box
+		HBox hBox = new HBox(15);
+		hBox.setPadding(new Insets(15, 15, 15, 15));
+		Text input = new Text("Enter User Name");
+		userInput = new TextField();
+		hBox.getChildren().add(input);
+		hBox.getChildren().add(userInput);
+		vBox.getChildren().add(hBox);
+
+		return vBox;
+
+	}
+
+	public void writer(ArrayList<String> array) {
+		PrintWriter writer = null;
+		try {
+			writer = new PrintWriter(new File("usernameSave.txt"));
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found");
+		}
+		for (String temp : array) {
+			writer.println(temp);
+		}
+		writer.close();
+	}
 
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
 
 }
