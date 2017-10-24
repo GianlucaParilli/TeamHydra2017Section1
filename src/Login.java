@@ -1,8 +1,8 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Observer;
 import java.util.Optional;
+
+import javafx.beans.Observable;
 import javafx.geometry.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
@@ -13,12 +13,14 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class Login extends GUI {
+public class Login extends LostTreasure implements Observer {
 	TextField userInput;
 	protected ArrayList<String> usernamesArray = new ArrayList<>();
 	protected ArrayList<Button> arrayButtons = new ArrayList<>();
+	//ImageView imageView = new ImageView(new Image("logo.png"));
+	Button newGameButton;
+	Button loadGameButton;
 	
-
 	public void start(Stage primaryStage) throws InterruptedException {
 		BorderPane bPane = new BorderPane();
 		bPane.setCenter(mainPane());
@@ -39,17 +41,19 @@ public class Login extends GUI {
 	// sets all the listeners for the buttons
 	private VBox mainPane() {
 		VBox vpane = new VBox();
-		Button newGameButton = new Button("  New Game  ");
-		Button loadGameButton = new Button("  Load  ");
+		newGameButton = new Button("  New Game  ");
+	    loadGameButton = new Button("  Load  ");
 		Button exitButton = new Button("  Exit  ");
 		newGameButton.setTranslateX(70);
 		loadGameButton.setTranslateX(87);
 		exitButton.setTranslateX(91);
-		vpane.getChildren().add(topPane());
+		vpane.getChildren().add(picturePane());
 		vpane.getChildren().add(newGameButton);
 		vpane.getChildren().add(loadGameButton);
-		vpane.getChildren().add(exitButton);
 
+		vpane.getChildren().add(exitButton);
+		
+		//control.addButtonListener(loadGameButton);
 		newGameButton.setOnAction(e -> {
 
 			Alert popUp = new Alert(AlertType.CONFIRMATION);
@@ -61,27 +65,27 @@ public class Login extends GUI {
 			if (button == ButtonType.OK) {
 				String usernameString = userInput.getText();
 
-				for(int i = usernamesArray.size()-1; i>0 ; i--){//String temp: usernamesArray){
+				for(int i = usernamesArray.size()-1; i>0 ; i--){
 					if(usernamesArray.get(i).equals(userInput.getText())){
 						//usernamesArray.remove(usernamesArray.size()-1);
 						System.out.println("error duplicate");
-					    usernamesArray.remove(userInput.getText());
-						//break;
-						
-						
+					    usernamesArray.remove(userInput.getText());								
 					}
 					
 				}
 				usernamesArray.add(usernameString);
 
 
-				writer(usernamesArray);
-				/*
-				 * GUI newGame = new GUI(); try { newGame.start(guiStage); //
-				 * remember to close previous stage } catch
-				 * (InterruptedException e1) { // TODO Auto-generated catch
-				 * block e1.printStackTrace(); }
-				 */
+				//writer(usernamesArray);
+				
+				 GUI newGame = new GUI(); 
+				 try { 
+					 newGame.start(guiStage); //
+				 //remember to close previous stage 
+				 } catch
+				 (InterruptedException e1) {
+				 e1.printStackTrace(); }
+				 
 			} else {
 				System.out.println("canceled");
 			}
@@ -120,17 +124,15 @@ public class Login extends GUI {
 				b.setOnAction(e->{
 				System.out.println(temp);
 			});
-			}
-			
+			}	
 		}
 		popUp.getDialogPane().setContent(pop);
-
 		popUp.show();
 	}
 
 	// add an image view into a H box
 	// sets image size and placement inside the hbox
-	private HBox topPane() {
+	private HBox picturePane() {
 		HBox hBox = new HBox(15);
 		hBox.setPadding(new Insets(15, 15, 15, 15));
 		ImageView imageView = new ImageView(new Image("logo.png"));
@@ -156,21 +158,18 @@ public class Login extends GUI {
 
 	}
 
-	public void writer(ArrayList<String> array) {
-		PrintWriter writer = null;
-		try {
-			writer = new PrintWriter(new File("usernameSave.txt"));
-		} catch (FileNotFoundException e) {
-			System.out.println("File not found");
-		}
-		for (String temp : array) {
-			writer.println(temp);
-		}
-		writer.close();
+
+	public void update(Observable ob, Object obj) {
+		// TODO Auto-generated method stub
+		userInput.setText("" + ((Integer)obj).intValue());	
+		
 	}
 
-	public static void main(String[] args) {
-		launch(args);
+	@Override
+	public void update(java.util.Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
 	}
+	
 
 }

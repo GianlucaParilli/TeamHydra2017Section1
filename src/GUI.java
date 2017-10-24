@@ -1,5 +1,6 @@
 import java.util.ArrayList;
-
+import java.util.Observable;
+import java.util.Observer;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -17,7 +18,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class GUI extends Application{
+public class GUI extends LostTreasure implements Observer{
+	 Button examine;
 	 static Stage guiStage = new Stage();
 
 	public void start(Stage primaryStage) throws InterruptedException {
@@ -77,7 +79,7 @@ public class GUI extends Application{
 
 	private HBox buttonHPane() {
 	    HBox hBox = new HBox(5);
-	    Button button1 = new Button("Examine Room");
+	    examine = new Button("Examine Room");
 		Button button2 = new Button("Fight");
 		Button button3 = new Button("Flee");
 		Button button4 = new Button("View Puzzle");
@@ -89,7 +91,7 @@ public class GUI extends Application{
 		
 		health.setTranslateY(5);
 		
-	    hBox.getChildren().add(button1);
+	    hBox.getChildren().add(examine);
 	    hBox.getChildren().add(button2);
 	    hBox.getChildren().add(button3);
 	    hBox.getChildren().add(button4);
@@ -141,9 +143,14 @@ public class GUI extends Application{
 		});
 	    return hBox;
 	  }
-	public static void main(String[] args) {
-		launch(args);
-	}
+
+@Override
+public void update(Observable o, Object arg) {
+	// TODO Auto-generated method stub
+	
+}
+
+	
 	
 
 }

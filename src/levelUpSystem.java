@@ -3,7 +3,7 @@ public class levelUpSystem {
 
 	public static void main(String[] args) {
 		double nextLevel = 0;
-		int count = 1;
+		//int count = 1;
 		for(int lvl = 1; lvl <= 40; lvl++) {
 			
 			nextLevel = nextLevel + nextLevel(lvl);

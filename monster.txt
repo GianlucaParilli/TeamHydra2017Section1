@@ -1,0 +1,6 @@
+MonsterName: killer monster
+Description: this monster kills everything.
+Health: 1000/1000
+MonsterName: killer monster 2
+Description: this monster kills nothing.
+Health: 0/1000
