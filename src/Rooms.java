@@ -5,6 +5,7 @@ public class Rooms {
 	private String roomID;
 	private String roomName;
 	private String roomDescription;
+	private static ArrayList<Rooms> roomsArray = new ArrayList<>();
 
 	public String getRoomID() {
 		return roomID;
@@ -30,7 +31,20 @@ public class Rooms {
 		this.roomDescription = roomDescription;
 	}
 
+	public void EnterRoom() { //Placeholder
+		
+	}
 	
-	private static ArrayList<Rooms> roomsArray = new ArrayList<>();
+	public void ExamineRoom() { //Placeholder
+		
+	}
+	
+	public void ExitRoom() { //Placeholder
+		
+	}
+	
+	public void SearchRoom() { //Placeholder
+		
+	}
 	
 }

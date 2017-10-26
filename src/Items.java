@@ -44,6 +44,26 @@ public class Items {
 		this.itemType = itemType;
 	}
 	
+	public void DropItem() { //Placeholder
+	
+	}
+	
+	public void EquipItem() { //Placeholder
+		
+	}
+	
+	public void UnequipItem() { //Placeholder
+		
+	}
+	
+	public void UseItem() { //Placeholder
+		
+	}
+	
+	public void ViewItem() { //Placeholder
+		
+	}
+	
 	
 	
 	
