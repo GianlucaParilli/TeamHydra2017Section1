@@ -5,9 +5,10 @@
 	</list>
 	<section name="ExternalProjectImportWizard">
 		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
-		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="true" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\Michael Lopez\Desktop\Game Project\TeamHydra2017Section1"/>
 			<item value="C:\Users\Ariel\Documents\Team Hydra Workspace Fall 2017\TeamHydra2017Section1"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
