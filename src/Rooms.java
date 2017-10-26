@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+
+public class Rooms {
+	
+	private String roomID;
+	private String roomName;
+	private String roomDescription;
+
+	public String getRoomID() {
+		return roomID;
+	}
+
+	public void setRoomID(String roomID) {
+		this.roomID = roomID;
+	}
+
+	public String getRoomName() {
+		return roomName;
+	}
+
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
+	}
+
+	public String getRoomDescription() {
+		return roomDescription;
+	}
+
+	public void setRoomDescription(String roomDescription) {
+		this.roomDescription = roomDescription;
+	}
+
+	
+	private static ArrayList<Rooms> roomsArray = new ArrayList<>();
+	
+}
