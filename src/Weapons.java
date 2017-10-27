@@ -5,6 +5,7 @@ public class Weapons extends Items{
 
 	public int getAttackPoints() {
 		return attackPoints;
+		//sysout
 	}
 
 	public void setAttackPoints(int attackPoints) {
