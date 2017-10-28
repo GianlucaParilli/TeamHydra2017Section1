@@ -8,8 +8,9 @@ import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 
-public class Commands implements Observable {
+public class Commands  {
 	private String username;
 	
 	public void writer(ArrayList<String> array) {
@@ -33,32 +34,19 @@ public class Commands implements Observable {
 
 	public void loadGame() {
 
-		Commands com = new Commands();
-		com.addListener(new InvalidationListener() {
-
-			@Override
-			public void invalidated(Observable observable) {
-				// TODO Auto-generated method stub
-				System.out.println("aaaaaa");
-			}
-		});
+	
 	}
 
 	public void exitGame() {
 
 	}
 
-	@Override
-	public void addListener(InvalidationListener listener) {
-		// System.out.println("");
+	public void examineRoom(String temp){
+		System.out.println("examine room");
+		System.out.println(""+ temp);
+
+		
 	}
-
-	@Override
-	public void removeListener(InvalidationListener listener) {
-		// TODO Auto-generated method stub
-
-	}
-
 
 
 	

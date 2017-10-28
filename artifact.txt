@@ -1,15 +1,61 @@
-ArtifactId: W5 ItemName: Ammunition ItemDescription: Brass casing with gun powder and copper bullet ItemType: Artifact
-ArtifactId: H1 ItemName: Bandage ItemDescription: Cotton bandages ItemType: 
-ArtifactId: H2 ItemName: Healing Potion ItemDescription: Glass bottle with ancient healing water ItemType: 
-ArtifactId: H3 ItemName: Cotton Wrap ItemDescription: Soft spool of cotton ItemType: 
-ArtifactId: H4 ItemName: Mummy Wrap ItemDescription: Cotton wraps ItemType: 
-ArtifactId: H5 ItemName: Bat Meat ItemDescription: Raw meat from a bat like creature ItemType: 
-ArtifactId: N1 ItemName: Ancient Map ItemDescription: Map ItemType: 
-ArtifactId: S1 ItemName: Large Backpack ItemDescription: 20-pound shoulder bag ItemType: 
-ArtifactId: K1 ItemName: Gold star ItemDescription: Star shaped object made out of gold ItemType: 
-ArtifactId: K2 ItemName: Left Half of an Ornate Skull ItemDescription: Half of a decorative skull ItemType: 
-ArtifactId: K3 ItemName: Right Half of an Ornate Skull ItemDescription: Half of a decorative skull. ItemType: 
-ArtifactId: K4 ItemName: The King’s Ruby ItemDescription: A ruby that once belonged to the king. ItemType: 
-ArtifactId: K5 ItemName: The King’s Sapphire ItemDescription: A sapphire that once belonged to the king. ItemType: 
-ArtifactId: K6 ItemName: Golden Key ItemDescription: A key made of solid gold. ItemType: 
-ArtifactId: K7 ItemName: Silver Key ItemDescription: A key made of pure silver. ItemType: 
+ArtifactId: W5 
+ItemName: Ammunition
+Description: Brass casing with gun powder and copper bullet
+ItemType: Artifact
+ArtifactId: H1
+ItemName: Bandage
+Description: Cotton bandages
+ItemType:
+ArtifactId: H2
+ItemName: Healing Potion
+Description: Glass bottle with ancient healing water
+ItemType:
+ArtifactId: H3
+ItemName: Cotton Wrap
+Description: Soft spool of cotton
+ItemType:
+ArtifactId: H4
+ItemName: Mummy
+Wrap
+Description: Cotton wraps
+ItemType:
+ArtifactId: H5
+ItemName: Bat Meat
+Description: Raw meat from a bat like creature
+ItemType:
+ArtifactId: N1
+ItemName: Ancient Map
+Description: Map
+ItemType:
+ArtifactId: S1
+ItemName: Large Backpack
+Description: 20-pound shoulder bag
+ItemType:
+ArtifactId: K1
+ItemName: Gold star
+Description: Star shaped object made out of gold
+ItemType:
+ArtifactId: K2
+ItemName: Left Half of an Ornate Skull
+Description: Half of a decorative skull
+ItemType:
+ArtifactId: K3
+ItemName: Right Half of an Ornate Skull
+Description: Half of a decorative skull.
+ItemType:
+ArtifactId: K4
+ItemName: The King’s Ruby
+Description: A ruby that once belonged to the king.
+ItemType:
+ArtifactId: K5
+ItemName: The King’s Sapphire
+Description: A sapphire that once belonged to the king.
+ItemType:
+ArtifactId: K6
+ItemName: Golden Key
+Description: A key made of solid gold.
+ItemType:
+ArtifactId: K7
+ItemName: Silver Key
+Description: A key made of pure silver.
+ItemType: 

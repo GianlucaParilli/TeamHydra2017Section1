@@ -21,6 +21,13 @@ public class Controller {
 			System.out.println("worked");
 		});
 	}
+	public void buttonListener(Button temp){
+		System.out.println("examine room");
+		temp.setOnAction(e->{
+			System.out.println("dddd");
+		});
+	}
 	
+
 
 }
