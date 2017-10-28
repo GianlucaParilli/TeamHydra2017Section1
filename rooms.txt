@@ -1,1 +1,8 @@
 RoomID: r1
+Puzzle: false
+Item: false
+Monster: false
+RoomID: r2
+Puzzle: false
+Item: false
+Monster: true
