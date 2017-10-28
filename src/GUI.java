@@ -101,6 +101,8 @@ public class GUI extends LostTreasure implements Observer {
 		examine.setOnAction(e->{
 			Commands commands = new Commands();
 			commands.examineRoom(examine.getText());
+			Controller control = new Controller();
+			control.examineRoom();
 		});
 
 		return hBox;

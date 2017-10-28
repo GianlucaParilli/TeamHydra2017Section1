@@ -1,8 +1,12 @@
 RoomID: r1
+RoomName: Une
+RoomDescription: this is room 1
 Puzzle: false
 Item: false
 Monster: false
 RoomID: r2
+RoomName: dos
+RoomDescription: this is room 2
 Puzzle: false
 Item: false
 Monster: true

@@ -43,6 +43,7 @@ public class Commands  {
 
 	public void examineRoom(String temp){
 		System.out.println("examine room");
+		
 		System.out.println(""+ temp);
 
 		
