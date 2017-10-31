@@ -1,0 +1,38 @@
+PuzzleID:P1
+Riddle:What has roots as nobody sees, is taller than trees, up, up, up it goes, and yet, never grows.
+Answer: Mountain
+Hint:Landform
+PuzzleID: P2
+Riddle:A box without hinges, key or lid, yet golden treasure inside is hid.
+Answer: Egg
+Hint:Food
+PuzzleID:P3
+Riddle:The ancient king’s great friend broke something without being held
+Answer:A promise
+Hint:Assures something
+PuzzleID:P4
+Riddle:This thing all things devours: Birds, beasts, trees, flowers; Gnaws iron, bites steel; Grinds hard stones to meal; Slays king, ruins town, and beats high mountain down.
+Answer:Time
+Hint:It passes by every second, minute, and hour
+PuzzleID:P5
+Riddle:Alive without breath, as cold as death; Never thirsty, ever drinking, all in mail never clinking
+Answer:Fish
+Hint:Swims in water
+PuzzleID:P6
+Riddle:I am wrapped up but I am not a gift I have been preserved but I am not something you would eat 
+Answer:Mummy
+Hint:Human wrapped in cotton wraps
+PuzzleID:P7
+Riddle:If I have it, I don’t share it. If I share it, I don’t have it. What is it?
+Answer:A secret
+Hint:Something kept and not told
+PuzzleID:P8
+Riddle:They come out at night without being called, and are lost in the day without being stolen.
+Answer:Stars
+Hint:Can only be seen at night
+
+
+
+
+
+
