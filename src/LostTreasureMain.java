@@ -4,7 +4,7 @@ import javafx.stage.Stage;
  * @author Gianluca Parilli
  * @version 1.0 
  * @Course : ITEC 3860, Fall, 2017 Written: October 12, 2017
- * 
+ *  
  */
 public class LostTreasureMain extends Application{
 	 static Stage guiStage = new Stage();
