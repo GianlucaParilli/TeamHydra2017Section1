@@ -33,6 +33,7 @@ public class Controller {
 
 	public void examineRoom() {
 		room = new Rooms();
+		
 		System.out.println(""+ room.getRoomsArray().size());
 	}
 	

@@ -13,7 +13,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class Login extends LostTreasure implements Observer {
+public class Login extends LostTreasureMain implements Observer {
 	TextField userInput;
 	protected ArrayList<String> usernamesArray = new ArrayList<>();
 	protected ArrayList<Button> arrayButtons = new ArrayList<>();
@@ -61,7 +61,8 @@ public class Login extends LostTreasure implements Observer {
 			popUp.setTitle("Results");
 			Optional<ButtonType> result = popUp.showAndWait();
 			ButtonType button = result.orElse(ButtonType.CANCEL);
-
+			//when ok button pressed on the alert, the user name will be store into an array
+			//verifies that there is'nt a duplicate user name 
 			if (button == ButtonType.OK) {
 				String usernameString = userInput.getText();
 
@@ -75,7 +76,7 @@ public class Login extends LostTreasure implements Observer {
 				}
 				usernamesArray.add(usernameString);
 
-
+				//writes user name into a txt file for the load feature
 				//writer(usernamesArray);
 				
 				 GUI newGame = new GUI(); 
@@ -91,6 +92,7 @@ public class Login extends LostTreasure implements Observer {
 			}
 
 		});
+		//load game listener 
 		loadGameButton.setOnAction(e -> {
 			if (usernamesArray.size() == 0) {
 				Alert errorPopUp = new Alert(AlertType.ERROR);
@@ -101,6 +103,7 @@ public class Login extends LostTreasure implements Observer {
 
 			}
 		});
+		//listener that closes the gui 
 		exitButton.setOnAction(e -> {
 			// quits and closes the gui
 			Stage stage = (Stage) exitButton.getScene().getWindow();
@@ -109,7 +112,7 @@ public class Login extends LostTreasure implements Observer {
 
 		return vpane;
 	}
-
+//pop up for the load button
 	private void loadPopUp(ArrayList<String> userStringtemp) {
 		Alert popUp = new Alert(AlertType.INFORMATION);
 		popUp.setTitle("Load Game");
@@ -157,7 +160,6 @@ public class Login extends LostTreasure implements Observer {
 		return vBox;
 
 	}
-
 
 	public void update(Observable ob, Object obj) {
 		// TODO Auto-generated method stub

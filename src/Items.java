@@ -36,7 +36,10 @@ public class Items {
 	public Items() {
 		
 	}
-	
+	/*
+	 * Constructor that creates an item object used to store 
+	 * the information for each item found in the game
+	 * */
 	public Items(String itemID, String itemName, String itemDescription, String itemType) {
 		this.itemID = itemID;
 		this.itemName = itemName;

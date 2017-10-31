@@ -2,16 +2,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
 
 public class Commands  {
-	private String username;
+	//private String username;
 	
 	public void writer(ArrayList<String> array) {
 		PrintWriter writer = null;

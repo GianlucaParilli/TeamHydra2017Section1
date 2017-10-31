@@ -1,16 +1,14 @@
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
-import javafx.application.Application;
-import javafx.event.EventHandler;
+//import javafx.application.Application;
+//import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.*;
+//import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -20,10 +18,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class GUI extends LostTreasure implements Observer {
+public class GUI extends LostTreasureMain implements Observer {
 	Button examine;
-	static Stage guiStage = new Stage();
 	Button button;
+	static Stage guiStage = new Stage();
+	
 	public void start(Stage primaryStage) throws InterruptedException {
 		BorderPane bPane = new BorderPane();
 		guiStage = primaryStage;
@@ -52,10 +51,11 @@ public class GUI extends LostTreasure implements Observer {
 		GridPane pane = new GridPane();
 		// makes sure that only one is selected
 		pane.setHgap(5);
-		Button optionButtonUp = new Button("North");
-		Button optionButtonDown = new Button("South");
-		Button optionButtonLeft = new Button("West");
-		Button optionButtonRight = new Button("East");
+		//button that i might reuse 
+		//Button optionButtonUp = new Button("North");
+		//Button optionButtonDown = new Button("South");
+		//Button optionButtonLeft = new Button("West");
+		//Button optionButtonRight = new Button("East");
 		Button goButton = new Button("Go!");
 
 		Text text = new Text("Select Room");
@@ -76,7 +76,11 @@ public class GUI extends LostTreasure implements Observer {
 
 		return pane;
 	}
-
+/*
+ * Sets an individual hbox to format where the buttons are located
+ * Then the hbox will be added to the main pane
+ *
+ **/
 	private HBox buttonHPane() {
 		HBox hBox = new HBox(5);
 		examine = new Button("Examine Room");
@@ -85,10 +89,9 @@ public class GUI extends LostTreasure implements Observer {
 		Button button4 = new Button("View Puzzle");
 		Button buttonInventory = new Button("Show Inventory");
 		Label health = new Label("Bag: 30/30");
-
+		//moves the button and label in the x direction for placement
 		buttonInventory.setTranslateX(90);
 		health.setTranslateX(100);
-
 		health.setTranslateY(5);
 
 		hBox.getChildren().add(examine);
@@ -104,7 +107,6 @@ public class GUI extends LostTreasure implements Observer {
 			Controller control = new Controller();
 			control.examineRoom();
 		});
-
 		return hBox;
 	}
 	
@@ -125,13 +127,9 @@ public class GUI extends LostTreasure implements Observer {
 	}
 
 	/*
-	 * private HBox inventoryPane() { HBox hBox = new HBox(15); Label text = new
-	 * Label(); text.setText("the story line goes in this side!!");
-	 * hBox.setPadding(new Insets(15, 15, 15, 15));
+	 *h box that assigns the exit button to an individual panel
+	 *assigns a listener to the exit button to close the view
 	 * 
-	 * hBox.getChildren().add(text);
-	 * 
-	 * return hBox; }
 	 */
 	private HBox exitPane() {
 		HBox hBox = new HBox(15);
@@ -150,7 +148,7 @@ public class GUI extends LostTreasure implements Observer {
 		});
 		return hBox;
 	}
-
+//observer, observable methods that will update the gui 
 @Override
 public void update(Observable o, Object arg) {
 	String temp = arg.toString();
