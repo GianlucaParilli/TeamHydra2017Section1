@@ -1,6 +1,64 @@
-MonsterName: killer monster
-Description: this monster kills everything.
-Health: 1000/1000
-MonsterName: killer monster 2
-Description: this monster kills nothing.
-Health: 0/1000
+MonsterID:M1
+MonsterName:Bandit
+Description:Robber belonging to a pirate organization
+EXP:10 EXP
+DamageGiven:10
+HealthPoints:50
+AttackPercentage:40%
+ArtifactsDropped:Sword and Ammo
+MonsterID: M2
+MonsterName:Stone Guard Boss
+Description:Large stone like create with two arms and legs made of concrete boulders
+EXP:50 EXP
+Damage Given:25
+Health Points:50
+Attack Percentage:10%
+Artifacts Dropped:Shield body armor
+MonsterID: M3
+MonsterName:Human Skeleton
+Description:Ancient warriors resurrected from the dead
+EXP:10 EXP
+Damage Given:10
+Health Points:50
+Attack Percentage:40%
+Artifacts Dropped:Spear and shield
+MonsterID: M4
+MonsterName:Bat Eye
+Description:One eyed flying bat
+EXP:5 EXP
+Damage Given:10
+Health Points:20
+Attack Percentage:10
+Artifacts Dropped:Bat meat
+MonsterID: M5
+MonsterName:Mummies
+Description:Human wrapped monsters
+EXP:10 EXP
+Damage Given:10
+Health Points:50
+Attack Percentage:40%
+Artifacts Dropped:Cotton wrap
+MonsterID: M6
+MonsterName:Mimic
+Description:Monster Treasure Chest 
+EXP:30 EXP
+Damage Given:20
+Health Points:50
+Attack Percentage:50%
+Artifacts Dropped:Bandages and healing potion
+MonsterID: M7
+MonsterName:Anubis Boss
+Description:A boss whose job is to guard the treasure
+EXP:100 EXP
+Damage Given:40
+Health Points:500
+Attack Percentage:30%
+Artifacts Dropped:Sword,shield,spear,and armor
+MonsterID: M8
+MonsterName:Lizard Warrior
+Description:Amored Lizard
+EXP:30 EXP
+Damage Given:50
+Health Points:60
+Attack Percentage:20%
+Artifacts Dropped:Swords and shield
