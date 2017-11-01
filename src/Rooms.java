@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Rooms {
@@ -11,6 +12,7 @@ public class Rooms {
 	private String exit;
 	private String item;
 	private String monster;
+	private String randomProbability;
 	private ArrayList<Rooms> roomsArray = new ArrayList<>();
 
 	public Rooms() {
@@ -20,13 +22,14 @@ public class Rooms {
 			System.out.println("No File Found");
 		}
 	}
-	public Rooms(String roomID, String roomName, String roomDescription, String exit, String monster, String item) {
+	public Rooms(String roomID, String roomName, String roomDescription, String exit, String monster, String item, String randomProbability) {
 		this.roomID = roomID;
 		this.roomName = roomName;
 		this.roomDescription = roomDescription;
 		this.exit = exit;
 		this.monster = monster;
 		this.item = item;
+		this.randomProbability = randomProbability;
 	}
 	public String getRoomID() {
 		return roomID;
@@ -71,6 +74,18 @@ public class Rooms {
 	public void SearchRoom() { //Placeholder
 		
 	}
+	public void randomPuzzle(){
+		Random rand = new Random();
+		
+		for(Rooms temp : roomsArray){
+			int randomProb = Integer.parseInt(temp.randomProbability);
+			//finds room with prob higher than 0, if greater than 0, randomize puzzle.
+			if(randomProb >0){
+				System.out.println(rand.nextInt(randomProb) + 1);
+			}
+		}
+	}
+
 	public void roomReader() throws FileNotFoundException {
 		@SuppressWarnings("resource")
 		Scanner reader = new Scanner(new File("rooms.txt"));
@@ -83,18 +98,19 @@ public class Rooms {
 			String puzzle = reader.nextLine();
 			String item = reader.nextLine();
 			String monster = reader.nextLine();
+			String randomProbability = reader.nextLine();
 
-			Rooms room = new Rooms( roomID,  roomName, roomDescription, puzzle, item, monster);
+			Rooms room = new Rooms( roomID,  roomName, roomDescription, puzzle, item, monster, randomProbability);
 			roomsArray.add(room);
 		}
-		System.out.println("" + roomsArray.get(0).roomDescription);
-		System.out.println("" + roomsArray.get(1).monster);
-		System.out.println(roomsArray.toString());
+		//System.out.println("" + roomsArray.get(0).roomDescription);
+		//System.out.println("" + roomsArray.get(1).monster);
+		//System.out.println(roomsArray.toString());
 
 	}
 	@Override
 	public String toString() {
-		return roomID + " | " + roomName + " | " + roomDescription + " | " + exit + " | " + monster + " | " + item;
+		return roomID + " | " + roomName + " | " + roomDescription + " | " + exit + " | " + monster + " | " + item + " | " + randomProbability;
 	}
 
 	

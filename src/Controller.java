@@ -4,7 +4,7 @@ import javafx.scene.control.Button;
 public class Controller {
 	Monster monster;
 	Commands command;
-	Rooms room;
+	Rooms room = new Rooms();;
 	Login login = new Login();
 
 	public void newGameListener(Button button) {
@@ -32,9 +32,10 @@ public class Controller {
 	}
 
 	public void examineRoom() {
-		room = new Rooms();
+		//room = new Rooms();
 		
 		System.out.println(""+ room.getRoomsArray().size());
+		room.randomPuzzle();
 	}
 	
 
