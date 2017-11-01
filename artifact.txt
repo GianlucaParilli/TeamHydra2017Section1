@@ -1,59 +1,59 @@
-ArtifactId: W5 
-ItemName: Ammunition
-Description: Brass casing with gun powder and copper bullet
-ItemType: Artifact
-ArtifactId: H1
-ItemName: Bandage
-Description: Cotton bandages
+W5 
+Ammunition
+Brass casing with gun powder and copper bullet
+Artifact
+H1
+Bandage
+Cotton bandages
 ItemType:
-ArtifactId: H2
-ItemName: Healing Potion
-Description: Glass bottle with ancient healing water
+H2
+Healing Potion
+Glass bottle with ancient healing water
 ItemType:
-ArtifactId: H3
-ItemName: Cotton Wrap
-Description: Soft spool of cotton
+H3
+Cotton Wrap
+Soft spool of cotton
 ItemType:
-ArtifactId: H4
-ItemName: Mummy
+H4
+Mummy
 Wrap
-Description: Cotton wraps
+Cotton wraps
 ItemType:
-ArtifactId: H5
-ItemName: Bat Meat
-Description: Raw meat from a bat like creature
+H5
+Bat Meat
+Raw meat from a bat like creature
 ItemType:
-ArtifactId: N1
-ItemName: Ancient Map
-Description: Map
+N1
+Ancient Map
+Map
 ItemType:
-ArtifactId: S1
-ItemName: Large Backpack
-Description: 20-pound shoulder bag
+S1
+Large Backpack
+20-pound shoulder bag
 ItemType:
-ArtifactId: K1
-ItemName: Gold star
-Description: Star shaped object made out of gold
+K1
+Gold star
+Star shaped object made out of gold
 ItemType:
-ArtifactId: K2
-ItemName: Left Half of an Ornate Skull
-Description: Half of a decorative skull
+K2
+Left Half of an Ornate Skull
+Half of a decorative skull
 ItemType:
-ArtifactId: K3
-ItemName: Right Half of an Ornate Skull
-Description: Half of a decorative skull.
+K3
+Right Half of an Ornate Skull
+Half of a decorative skull.
 ItemType:
-ArtifactId: K4
-ItemName: The King’s Ruby
-Description: A ruby that once belonged to the king.
+K4
+The King’s Ruby
+A ruby that once belonged to the king.
 ItemType:
-ArtifactId: K5
-ItemName: The King’s Sapphire
-Description: A sapphire that once belonged to the king.
+K5
+The King’s Sapphire
+A sapphire that once belonged to the king.
 ItemType:
-ArtifactId: K6
-ItemName: Golden Key
-Description: A key made of solid gold.
+K6
+Golden Key
+A key made of solid gold.
 ItemType:
 ArtifactId: K7
 ItemName: Silver Key

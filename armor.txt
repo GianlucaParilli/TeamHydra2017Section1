@@ -1,2 +1,10 @@
-ItemId: W3 ItemName: Shield ItemDescription:Steel Shield ItemType: Armor ArmorBonus: 50
-ItemId: W6 ItemName: Body Armor ItemDescription:Steel Vest ItemType: Armor ArmorBonus: 50
+W3
+Shield
+Steel Shield
+Armor
+50
+W6
+Body Armor
+Steel Vest
+Armor
+50
