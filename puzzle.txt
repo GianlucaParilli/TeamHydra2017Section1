@@ -30,9 +30,3 @@ PuzzleID:P8
 Riddle:They come out at night without being called, and are lost in the day without being stolen.
 Answer:Stars
 Hint:Can only be seen at night
-
-
-
-
-
-

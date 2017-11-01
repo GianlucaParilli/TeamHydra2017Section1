@@ -8,9 +8,9 @@ public class Rooms {
 	private String roomID;
 	private String roomName;
 	private String roomDescription;
-	private boolean puzzle;
-	private boolean item;
-	private boolean monster;
+	private String exit;
+	private String item;
+	private String monster;
 	private ArrayList<Rooms> roomsArray = new ArrayList<>();
 
 	public Rooms() {
@@ -20,13 +20,13 @@ public class Rooms {
 			System.out.println("No File Found");
 		}
 	}
-	public Rooms(String roomID, String roomName, String roomDescription, Boolean puzzle, Boolean item, Boolean monster) {
+	public Rooms(String roomID, String roomName, String roomDescription, String exit, String monster, String item) {
 		this.roomID = roomID;
 		this.roomName = roomName;
 		this.roomDescription = roomDescription;
-		this.puzzle = puzzle;
-		this.item = item;
+		this.exit = exit;
 		this.monster = monster;
+		this.item = item;
 	}
 	public String getRoomID() {
 		return roomID;
@@ -80,9 +80,9 @@ public class Rooms {
 			String roomID = reader.nextLine();
 			String roomName = reader.nextLine();
 			String roomDescription = reader.nextLine();
-			Boolean puzzle = Boolean.parseBoolean(reader.nextLine());
-			Boolean item = Boolean.parseBoolean(reader.nextLine());
-			Boolean monster = Boolean.parseBoolean(reader.nextLine());
+			String puzzle = reader.nextLine();
+			String item = reader.nextLine();
+			String monster = reader.nextLine();
 
 			Rooms room = new Rooms( roomID,  roomName, roomDescription, puzzle, item, monster);
 			roomsArray.add(room);
@@ -94,7 +94,7 @@ public class Rooms {
 	}
 	@Override
 	public String toString() {
-		return roomID + " | " + roomName + " | " + roomDescription + " | " + puzzle + " | " + item + " | " + monster;
+		return roomID + " | " + roomName + " | " + roomDescription + " | " + exit + " | " + monster + " | " + item;
 	}
 
 	
