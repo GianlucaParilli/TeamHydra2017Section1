@@ -31,11 +31,8 @@ public class Controller {
 		});
 	}
 
-	public void examineRoom() {
-		//room = new Rooms();
-		
-		System.out.println(""+ room.getRoomsArray().size());
-		room.randomPuzzle();
+	public String examineRoom() {		
+		return room.ExamineRoom();
 	}
 	
 

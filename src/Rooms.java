@@ -13,15 +13,18 @@ public class Rooms {
 	private String item;
 	private String monster;
 	private String randomProbability;
+	private int startRoom = 0;
 	private ArrayList<Rooms> roomsArray = new ArrayList<>();
 
 	public Rooms() {
 		try {
 			roomReader();
+			randomPuzzle();
 		} catch (FileNotFoundException e) {
 			System.out.println("No File Found");
 		}
 	}
+	
 	public Rooms(String roomID, String roomName, String roomDescription, String exit, String monster, String item, String randomProbability) {
 		this.roomID = roomID;
 		this.roomName = roomName;
@@ -31,46 +34,22 @@ public class Rooms {
 		this.item = item;
 		this.randomProbability = randomProbability;
 	}
-	public String getRoomID() {
-		return roomID;
-	}
-
-	public void setRoomID(String roomID) {
-		this.roomID = roomID;
-	}
-	
-	public ArrayList<Rooms> getRoomsArray() {
-		return roomsArray;
-	}
-
-	public String getRoomName() {
-		return roomName;
-	}
-
-	public void setRoomName(String roomName) {
-		this.roomName = roomName;
-	}
-
-	public String getRoomDescription() {
-		return roomDescription;
-	}
 
 	public void setRoomDescription(String roomDescription) {
 		this.roomDescription = roomDescription;
 	}
-
-	public void EnterRoom() { //Placeholder
-		
+	public void EnterRoom() { //Placeholder	
 	}
-	
-	public void ExamineRoom() { //Placeholder
-		
+	public String ExamineRoom() { //Placeholder
+		randomPuzzle();
+		//room.getStartRoom(); //0 
+		String roomDescription = getRoomsArray().get(getStartRoom()).getRoomDescription();
+		System.out.println(roomDescription);
+		return roomDescription;
 	}
-	
 	public void ExitRoom() { //Placeholder
 		
 	}
-	
 	public void SearchRoom() { //Placeholder
 		
 	}
@@ -81,7 +60,8 @@ public class Rooms {
 			int randomProb = Integer.parseInt(temp.randomProbability);
 			//finds room with prob higher than 0, if greater than 0, randomize puzzle.
 			if(randomProb >0){
-				System.out.println(rand.nextInt(randomProb) + 1);
+				//System.out.println(rand.nextInt(randomProb) + 1);
+				temp.setMonster("" +rand.nextInt(randomProb) + 1);
 			}
 		}
 	}
@@ -113,5 +93,48 @@ public class Rooms {
 		return roomID + " | " + roomName + " | " + roomDescription + " | " + exit + " | " + monster + " | " + item + " | " + randomProbability;
 	}
 
-	
+	public String getExit() {
+		return exit;
+	}
+	public void setExit(String exit) {
+		this.exit = exit;
+	}
+	public String getItem() {
+		return item;
+	}
+	public void setItem(String item) {
+		this.item = item;
+	}
+	public String getMonster() {
+		return monster;
+	}
+	public void setMonster(String monster) {
+
+		this.monster = monster;
+	}
+	public String getRoomID() {
+		return roomID;
+	}
+	public void setRoomID(String roomID) {
+		this.roomID = roomID;
+	}	
+	public ArrayList<Rooms> getRoomsArray() {
+		return roomsArray;
+	}
+	public String getRoomName() {
+		return roomName;
+	}
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
+	}
+	public String getRoomDescription() {
+
+		return roomDescription;
+	}
+	public int getStartRoom() {
+		return startRoom;
+	}
+	public void setStartRoom(int startRoom) {
+		this.startRoom = startRoom;
+	}
 }

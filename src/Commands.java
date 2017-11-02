@@ -39,6 +39,7 @@ public class Commands  {
 		System.out.println("examine room");
 		
 		System.out.println(""+ temp);
+		
 
 		
 	}

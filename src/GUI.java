@@ -15,6 +15,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -26,56 +28,29 @@ public class GUI extends LostTreasureMain implements Observer {
 	public void start(Stage primaryStage) throws InterruptedException {
 		BorderPane bPane = new BorderPane();
 		guiStage = primaryStage;
-
-		// Place nodes in the pane
-		// bPane.setLeft(textPane());
-		// bPane.setCenter(BackgroundPane());
-		// bPane.setTop(TitlePane());
-		// bPane.setBottom(navButtonPane());
-
-		bPane.setTop(topPane());
-		bPane.setCenter(buttonHPane());
-		bPane.setBottom(exitPane());
-		// bPane.setLeft(ButtonPane());
+		bPane.setCenter(combinedPanes());;
 		// Create a scene and place it in the stage
 		Scene scene = new Scene(bPane);
 		primaryStage.setTitle("The Lost treasure"); // Set the stage title
 		primaryStage.setScene(scene); // Place the scene in the stage
-		primaryStage.setWidth(610);
-		primaryStage.setHeight(380);
+		primaryStage.setWidth(1040);
+		primaryStage.setHeight(585);
 		primaryStage.show(); // Display the stage
-
 	}
 
-	private Pane ButtonPane() {
+	private Pane combinedPanes() {
 		GridPane pane = new GridPane();
-		// makes sure that only one is selected
-		pane.setHgap(5);
-		//button that i might reuse 
-		//Button optionButtonUp = new Button("North");
-		//Button optionButtonDown = new Button("South");
-		//Button optionButtonLeft = new Button("West");
-		//Button optionButtonRight = new Button("East");
-		Button goButton = new Button("Go!");
-
-		Text text = new Text("Select Room");
-
-		ComboBox<String> rooms = new ComboBox<>();
-		ArrayList<String> roomArray = new ArrayList<>();
-		roomArray.add("First Room");
-		rooms.getItems().addAll(roomArray);
-
-		/*
-		 * pane.add(optionButtonUp, 3, 1); pane.add(optionButtonDown, 3, 5);
-		 * pane.add(optionButtonLeft, 2, 3); pane.add(optionButtonRight, 4, 3);
-		 */
-
-		pane.add(text, 0, 1);
-		pane.add(rooms, 1, 1);
-		pane.add(goButton, 2, 1);
-
+		pane.setHgap(5);	
+		//node,column,row
+		pane.add(descriptionPane(""), 0, 0);
+		pane.add(mapPane(), 1, 0);
+		pane.add(buttonHPane(), 0, 3);
+		pane.add(navButtonPane(), 0, 4);
+		pane.add(inventoryPane(), 1, 3);
+		pane.add(exitPane(), 2, 5);
 		return pane;
 	}
+	
 /*
  * Sets an individual hbox to format where the buttons are located
  * Then the hbox will be added to the main pane
@@ -83,45 +58,55 @@ public class GUI extends LostTreasureMain implements Observer {
  **/
 	private HBox buttonHPane() {
 		HBox hBox = new HBox(5);
+		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
+			    + "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
 		examine = new Button("Examine Room");
 		Button button2 = new Button("Fight");
 		Button button3 = new Button("Flee");
 		Button button4 = new Button("View Puzzle");
-		Button buttonInventory = new Button("Show Inventory");
-		Label health = new Label("Bag: 30/30");
+	
 		//moves the button and label in the x direction for placement
-		buttonInventory.setTranslateX(90);
-		health.setTranslateX(100);
-		health.setTranslateY(5);
+		//buttonInventory.setTranslateX(90);
+		//health.setTranslateX(100);
+		//health.setTranslateY(5);
 
 		hBox.getChildren().add(examine);
 		hBox.getChildren().add(button2);
 		hBox.getChildren().add(button3);
 		hBox.getChildren().add(button4);
-		hBox.getChildren().add(buttonInventory);
-		hBox.getChildren().add(health);
+		
 		// hBox.getChildren().add(inventoryPane());
 		examine.setOnAction(e->{
-			Commands commands = new Commands();
-			commands.examineRoom(examine.getText());
+			//Commands commands = new Commands();
+			//commands.examineRoom(examine.getText());
 			Controller control = new Controller();
-			control.examineRoom();
+			//bPane.setTop(descriptionPane(control.examineRoom()));
+			
 		});
 		return hBox;
 	}
 	
 
-	private HBox topPane() {
+	private HBox descriptionPane(String descriptionText) {
 		HBox hBox = new HBox(15);
+		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
+			    + "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
+		hBox.setMinWidth(600);
 		Label text = new Label();
-		text.setText("Description");
+		text.setWrapText(true);
+		text.setText(descriptionText);
 		hBox.setPadding(new Insets(15, 15, 15, 15));
-
 		hBox.getChildren().add(text);
+		return hBox;
+	}
+	private HBox mapPane() {
+		HBox hBox = new HBox(15);
+		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
+			    + "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
+		hBox.setPadding(new Insets(15, 15, 15, 15));
 		ImageView imageView = new ImageView(new Image("mapf1.png"));
-		imageView.setFitHeight(200);
-		imageView.setFitWidth(200);
-		imageView.setTranslateX(300);
+		imageView.setFitHeight(300);
+		imageView.setFitWidth(300);
 		hBox.getChildren().add(imageView);
 		return hBox;
 	}
@@ -131,17 +116,44 @@ public class GUI extends LostTreasureMain implements Observer {
 	 *assigns a listener to the exit button to close the view
 	 * 
 	 */
+	private HBox inventoryPane(){
+		HBox hBox = new HBox(20);
+		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
+			    + "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
+		Button buttonInventory = new Button("Show Inventory");
+		Label bag = new Label("Bag: 30/30");
+		bag.setFont(Font.font ("Verdana", 20));
+		hBox.getChildren().add(buttonInventory);
+		hBox.getChildren().add(bag);
+		return hBox;
+	}
+	private HBox navButtonPane() {
+		HBox hBox = new HBox(15);
+		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
+			    + "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
+		
+		hBox.setPadding(new Insets(15, 15, 15, 15));
+		Button goButton = new Button("Go!");
+		Text text = new Text("Select Room");
+		ComboBox<String> rooms = new ComboBox<>();
+		ArrayList<String> roomArray = new ArrayList<>();
+		roomArray.add("First Room");
+		rooms.getItems().addAll(roomArray);
+		hBox.getChildren().add(text);
+		hBox.getChildren().add(rooms);
+		hBox.getChildren().add(goButton);
+
+		return hBox;
+	}
 	private HBox exitPane() {
 		HBox hBox = new HBox(15);
+		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
+			    + "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
 		Button exitButton = new Button("Exit");
-		exitButton.setTranslateX(290);
+		//exitButton.setTranslateX(290);
 		// exitButton.setTranslateY(40);
-
 		hBox.setPadding(new Insets(15, 15, 15, 15));
-		hBox.getChildren().add(ButtonPane());
-
 		hBox.getChildren().add(exitButton);
-
 		exitButton.setOnAction(e -> {
 			Stage stage = (Stage) exitButton.getScene().getWindow();
 			stage.close();
