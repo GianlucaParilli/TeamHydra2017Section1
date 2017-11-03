@@ -6,7 +6,8 @@ public class Controller {
 	Commands command;
 	Rooms room = new Rooms();;
 	Login login = new Login();
-
+	//GUI gui = new GUI();
+	
 	public void newGameListener(Button button) {
 		monster = new Monster();
 		button.setOnAction(e -> {
@@ -25,14 +26,16 @@ public class Controller {
 	}
 
 	public void buttonListener(Button temp) {
-		System.out.println("examine room");
+		//System.out.println("examine room");
 		temp.setOnAction(e -> {
-			System.out.println("dddd");
+			room.addObserver(login.gui);
+			room.ExamineRoom();
+			///gui.update(room, room.ExamineRoom());
 		});
 	}
 
-	public String examineRoom() {		
-		return room.ExamineRoom();
+	public void examineRoom() {		
+		  room.ExamineRoom();
 	}
 	
 

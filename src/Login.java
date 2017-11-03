@@ -1,8 +1,8 @@
 import java.util.ArrayList;
+import java.util.Observable;
 import java.util.Observer;
 import java.util.Optional;
 
-import javafx.beans.Observable;
 import javafx.geometry.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
@@ -20,7 +20,10 @@ public class Login extends LostTreasureMain implements Observer {
 	//ImageView imageView = new ImageView(new Image("logo.png"));
 	Button newGameButton;
 	Button loadGameButton;
+	//Rooms r = new Rooms();
+	 //GUI gui = new GUI(); 
 	
+
 	public void start(Stage primaryStage) throws InterruptedException {
 		BorderPane bPane = new BorderPane();
 		bPane.setCenter(mainPane());
@@ -79,9 +82,11 @@ public class Login extends LostTreasureMain implements Observer {
 				//writes user name into a txt file for the load feature
 				//writer(usernamesArray);
 				
-				 GUI newGame = new GUI(); 
+				    gui = new GUI();
 				 try { 
-					 newGame.start(guiStage); //
+					 gui.start(guiStage);
+					 
+
 				 //remember to close previous stage 
 				 } catch
 				 (InterruptedException e1) {
@@ -161,17 +166,14 @@ public class Login extends LostTreasureMain implements Observer {
 
 	}
 
-	public void update(Observable ob, Object obj) {
+	@Override
+	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		userInput.setText("" + ((Integer)obj).intValue());	
 		
 	}
 
-	@Override
-	public void update(java.util.Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
-	}
+
+
 	
 
 }

@@ -1,10 +1,11 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Observable;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Rooms {
+ public class Rooms extends Observable {
 	
 	private String roomID;
 	private String roomName;
@@ -20,6 +21,7 @@ public class Rooms {
 		try {
 			roomReader();
 			randomPuzzle();
+			
 		} catch (FileNotFoundException e) {
 			System.out.println("No File Found");
 		}
@@ -35,16 +37,25 @@ public class Rooms {
 		this.randomProbability = randomProbability;
 	}
 
-	public void setRoomDescription(String roomDescription) {
-		this.roomDescription = roomDescription;
+	public void setRoomDescription(String roomDescriptionn) {
+		this.roomDescription = roomDescriptionn;
+		setChanged();
+		notifyObservers(roomDescription);
+
+
 	}
 	public void EnterRoom() { //Placeholder	
 	}
 	public String ExamineRoom() { //Placeholder
 		randomPuzzle();
 		//room.getStartRoom(); //0 
-		String roomDescription = getRoomsArray().get(getStartRoom()).getRoomDescription();
+		setRoomDescription(getRoomsArray().get(getStartRoom()).getRoomDescription());
 		System.out.println(roomDescription);
+		startRoom++;
+		//setChanged();
+		//notifyObservers(roomDescription);
+
+		
 		return roomDescription;
 	}
 	public void ExitRoom() { //Placeholder

@@ -15,7 +15,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -24,10 +23,12 @@ public class GUI extends LostTreasureMain implements Observer {
 	Button examine;
 	Button button;
 	static Stage guiStage = new Stage();
-	
+	Label descriptionText;
+	Rooms r = new Rooms();
 	public void start(Stage primaryStage) throws InterruptedException {
 		BorderPane bPane = new BorderPane();
 		guiStage = primaryStage;
+		guiStage.setResizable(false);
 		bPane.setCenter(combinedPanes());;
 		// Create a scene and place it in the stage
 		Scene scene = new Scene(bPane);
@@ -42,7 +43,7 @@ public class GUI extends LostTreasureMain implements Observer {
 		GridPane pane = new GridPane();
 		pane.setHgap(5);	
 		//node,column,row
-		pane.add(descriptionPane(""), 0, 0);
+		pane.add(descriptionPane(), 0, 0);
 		pane.add(mapPane(), 1, 0);
 		pane.add(buttonHPane(), 0, 3);
 		pane.add(navButtonPane(), 0, 4);
@@ -74,29 +75,26 @@ public class GUI extends LostTreasureMain implements Observer {
 		hBox.getChildren().add(button2);
 		hBox.getChildren().add(button3);
 		hBox.getChildren().add(button4);
-		
+		Controller control = new Controller();
+		//adds the listener to the button
+		control.buttonListener(examine);
 		// hBox.getChildren().add(inventoryPane());
-		examine.setOnAction(e->{
-			//Commands commands = new Commands();
-			//commands.examineRoom(examine.getText());
-			Controller control = new Controller();
-			//bPane.setTop(descriptionPane(control.examineRoom()));
-			
-		});
+		
 		return hBox;
 	}
 	
 
-	private HBox descriptionPane(String descriptionText) {
+	private HBox descriptionPane() {
 		HBox hBox = new HBox(15);
 		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
 			    + "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
 		hBox.setMinWidth(600);
-		Label text = new Label();
-		text.setWrapText(true);
-		text.setText(descriptionText);
+		hBox.setMaxWidth(600);
+		descriptionText = new Label();
+		descriptionText.setFont(Font.font ("Verdana", 26));
+		descriptionText.setWrapText(true);
 		hBox.setPadding(new Insets(15, 15, 15, 15));
-		hBox.getChildren().add(text);
+		hBox.getChildren().add(descriptionText);
 		return hBox;
 	}
 	private HBox mapPane() {
@@ -135,6 +133,8 @@ public class GUI extends LostTreasureMain implements Observer {
 		hBox.setPadding(new Insets(15, 15, 15, 15));
 		Button goButton = new Button("Go!");
 		Text text = new Text("Select Room");
+		text.setFont(Font.font ("Verdana", 20));
+
 		ComboBox<String> rooms = new ComboBox<>();
 		ArrayList<String> roomArray = new ArrayList<>();
 		roomArray.add("First Room");
@@ -142,7 +142,6 @@ public class GUI extends LostTreasureMain implements Observer {
 		hBox.getChildren().add(text);
 		hBox.getChildren().add(rooms);
 		hBox.getChildren().add(goButton);
-
 		return hBox;
 	}
 	private HBox exitPane() {
@@ -150,8 +149,6 @@ public class GUI extends LostTreasureMain implements Observer {
 		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
 			    + "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
 		Button exitButton = new Button("Exit");
-		//exitButton.setTranslateX(290);
-		// exitButton.setTranslateY(40);
 		hBox.setPadding(new Insets(15, 15, 15, 15));
 		hBox.getChildren().add(exitButton);
 		exitButton.setOnAction(e -> {
@@ -161,10 +158,13 @@ public class GUI extends LostTreasureMain implements Observer {
 		return hBox;
 	}
 //observer, observable methods that will update the gui 
-@Override
-public void update(Observable o, Object arg) {
-	String temp = arg.toString();
-	System.out.println(temp);
-}
+
+
+	@Override
+	public void update(Observable o, Object arg) {
+		//System.out.println(o.countObservers());
+		descriptionText.setText(arg.toString());
+	}
+
 
 }
