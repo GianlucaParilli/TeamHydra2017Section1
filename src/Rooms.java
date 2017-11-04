@@ -42,7 +42,6 @@ import java.util.Scanner;
 		setChanged();
 		notifyObservers(roomDescription);
 
-
 	}
 	public void EnterRoom() { //Placeholder	
 	}

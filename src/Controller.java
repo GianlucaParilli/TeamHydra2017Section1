@@ -6,7 +6,7 @@ public class Controller {
 	Commands command;
 	Rooms room = new Rooms();;
 	Login login = new Login();
-	//GUI gui = new GUI();
+	Navigation nav = new Navigation();
 	
 	public void newGameListener(Button button) {
 		monster = new Monster();
@@ -24,19 +24,28 @@ public class Controller {
 			System.out.println("worked");
 		});
 	}
-
+//method that takes a button, then a listener is glued to the button
+//the model's method is called within here
+//model is the Rooms Class
 	public void buttonListener(Button temp) {
 		//System.out.println("examine room");
 		temp.setOnAction(e -> {
 			room.addObserver(login.gui);
 			room.ExamineRoom();
-			///gui.update(room, room.ExamineRoom());
 		});
 	}
 
 	public void examineRoom() {		
 		  room.ExamineRoom();
 	}
-	
+	public void refreshMap(Button temp){
+		temp.setOnAction(e->{
+			room.addObserver(login.gui);
+			//String room = "";
+			System.out.println(GUI.gui.getRoomsDropDown().getValue());
+			
+			//nav.refreshMap(room);
+		});
+	}
 
 }

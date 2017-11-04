@@ -82,7 +82,7 @@ public class Login extends LostTreasureMain implements Observer {
 				//writes user name into a txt file for the load feature
 				//writer(usernamesArray);
 				
-				    gui = new GUI();
+				   // gui = new GUI();
 				 try { 
 					 gui.start(guiStage);
 					 

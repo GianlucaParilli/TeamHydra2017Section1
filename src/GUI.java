@@ -20,11 +20,18 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class GUI extends LostTreasureMain implements Observer {
-	Button examine;
-	Button button;
+	Button examine, goButton;
 	static Stage guiStage = new Stage();
 	Label descriptionText;
 	Rooms r = new Rooms();
+	Controller control = new Controller();
+	private ComboBox<String> roomsDropDown = new ComboBox<>();
+
+
+	public ComboBox<String> getRoomsDropDown() {
+		return roomsDropDown;
+	}
+
 	public void start(Stage primaryStage) throws InterruptedException {
 		BorderPane bPane = new BorderPane();
 		guiStage = primaryStage;
@@ -65,6 +72,7 @@ public class GUI extends LostTreasureMain implements Observer {
 		Button button2 = new Button("Fight");
 		Button button3 = new Button("Flee");
 		Button button4 = new Button("View Puzzle");
+		
 	
 		//moves the button and label in the x direction for placement
 		//buttonInventory.setTranslateX(90);
@@ -75,7 +83,6 @@ public class GUI extends LostTreasureMain implements Observer {
 		hBox.getChildren().add(button2);
 		hBox.getChildren().add(button3);
 		hBox.getChildren().add(button4);
-		Controller control = new Controller();
 		//adds the listener to the button
 		control.buttonListener(examine);
 		// hBox.getChildren().add(inventoryPane());
@@ -102,7 +109,7 @@ public class GUI extends LostTreasureMain implements Observer {
 		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
 			    + "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
 		hBox.setPadding(new Insets(15, 15, 15, 15));
-		ImageView imageView = new ImageView(new Image("mapf1.png"));
+		ImageView imageView = new ImageView(new Image("Maps/r00.png"));
 		imageView.setFitHeight(300);
 		imageView.setFitWidth(300);
 		hBox.getChildren().add(imageView);
@@ -131,17 +138,21 @@ public class GUI extends LostTreasureMain implements Observer {
 			    + "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
 		
 		hBox.setPadding(new Insets(15, 15, 15, 15));
-		Button goButton = new Button("Go!");
+		goButton = new Button("Go!");
 		Text text = new Text("Select Room");
 		text.setFont(Font.font ("Verdana", 20));
 
-		ComboBox<String> rooms = new ComboBox<>();
+		roomsDropDown = new ComboBox<>();
+		
 		ArrayList<String> roomArray = new ArrayList<>();
 		roomArray.add("First Room");
-		rooms.getItems().addAll(roomArray);
+		roomsDropDown.getItems().addAll(roomArray);
 		hBox.getChildren().add(text);
-		hBox.getChildren().add(rooms);
+		hBox.getChildren().add(roomsDropDown);
 		hBox.getChildren().add(goButton);
+		control.refreshMap(goButton);
+
+	
 		return hBox;
 	}
 	private HBox exitPane() {

@@ -44,11 +44,11 @@ Right Half of an Ornate Skull
 Half of a decorative skull.
 ItemType:
 K4
-The King’s Ruby
+The Kingï¿½s Ruby
 A ruby that once belonged to the king.
 ItemType:
 K5
-The King’s Sapphire
+The King's Sapphire
 A sapphire that once belonged to the king.
 ItemType:
 K6
