@@ -14,7 +14,7 @@ import java.util.Scanner;
 	private String item;
 	private String monster;
 	private String randomProbability;
-	private int startRoom = 0;
+	private int currentRoom = 0;
 	private ArrayList<Rooms> roomsArray = new ArrayList<>();
 
 	public Rooms() {
@@ -48,12 +48,10 @@ import java.util.Scanner;
 	public String ExamineRoom() { //Placeholder
 		randomPuzzle();
 		//room.getStartRoom(); //0 
-		setRoomDescription(getRoomsArray().get(getStartRoom()).getRoomDescription());
+		setRoomDescription(getRoomsArray().get(getCurrentRoom()).getRoomDescription());
 		System.out.println(roomDescription);
-		startRoom++;
-		//setChanged();
-		//notifyObservers(roomDescription);
-
+		currentRoom++;
+		
 		
 		return roomDescription;
 	}
@@ -141,10 +139,10 @@ import java.util.Scanner;
 
 		return roomDescription;
 	}
-	public int getStartRoom() {
-		return startRoom;
+	public int getCurrentRoom() {
+		return currentRoom;
 	}
-	public void setStartRoom(int startRoom) {
-		this.startRoom = startRoom;
+	public void setCurrentRoom(int currentRoom) {
+		this.currentRoom = currentRoom;
 	}
 }

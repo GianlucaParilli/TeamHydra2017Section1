@@ -66,6 +66,7 @@ public class Login extends LostTreasureMain implements Observer {
 			ButtonType button = result.orElse(ButtonType.CANCEL);
 			//when ok button pressed on the alert, the user name will be store into an array
 			//verifies that there is'nt a duplicate user name 
+			
 			if (button == ButtonType.OK) {
 				String usernameString = userInput.getText();
 
@@ -154,13 +155,23 @@ public class Login extends LostTreasureMain implements Observer {
 	private VBox popUpPane() {
 		VBox vBox = new VBox();
 		// organizes the form into a h box within a v box
-		HBox hBox = new HBox(15);
-		hBox.setPadding(new Insets(15, 15, 15, 15));
+		HBox hBox1 = new HBox(15);
+		HBox hBox2 = new HBox(30);
+		hBox1.setPadding(new Insets(15, 15, 15, 15));
 		Text input = new Text("Enter User Name");
 		userInput = new TextField();
-		hBox.getChildren().add(input);
-		hBox.getChildren().add(userInput);
-		vBox.getChildren().add(hBox);
+		hBox1.getChildren().add(input);
+		hBox1.getChildren().add(userInput);
+		vBox.getChildren().add(hBox1);
+		hBox2.setPadding(new Insets(15, 15, 15, 15));
+		CheckBox character1 = new CheckBox("character 1");
+		CheckBox character2 = new CheckBox("character 2");
+		hBox2.getChildren().add(character1);
+		hBox2.getChildren().add(character2);
+	
+	
+		vBox.getChildren().add(hBox2);
+
 
 		return vBox;
 
