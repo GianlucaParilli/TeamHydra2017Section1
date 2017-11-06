@@ -76,7 +76,7 @@ public class Puzzles extends Observable {
 
 	public void AnswerPuzzleCorrectly()
 	{
-
+			// add method here
 	}
 
 	public void AnswerPuzzleIncorrectly()
