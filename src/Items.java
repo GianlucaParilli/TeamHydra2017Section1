@@ -37,11 +37,15 @@ public class Items {
 		this.itemType = itemType;
 	}
 	
-	public void DropItem() { //Placeholder
+	public void pickupItem() {
 		
 	}
 	
-	public void ViewItem() { //Placeholder
+	public void dropItem() { //Placeholder
+		
+	}
+	
+	public void viewItem() { //Placeholder
 		
 	}
 	
