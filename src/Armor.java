@@ -24,11 +24,11 @@ public class Armor extends Items{
 		this.defensePoints = defensePoints;
 	}
 	
-	public void EquipItem() { //Placeholder
+	public void equipItem() { //Placeholder
 		
 	}
 	
-	public void UnequipItem() { //Placeholder
+	public void unequipItem() { //Placeholder
 		
 	}
 	
