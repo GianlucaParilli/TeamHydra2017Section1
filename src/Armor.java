@@ -3,6 +3,13 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * @author Humberto Michael Lopez
+ * @version 1.0 
+ * @Course : ITEC 3860, Fall, 2017 Written: November 8, 2017
+ *  
+ */
+
 public class Armor extends Items{
 
 	private int defensePoints;

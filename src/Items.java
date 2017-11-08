@@ -1,3 +1,10 @@
+/**
+ * @author Humberto Michael Lopez
+ * @version 1.0 
+ * @Course : ITEC 3860, Fall, 2017 Written: November 8, 2017
+ *  
+ */
+
 public class Items {
 	
 	protected String itemName;
