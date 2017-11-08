@@ -1,0 +1,20 @@
+H1
+Bandage
+Cotton bandages
+10
+H2
+Healing Potion
+Glass bottle with ancient healing water
+100
+H3
+Cotton Wrap
+Soft spool of cotton
+20
+H4
+Mummy Wrap
+Cotton wraps
+10
+H5
+Bat Meat
+Raw meat from a bat like creature
+5

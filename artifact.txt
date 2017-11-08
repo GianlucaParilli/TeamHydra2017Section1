@@ -1,61 +1,30 @@
 W5 
 Ammunition
 Brass casing with gun powder and copper bullet
-Artifact
-H1
-Bandage
-Cotton bandages
-ItemType:
-H2
-Healing Potion
-Glass bottle with ancient healing water
-ItemType:
-H3
-Cotton Wrap
-Soft spool of cotton
-ItemType:
-H4
-Mummy
-Wrap
-Cotton wraps
-ItemType:
-H5
-Bat Meat
-Raw meat from a bat like creature
-ItemType:
 N1
 Ancient Map
 Map
-ItemType:
 S1
 Large Backpack
 20-pound shoulder bag
-ItemType:
 K1
 Gold star
 Star shaped object made out of gold
-ItemType:
 K2
 Left Half of an Ornate Skull
 Half of a decorative skull
-ItemType:
 K3
 Right Half of an Ornate Skull
 Half of a decorative skull.
-ItemType:
 K4
-The King�s Ruby
+The King's Ruby
 A ruby that once belonged to the king.
-ItemType:
 K5
 The King's Sapphire
 A sapphire that once belonged to the king.
-ItemType:
 K6
 Golden Key
 A key made of solid gold.
-ItemType:
-ArtifactId: K7
-ItemName: Silver Key
-Description: A key made of pure silver.
-ItemType: 
+K7
+Silver Key
+A key made of pure silver. 

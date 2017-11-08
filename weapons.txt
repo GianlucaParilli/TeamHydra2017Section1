@@ -1,3 +1,12 @@
-WeaponId: W1 ItemName: Sword ItemDescription: Steel Sword ItemType: Weapon ItemDamage: 10
-WeaponId: W2 ItemName: Spear ItemDescription: 10ft Wooden pole with sharp steel tip ItemType: Weapon ItemDamage: 10
-WeaponId: W4 ItemName: Musket Pistol ItemDescription: Musket ItemType: Weapon ItemDamage: 50
+W1 
+Sword 
+Steel Sword 
+10
+W2 
+Spear 
+10ft Wooden pole with sharp steel tip 
+10
+W4 
+Musket Pistol 
+Musket 
+50
