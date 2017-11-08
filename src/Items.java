@@ -10,7 +10,6 @@ public class Items {
 	protected String itemName;
 	protected String itemDescription;
 	protected String itemID;
-	protected String itemType;
 	
 	public String getItemName() {
 		return itemName;
@@ -30,12 +29,7 @@ public class Items {
 	public void setItemID(String itemID) {
 		this.itemID = itemID;
 	}
-	public String getItemType() {
-		return itemType;
-	}
-	public void setItemType(String itemType) {
-		this.itemType = itemType;
-	}
+
 	
 	public void pickupItem() {
 		
@@ -45,26 +39,18 @@ public class Items {
 		
 	}
 	
-	public void viewItem() { //Placeholder
-		
+	public String viewItem() { //Placeholder
+		return getItemDescription();
 	}
 	
 	public Items() {
 		
 	}
 
-	public Items(String itemID, String itemName, String itemDescription, String itemType) {
+	public Items(String itemID, String itemName, String itemDescription) {
 		setItemID(itemID);
 		setItemName(itemName);
 		setItemDescription(itemDescription);
-		setItemType(itemType);
 	}
-	
-	
-	
-	
-	
-	
-	
 
 }
