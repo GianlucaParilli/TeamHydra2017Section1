@@ -1,4 +1,4 @@
-00
+﻿00
 Entrance Hall
 A large, rectangular room with the skeletons of the men sworn to guard the King’s treasure strewn about the ground. There is a large, metal door on the southern end of the room, and four small stone archways on the east and west ends of the room.
 e00, e02, e04, e06, e07, e09, e11, e13, L1
@@ -6,15 +6,15 @@ M1
 none
 8
 01
-Guard’s Quarters A
-A small room that once served as a guard’s living quarters. There is a stone bed and a decrepit wooden shelf.
+Guard's Quarters A
+A small room that once served as a guard's living quarters. There is a stone bed and a decrepit wooden shelf.
 e00, e01
 M1
 K1(random), W5
 0
 02
 Guard’s Quarters B
-A small room that once served as a guard’s living quarters. There is a decaying skeleton lying on a stone bed.
+A small room that once served as a guard's living quarters. There is a decaying skeleton lying on a stone bed.
 e01, e02, e03
 M1
 K1(random)
