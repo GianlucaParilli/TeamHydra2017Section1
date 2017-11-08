@@ -1,12 +1,9 @@
-import java.util.ArrayList;
-
 public class Items {
 	
-	private String itemName;
-	private String itemDescription;
-	private String itemID;
-	private String itemType;
-	private static ArrayList<Items> itemsArray = new ArrayList<>();
+	protected String itemName;
+	protected String itemDescription;
+	protected String itemID;
+	protected String itemType;
 	
 	public String getItemName() {
 		return itemName;
@@ -33,39 +30,25 @@ public class Items {
 		this.itemType = itemType;
 	}
 	
-	public Items() {
-		
-	}
-	/*
-	 * Constructor that creates an item object used to store 
-	 * the information for each item found in the game
-	 * */
-	public Items(String itemID, String itemName, String itemDescription, String itemType) {
-		this.itemID = itemID;
-		this.itemName = itemName;
-		this.itemDescription = itemDescription;
-		this.itemType = itemType;
-	}
-	
 	public void DropItem() { //Placeholder
-	
-	}
-	
-	public void EquipItem() { //Placeholder
-		
-	}
-	
-	public void UnequipItem() { //Placeholder
-		
-	}
-	
-	public void UseItem() { //Placeholder
 		
 	}
 	
 	public void ViewItem() { //Placeholder
 		
 	}
+	
+	public Items() {
+		
+	}
+
+	public Items(String itemID, String itemName, String itemDescription, String itemType) {
+		setItemID(itemID);
+		setItemName(itemName);
+		setItemDescription(itemDescription);
+		setItemType(itemType);
+	}
+	
 	
 	
 	
