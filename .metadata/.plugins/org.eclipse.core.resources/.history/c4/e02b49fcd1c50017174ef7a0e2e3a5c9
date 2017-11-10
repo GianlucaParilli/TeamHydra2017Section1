@@ -1,0 +1,110 @@
+//import java.io.File;
+//import java.io.FileNotFoundException;
+//import java.util.ArrayList;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.Scanner;
+
+public class Puzzles extends Observable {
+
+	private String puzzleID;
+	private String puzzleDescription;
+	private String puzzleAnswer;
+	private String puzzleHint;
+	//private  numAttempts =0;
+
+	private static ArrayList<Puzzles> puzzlesArray = new ArrayList<>();
+
+	public void puzzleReader() throws FileNotFoundException {
+
+		@SuppressWarnings("resource")
+		Scanner reader = new Scanner(new File("puzzle.txt"));
+		
+		while(reader.hasNext())
+		{
+			String puzzleID = reader.nextLine();
+			String puzzleDescription = reader.nextLine();
+			String puzzleAnswer = reader.nextLine();
+			String puzzleHint = reader.nextLine();
+			
+			Puzzles puzzle = new Puzzles (puzzleID, puzzleDescription, puzzleAnswer, puzzleHint);
+			puzzlesArray.add(puzzle);
+		}
+	}
+		
+	
+	public Puzzles(String puzzleID, String puzzleDescription, String puzzleAnswer, String puzzleHint)
+	{
+		this.puzzleID = puzzleID;
+		this.puzzleDescription = puzzleDescription;
+		this.puzzleAnswer = puzzleAnswer;
+		this.puzzleHint = puzzleHint;
+		//this.numAttempts = numAttempts;
+
+	}
+
+	public Puzzles() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public String getPuzzleID() {
+		return puzzleID;
+	}
+
+
+	public void setPuzzleID(String puzzleID) {
+		this.puzzleID = puzzleID;
+	}
+
+
+	public String getPuzzleDescription() {
+		return puzzleDescription;
+	}
+
+
+	public void setPuzzleDescription(String puzzleDescription) {
+		this.puzzleDescription = puzzleDescription;
+	}
+
+
+	public String getPuzzleAnswer() {
+		return puzzleAnswer;
+	}
+
+
+	public void setPuzzleAnswer(String puzzleAnswer) {
+		this.puzzleAnswer = puzzleAnswer;
+	}
+
+
+	public String getPuzzleHint() {
+		return puzzleHint;
+	}
+
+
+	public void setPuzzleHint(String puzzleHint) {
+		this.puzzleHint = puzzleHint;
+	}
+
+
+	public void AnswerPuzzleCorrectly()
+	{
+			
+	}
+
+	public void AnswerPuzzleIncorrectly()
+	{
+	}
+
+
+	public void printPuzzle() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
