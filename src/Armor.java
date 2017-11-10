@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 public class Armor extends Items{
 	
+	private int dick;
 	private int defensePoints;
 	private static ArrayList<Armor> armorArray = new ArrayList<>();
 	
