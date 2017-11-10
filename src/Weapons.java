@@ -24,11 +24,11 @@ public class Weapons extends Items{
 		this.attackPoints = attackPoints;
 	}
 	
-	public void EquipItem() { //Placeholder
+	public void equipItem() { //Placeholder
 		
 	}
 	
-	public void UnequipItem() { //Placeholder
+	public void enequipItem() { //Placeholder
 		
 	}
 	
