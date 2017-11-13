@@ -44,7 +44,6 @@ public class Armor extends Items{
 	public static void armorReader() throws FileNotFoundException {
 		@SuppressWarnings("resource")
 		Scanner reader = new Scanner(new File("armor.txt"));
-		;
 
 		while (reader.hasNext()) {
 			String itemID = reader.nextLine();
