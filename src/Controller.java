@@ -37,8 +37,8 @@ public class Controller {
 		temp.setOnAction(e -> {
 			room.addObserver(login.gui);
 			room.ExamineRoom();
-			puzzle.ViewPuzzle();
-			monster.monsterTest();
+			//puzzle.ViewPuzzle();
+			//monster.monsterTest();
 		});
 	}
 

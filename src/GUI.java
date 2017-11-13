@@ -184,19 +184,18 @@ public class GUI extends LostTreasureMain implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		System.out.println();
 
 		if (o instanceof Navigation) {
-			// setCurrentPicture(arg.toString());
+		    setCurrentPicture(arg.toString());
 			mapView.setImage(new Image("Maps/r" + arg + ".png"));
 		} else if (o instanceof Rooms) {
 			descriptionText.setText(arg.toString());
-		}else if( o instanceof Puzzles) {
+		}else if(o instanceof Puzzles) {
 			descriptionText.setText(arg.toString());
 			}
 			 else if( o instanceof Monster) {
-				 descriptionText.setText(arg.toString());
-			 } 
+			  descriptionText.setText(arg.toString());
+			} 
 	}		
 
 

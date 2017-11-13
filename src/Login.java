@@ -164,8 +164,8 @@ public class Login extends LostTreasureMain implements Observer {
 		hBox1.getChildren().add(userInput);
 		vBox.getChildren().add(hBox1);
 		hBox2.setPadding(new Insets(15, 15, 15, 15));
-		CheckBox character1 = new CheckBox("character 1");
-		CheckBox character2 = new CheckBox("character 2");
+		CheckBox character1 = new CheckBox("Archeologist");
+		CheckBox character2 = new CheckBox("Thief");
 		hBox2.getChildren().add(character1);
 		hBox2.getChildren().add(character2);
 	
