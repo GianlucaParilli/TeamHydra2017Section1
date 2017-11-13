@@ -1,3 +1,5 @@
+import java.util.Observable;
+
 /**
  * @author Humberto Michael Lopez
  * @version 1.0 
@@ -5,7 +7,7 @@
  *  
  */
 
-public class Items {
+public class Items extends Observable {
 	
 	protected String itemName;
 	protected String itemDescription;
