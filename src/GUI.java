@@ -21,6 +21,9 @@ import javafx.stage.Stage;
 
 public class GUI extends LostTreasureMain implements Observer {
 	Button examine, goButton;
+	
+	Button view;
+	
 	static Stage guiStage = new Stage();
 	Label descriptionText;
 	ImageView mapView;
@@ -73,16 +76,20 @@ public class GUI extends LostTreasureMain implements Observer {
 		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
 				+ "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
 		examine = new Button("Examine Room");
+		view =  new Button("View Puzzle");
 		Button button2 = new Button("Fight");
 		Button button3 = new Button("Flee");
 		Button button4 = new Button("View Puzzle");
 
 		hBox.getChildren().add(examine);
-		hBox.getChildren().add(button2);
+		hBox.getChildren().add(view);
 		hBox.getChildren().add(button3);
 		hBox.getChildren().add(button4);
 		// adds the listener to the button
 		control.examineRoomListener(examine);
+		
+		control.examineRoomListener(view);
+		
 
 		return hBox;
 	}

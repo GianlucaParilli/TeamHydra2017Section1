@@ -4,14 +4,13 @@ import javafx.scene.control.Button;
 public class Controller {
 	Monster monster;
 	Commands command;
-	Puzzles puzzle;
-	Rooms room = new Rooms();;
+	Puzzles puzzle = new Puzzles();
+	Rooms room = new Rooms();
 	Login login = new Login();
 	Navigation nav = new Navigation();
 
 	public void newGameListener(Button button) {
 		monster = new Monster();
-		puzzle = new Puzzles();
 		button.setOnAction(e -> {
 			// System.out.println("s");
 			monster.printMonster();
@@ -37,11 +36,14 @@ public class Controller {
 		temp.setOnAction(e -> {
 			room.addObserver(login.gui);
 			room.ExamineRoom();
+<<<<<<< Updated upstream
 			//puzzle.ViewPuzzle();
+=======
+			puzzle.ViewPuzzle();
+>>>>>>> Stashed changes
 			//monster.monsterTest();
 		});
 	}
-
 
 	public void refreshMap(Button temp){
 		//temp.setId(GUI.gui.getRoomsDropDown().getId());
@@ -55,7 +57,6 @@ public class Controller {
 					//GUI.gui.setCurrentPicture(room.getRoomID());
 					System.out.println(room.getRoomID());
 					nav.refreshMap(room.getRoomID());
-
 				}
 			}
 
