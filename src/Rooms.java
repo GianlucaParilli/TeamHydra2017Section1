@@ -40,7 +40,7 @@ public class Rooms extends Observable {
 	public void setRoomDescription(String roomDescriptionn) {
 		this.roomDescription = roomDescriptionn;
 		setChanged();
-		notifyObservers(roomDescription);
+		notifyObservers();
 
 	}
 

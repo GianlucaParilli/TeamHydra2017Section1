@@ -40,7 +40,7 @@ public class GUI extends LostTreasureMain implements Observer {
 		guiStage = primaryStage;
 		guiStage.setResizable(false);
 		bPane.setCenter(combinedPanes());
-		;
+		
 		// Create a scene and place it in the stage
 		Scene scene = new Scene(bPane);
 		primaryStage.setTitle("The Lost treasure"); // Set the stage title
@@ -106,7 +106,8 @@ public class GUI extends LostTreasureMain implements Observer {
 		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
 				+ "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
 		hBox.setPadding(new Insets(15, 15, 15, 15));
-		mapView = new ImageView(new Image("Maps/r" + currentPicture + ".png"));
+		mapView = new ImageView(new Image("Maps/r" + currentPicture+".png"));
+		//Maps/r" + currentPicture + ".png"));
 		mapView.setFitHeight(300);
 		mapView.setFitWidth(300);
 		hBox.getChildren().add(mapView);
