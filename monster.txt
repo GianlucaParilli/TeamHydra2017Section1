@@ -55,7 +55,7 @@ A boss whose job is to guard the treasure
 Sword,shield,spear,and armor
 M8
 Lizard Warrior
-Amored Lizard
+Armored Lizard
 30 EXP
 50
 60

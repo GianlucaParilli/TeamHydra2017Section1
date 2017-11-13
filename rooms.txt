@@ -6,56 +6,56 @@ M1
 none
 8
 01
-Guard's Quarters A
+Guards Quarters A
 A small room that once served as a guard's living quarters. There is a stone bed and a decrepit wooden shelf.
 e00, e01
 M1
 K1(random), W5
 0
 02
-Guard’s Quarters B
+Guards Quarters B
 A small room that once served as a guard's living quarters. There is a decaying skeleton lying on a stone bed.
 e01, e02, e03
 M1
 K1(random)
 0
 03
-Guard’s Quarters C
+Guards Quarters C
 A small room that once served as a guard’s living quarters. An feeble, rusty sword and shield hang on the wall.
 e03, e04, e05
 M1
 K1(random)
 0
 04
-Guard’s Quarters D
+Guards Quarters D
 A small room that once served as a guard’s living quarters. A skeleton is sitting in a wooden chair collapsed over a wooden table. You notice something in its hand.
 e05, e06
 M1
 N1, K1(random)
 0
 05
-Guard’s Quarters E
+Guards Quarters E
 A small room that once served as a guard’s living quarters. A rat scurries through a small crack in the wall as you enter.
 e07, e08
 M1
 K1(random), H1
 0
 06
-Guard’s Quarters F
+Guards Quarters F
 A small room that once served as a guard’s living quarters. There is a stone bed lined with rotten leather. The smell is almost unbearable. 
 e08, e09, e10
 M1
 K1(random), W5
 0
 07
-Guard’s Quarters G
+Guards Quarters G
 A small room that once served as a guard’s living quarters. It seems like someone lit a fire in here. Everything is charred and covered in ash.
 e10, e11, e12
 M1
 K1(random)
 0
 08
-Guard’s Quarters H
+Guards Quarters H
 A small room that once served as a guard’s living quarters. Rotten, unreadable papers cover the dusty, stone floor.
 e12, e13
 M1

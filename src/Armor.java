@@ -11,10 +11,10 @@ import java.util.Scanner;
  */
 
 public class Armor extends Items{
-	
+
 	private int defensePoints;
 	private static ArrayList<Armor> armorArray = new ArrayList<>();
-	
+
 
 	public int getDefensePoints() {
 		return defensePoints;
@@ -23,24 +23,24 @@ public class Armor extends Items{
 	public void setDefensePoints(int defensePoints) {
 		this.defensePoints = defensePoints;
 	}
-	
+
 	public void equipItem() { //Placeholder
-		
+
 	}
-	
+
 	public void unequipItem() { //Placeholder
-		
+
 	}
-	
+
 	public Armor(String itemID, String itemName, String itemDescription, int defensePoints) {
 		setItemID(itemID);
 		setItemName(itemName);
 		setItemDescription(itemDescription);
 		setDefensePoints(defensePoints);
 	}
-	
-	
-	
+
+
+
 	public static void armorReader() throws FileNotFoundException {
 		@SuppressWarnings("resource")
 		Scanner reader = new Scanner(new File("armor.txt"));
@@ -52,7 +52,7 @@ public class Armor extends Items{
 			String itemDescription = reader.nextLine();
 			String defensePoints = reader.nextLine();
 			Integer result = Integer.valueOf(defensePoints);
-			
+
 			Armor armor = new Armor(itemID, itemName, itemDescription, result);
 			armorArray.add(armor);
 		}

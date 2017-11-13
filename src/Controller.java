@@ -4,15 +4,18 @@ import javafx.scene.control.Button;
 public class Controller {
 	Monster monster;
 	Commands command;
+	Puzzles puzzle;
 	Rooms room = new Rooms();;
 	Login login = new Login();
 	Navigation nav = new Navigation();
-	
+
 	public void newGameListener(Button button) {
 		monster = new Monster();
+		puzzle = new Puzzles();
 		button.setOnAction(e -> {
 			// System.out.println("s");
 			monster.printMonster();
+			puzzle.printPuzzle();
 		});
 	}
 
@@ -24,15 +27,18 @@ public class Controller {
 			System.out.println("worked");
 		});
 	}
-//method that takes a button, then a listener is glued to the button
-//the model's method is called within here
-//model is the Rooms Class
+	//method that takes a button, then a listener is glued to the button
+	//the model's method is called within here
+	//model is the Rooms Class
+	
 	public void examineRoomListener(Button temp) {
 		//System.out.println("examine room");
 		temp.setId(room.getRoomID());
 		temp.setOnAction(e -> {
 			room.addObserver(login.gui);
 			room.ExamineRoom();
+			puzzle.ViewPuzzle();
+			monster.monsterTest();
 		});
 	}
 
@@ -49,13 +55,13 @@ public class Controller {
 					//GUI.gui.setCurrentPicture(room.getRoomID());
 					System.out.println(room.getRoomID());
 					nav.refreshMap(room.getRoomID());
-					
+
 				}
 			}
-			
+
 			//int roomID = 0; 
 			System.out.println(dropdown);
-			
+
 			room.getCurrentRoom();
 			//String roomID = "r0" + room.getRoomID();
 		});

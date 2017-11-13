@@ -24,7 +24,8 @@ public class GUI extends LostTreasureMain implements Observer {
 	static Stage guiStage = new Stage();
 	Label descriptionText;
 	ImageView mapView;
-	Rooms r = new Rooms();
+	Rooms room = new Rooms();
+	Monster monster = new Monster();
 	Navigation nav = new Navigation();
 	Controller control = new Controller();
 	private ComboBox<String> roomsDropDown = new ComboBox<>();
@@ -146,14 +147,14 @@ public class GUI extends LostTreasureMain implements Observer {
 
 		ArrayList<String> roomArray = new ArrayList<>();
 		//get name from array -- fix
-		roomArray.add("Guard’s Quarters A");
-		roomArray.add("Guard’s Quarters B");
-		roomArray.add("Guard’s Quarters C");
-		roomArray.add("Guard’s Quarters D");
-		roomArray.add("Guard’s Quarters E");
-		roomArray.add("Guard’s Quarters F");
-		roomArray.add("Guard’s Quarters G");
-		roomArray.add("Guard’s Quarters H");
+		roomArray.add("Guards Quarters A");
+		roomArray.add("Guards Quarters B");
+		roomArray.add("Guards Quarters C");
+		roomArray.add("Guards Quarters D");
+		roomArray.add("Guards Quarters E");
+		roomArray.add("Guards Quarters F");
+		roomArray.add("Guards Quarters G");
+		roomArray.add("Guards Quarters H");
 
 		roomsDropDown.getItems().addAll(roomArray);
 		hBox.getChildren().add(text);
@@ -189,9 +190,15 @@ public class GUI extends LostTreasureMain implements Observer {
 			mapView.setImage(new Image("Maps/r" + arg + ".png"));
 		} else if (o instanceof Rooms) {
 			descriptionText.setText(arg.toString());
+		}else if( o instanceof Puzzles) {
+			descriptionText.setText(arg.toString());
+			}
+			 else if( o instanceof Monster) {
+				 descriptionText.setText(arg.toString());
+			 } 
+	}		
 
-		}
+
 		// currentPicture = "01";
+	
 	}
-
-}

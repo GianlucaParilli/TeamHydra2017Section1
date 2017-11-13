@@ -5,8 +5,8 @@ import java.util.Observable;
 import java.util.Random;
 import java.util.Scanner;
 
- public class Rooms extends Observable {
-	
+public class Rooms extends Observable {
+
 	private String roomID;
 	private String roomName;
 	private String roomDescription;
@@ -21,12 +21,12 @@ import java.util.Scanner;
 		try {
 			roomReader();
 			randomPuzzle();
-			
+
 		} catch (FileNotFoundException e) {
 			System.out.println("No File Found");
 		}
 	}
-	
+
 	public Rooms(String roomID, String roomName, String roomDescription, String exit, String monster, String item, String randomProbability) {
 		this.roomID = roomID;
 		this.roomName = roomName;
@@ -43,27 +43,29 @@ import java.util.Scanner;
 		notifyObservers(roomDescription);
 
 	}
+
 	public void EnterRoom() { //Placeholder	
+
 	}
+
 	public String ExamineRoom() { //Placeholder
 		randomPuzzle();
 		//room.getStartRoom(); //0 
 		setRoomDescription(getRoomsArray().get(getCurrentRoom()).getRoomDescription());
 		System.out.println(roomDescription);
 		currentRoom++;
-		
-		
+
 		return roomDescription;
 	}
 	public void ExitRoom() { //Placeholder
-		
+
 	}
 	public void SearchRoom() { //Placeholder
-		
+
 	}
 	public void randomPuzzle(){
 		Random rand = new Random();
-		
+
 		for(Rooms temp : roomsArray){
 			int randomProb = Integer.parseInt(temp.randomProbability);
 			//finds room with prob higher than 0, if greater than 0, randomize puzzle.
