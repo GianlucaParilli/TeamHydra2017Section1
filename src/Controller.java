@@ -13,8 +13,8 @@ public class Controller {
 		monster = new Monster();
 		button.setOnAction(e -> {
 			// System.out.println("s");
-			monster.printMonster();
-			puzzle.printPuzzle();
+			//monster.printMonster();
+			puzzle.ViewPuzzle();
 		});
 	}
 
@@ -29,19 +29,20 @@ public class Controller {
 	//method that takes a button, then a listener is glued to the button
 	//the model's method is called within here
 	//model is the Rooms Class
-	
+
 	public void examineRoomListener(Button temp) {
 		//System.out.println("examine room");
 		temp.setId(room.getRoomID());
 		temp.setOnAction(e -> {
 			room.addObserver(login.gui);
 			room.ExamineRoom();
-<<<<<<< Updated upstream
-			//puzzle.ViewPuzzle();
-=======
+		});
+	}
+	public void viewPuzzleListener(Button temp){
+		temp.setId(puzzle.getPuzzleDescription());
+		temp.setOnAction(e -> {
+			puzzle.addObserver(login.gui);
 			puzzle.ViewPuzzle();
->>>>>>> Stashed changes
-			//monster.monsterTest();
 		});
 	}
 

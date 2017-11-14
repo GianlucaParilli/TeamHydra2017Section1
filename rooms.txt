@@ -1,62 +1,62 @@
 ﻿00
 Entrance Hall
-A large, rectangular room with the skeletons of the men sworn to guard the King’s treasure strewn about the ground. There is a large, metal door on the southern end of the room, and four small stone archways on the east and west ends of the room.
+A large, rectangular room with the skeletons of the men sworn to guard the Kings treasure strewn about the ground. There is a large, metal door on the southern end of the room, and four small stone archways on the east and west ends of the room.
 e00, e02, e04, e06, e07, e09, e11, e13, L1
 M1
 none
 8
 01
 Guards Quarters A
-A small room that once served as a guard's living quarters. There is a stone bed and a decrepit wooden shelf.
+A small room that once served as a guards living quarters. There is a stone bed and a decrepit wooden shelf.
 e00, e01
 M1
 K1(random), W5
 0
 02
 Guards Quarters B
-A small room that once served as a guard's living quarters. There is a decaying skeleton lying on a stone bed.
+A small room that once served as a guards living quarters. There is a decaying skeleton lying on a stone bed.
 e01, e02, e03
 M1
 K1(random)
 0
 03
 Guards Quarters C
-A small room that once served as a guard’s living quarters. An feeble, rusty sword and shield hang on the wall.
+A small room that once served as a guards living quarters. An feeble, rusty sword and shield hang on the wall.
 e03, e04, e05
 M1
 K1(random)
 0
 04
 Guards Quarters D
-A small room that once served as a guard’s living quarters. A skeleton is sitting in a wooden chair collapsed over a wooden table. You notice something in its hand.
+A small room that once served as a guards living quarters. A skeleton is sitting in a wooden chair collapsed over a wooden table. You notice something in its hand.
 e05, e06
 M1
 N1, K1(random)
 0
 05
 Guards Quarters E
-A small room that once served as a guard’s living quarters. A rat scurries through a small crack in the wall as you enter.
+A small room that once served as a guards living quarters. A rat scurries through a small crack in the wall as you enter.
 e07, e08
 M1
 K1(random), H1
 0
 06
 Guards Quarters F
-A small room that once served as a guard’s living quarters. There is a stone bed lined with rotten leather. The smell is almost unbearable. 
+A small room that once served as a guards living quarters. There is a stone bed lined with rotten leather. The smell is almost unbearable. 
 e08, e09, e10
 M1
 K1(random), W5
 0
 07
 Guards Quarters G
-A small room that once served as a guard’s living quarters. It seems like someone lit a fire in here. Everything is charred and covered in ash.
+A small room that once served as a guards living quarters. It seems like someone lit a fire in here. Everything is charred and covered in ash.
 e10, e11, e12
 M1
 K1(random)
 0
 08
 Guards Quarters H
-A small room that once served as a guard’s living quarters. Rotten, unreadable papers cover the dusty, stone floor.
+A small room that once served as a guards living quarters. Rotten, unreadable papers cover the dusty, stone floor.
 e12, e13
 M1
 K1(random), H1
@@ -161,7 +161,7 @@ none
 0
 23
 West Dungeon
-Dungeon room with skulls, prisoner’s bones, chains, and metal shackles.
+Dungeon room with skulls, prisoners bones, chains, and metal shackles.
 e25
 M3, M4, M5
 K4
@@ -175,7 +175,7 @@ none
 0
 25
 East Dungeon
-Dungeon room with skulls, prisoner’s bones, chains, and metal shackles.
+Dungeon room with skulls, prisoners bones, chains, and metal shackles.
 e27
 M6
 K5
@@ -189,14 +189,14 @@ none
 0
 27
 West Burial Chamber
-A chamber that is used as a grave for the King’s nobles and the human remains are placed on manmade beds within the walls. 
+A chamber that is used as a grave for the Kings nobles and the human remains are placed on manmade beds within the walls. 
 e28, e30
 M3, M4, M5
 K6
 0
 28
 East Burial Chamber
-A chamber that is used as a grave for the King’s nobles and the human remains are placed on manmade beds within the walls.
+A chamber that is used as a grave for the Kings nobles and the human remains are placed on manmade beds within the walls.
 e29, e31
 M8
 K7

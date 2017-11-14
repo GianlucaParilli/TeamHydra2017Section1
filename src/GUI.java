@@ -21,9 +21,7 @@ import javafx.stage.Stage;
 
 public class GUI extends LostTreasureMain implements Observer {
 	Button examine, goButton;
-	
 	Button view;
-	
 	static Stage guiStage = new Stage();
 	Label descriptionText;
 	ImageView mapView;
@@ -43,7 +41,7 @@ public class GUI extends LostTreasureMain implements Observer {
 		guiStage = primaryStage;
 		guiStage.setResizable(false);
 		bPane.setCenter(combinedPanes());
-		
+		;
 		// Create a scene and place it in the stage
 		Scene scene = new Scene(bPane);
 		primaryStage.setTitle("The Lost treasure"); // Set the stage title
@@ -79,16 +77,15 @@ public class GUI extends LostTreasureMain implements Observer {
 		view =  new Button("View Puzzle");
 		Button button2 = new Button("Fight");
 		Button button3 = new Button("Flee");
-		Button button4 = new Button("View Puzzle");
+		//Button button4 = new Button("View Puzzle");
 
 		hBox.getChildren().add(examine);
 		hBox.getChildren().add(view);
 		hBox.getChildren().add(button3);
-		hBox.getChildren().add(button4);
+		//hBox.getChildren().add(button4);
 		// adds the listener to the button
 		control.examineRoomListener(examine);
-		
-		control.examineRoomListener(view);
+		control.viewPuzzleListener(view);
 		
 
 		return hBox;
@@ -113,8 +110,7 @@ public class GUI extends LostTreasureMain implements Observer {
 		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
 				+ "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
 		hBox.setPadding(new Insets(15, 15, 15, 15));
-		mapView = new ImageView(new Image("Maps/r" + currentPicture+".png"));
-		//Maps/r" + currentPicture + ".png"));
+		mapView = new ImageView(new Image("Maps/r" + currentPicture + ".png"));
 		mapView.setFitHeight(300);
 		mapView.setFitWidth(300);
 		hBox.getChildren().add(mapView);
@@ -191,18 +187,19 @@ public class GUI extends LostTreasureMain implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
+		System.out.println();
 
 		if (o instanceof Navigation) {
-		    setCurrentPicture(arg.toString());
+			// setCurrentPicture(arg.toString());
 			mapView.setImage(new Image("Maps/r" + arg + ".png"));
 		} else if (o instanceof Rooms) {
 			descriptionText.setText(arg.toString());
-		}else if(o instanceof Puzzles) {
+		}else if( o instanceof Puzzles) {
 			descriptionText.setText(arg.toString());
 			}
 			 else if( o instanceof Monster) {
-			  descriptionText.setText(arg.toString());
-			} 
+				 descriptionText.setText(arg.toString());
+			 } 
 	}		
 
 

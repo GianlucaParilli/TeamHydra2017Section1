@@ -2,9 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Observable;
-//import java.util.Random;
 import java.util.Scanner;
-
 
 public class Puzzles extends Observable {
 
@@ -15,7 +13,6 @@ public class Puzzles extends Observable {
 	//private String numAttempts = 0;
 	private int currentRoom = 0;
 	private static ArrayList<Puzzles> puzzlesArray = new ArrayList<>();
-	
 
 	public Puzzles() {
 		try {
@@ -54,43 +51,35 @@ public class Puzzles extends Observable {
 		//this.numAttempts = numAttempts;
 	}
 
-	// called in the Controller class 
-	/*public void testMethod (){
-		System.out.println("test");
-	}
-*/
+
 	public void setPuzzleDescription(String puzzleDescription) {
 		this.puzzleDescription = puzzleDescription;
 		setChanged();
 		notifyObservers(puzzleDescription);
 	}
 
-	public String ViewPuzzle() { //Placeholder
-		//randomPuzzle();
-		//room.getStartRoom(); //0 
-		setPuzzleDescription(getPuzzlesArray().get(getCurrentRoom()).getPuzzleDescription());
-		System.out.println(puzzleDescription);
-		currentRoom++;
-		
+	public String ViewPuzzle() { 
+		try{
+			setPuzzleDescription(getPuzzlesArray().get(getCurrentRoom()).getPuzzleDescription());
+			currentRoom++;
+		}catch(Exception e){
+			//System.out.println(puzzleDescription);
+		}
 		return puzzleDescription;
 	}
-	
-	/*private ArrayList<Puzzles> getPuzzlesArray() {
-		// TODO Auto-generated method stub
-		return null
+
+	@Override
+	public String toString() {
+		return puzzleID + " | " + puzzleDescription + " | " + puzzleAnswer + " | " + puzzleHint + " | ";
 	}
-*/
 
 	public String getPuzzleID() {
 		return puzzleID;
 	}
 
-
 	public void setPuzzleID(String puzzleID) {
 		this.puzzleID = puzzleID;
 	}
-
-
 	public String getPuzzleDescription() {
 		return puzzleDescription;
 	}
@@ -98,8 +87,6 @@ public class Puzzles extends Observable {
 	public String getPuzzleAnswer() {
 		return puzzleAnswer;
 	}
-
-
 	public void setPuzzleAnswer(String puzzleAnswer) {
 		this.puzzleAnswer = puzzleAnswer;
 	}
@@ -122,11 +109,10 @@ public class Puzzles extends Observable {
 	public void setCurrentRoom(int currentRoom) {
 		this.currentRoom = currentRoom;
 	}
-	
-	public void printPuzzle() {
+	/*public void printPuzzle() {
 		System.out.println("puzzle");
-		
 	}
+	 */
 	/*public int getNumAttempts() {
 		return numAttempts;
 	}

@@ -52,9 +52,8 @@ public class Rooms extends Observable {
 		randomPuzzle();
 		//room.getStartRoom(); //0 
 		setRoomDescription(getRoomsArray().get(getCurrentRoom()).getRoomDescription());
-		System.out.println(roomDescription);
+		//System.out.println(roomDescription);
 		currentRoom++;
-
 		return roomDescription;
 	}
 	public void ExitRoom() { //Placeholder
