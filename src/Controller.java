@@ -32,10 +32,11 @@ public class Controller {
 
 	public void examineRoomListener(Button temp) {
 		//System.out.println("examine room");
-		temp.setId(room.getRoomID());
+		temp.setId(""+room.getRoomID());
 		temp.setOnAction(e -> {
 			room.addObserver(login.gui);
 			room.ExamineRoom();
+			room.availableRoom();
 		});
 	}
 	public void viewPuzzleListener(Button temp){

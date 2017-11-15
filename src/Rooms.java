@@ -7,14 +7,15 @@ import java.util.Scanner;
 
 public class Rooms extends Observable {
 
-	private String roomID;
+	private int roomID;
 	private String roomName;
 	private String roomDescription;
-	private String exit;
+	private String availableRoom;
 	private String item;
 	private String monster;
 	private String randomProbability;
-	private int currentRoom = 0;
+	private int numRoomID;
+	private int currentRoom;
 	private ArrayList<Rooms> roomsArray = new ArrayList<>();
 
 	public Rooms() {
@@ -27,11 +28,11 @@ public class Rooms extends Observable {
 		}
 	}
 
-	public Rooms(String roomID, String roomName, String roomDescription, String exit, String monster, String item, String randomProbability) {
+	public Rooms(int roomID, String roomName, String roomDescription, String availableRoom, String monster, String item, String randomProbability) {
 		this.roomID = roomID;
 		this.roomName = roomName;
 		this.roomDescription = roomDescription;
-		this.exit = exit;
+		this.availableRoom = availableRoom;
 		this.monster = monster;
 		this.item = item;
 		this.randomProbability = randomProbability;
@@ -78,10 +79,12 @@ public class Rooms extends Observable {
 	public void roomReader() throws FileNotFoundException {
 		@SuppressWarnings("resource")
 		Scanner reader = new Scanner(new File("rooms.txt"));
-		;
 
 		while (reader.hasNext()) {
+			String regex = "^[0-9]";
 			String roomID = reader.nextLine();
+			String digits = roomID.replaceAll("[^0-9.]","");
+			numRoomID = Integer.parseInt(digits);	
 			String roomName = reader.nextLine();
 			String roomDescription = reader.nextLine();
 			String puzzle = reader.nextLine();
@@ -89,7 +92,7 @@ public class Rooms extends Observable {
 			String monster = reader.nextLine();
 			String randomProbability = reader.nextLine();
 
-			Rooms room = new Rooms( roomID,  roomName, roomDescription, puzzle, item, monster, randomProbability);
+			Rooms room = new Rooms(numRoomID, roomName, roomDescription, puzzle, item, monster, randomProbability);
 			roomsArray.add(room);
 		}
 		//System.out.println("" + roomsArray.get(0).roomDescription);
@@ -97,16 +100,36 @@ public class Rooms extends Observable {
 		//System.out.println(roomsArray.toString());
 
 	}
+	public int getNumRoomID() {
+		return numRoomID;
+	}
+
+	public void setNumRoomID(int numRoomID) {
+		this.numRoomID = numRoomID;
+	}
+
+	public void availableRoom(){
+		//int t = Integer.parseInt(roomsArray.get(0).roomID);
+		//System.out.println("roomID " + roomsArray.get(0).roomID);
+		for(Rooms tempAvailable : roomsArray){
+			//System.out.println(tempAvailable.roomID);
+
+			if(tempAvailable.getRoomID()==currentRoom){
+			 System.out.println("ddd");
+		 }
+		}
+		
+	}
 	@Override
 	public String toString() {
-		return roomID + " | " + roomName + " | " + roomDescription + " | " + exit + " | " + monster + " | " + item + " | " + randomProbability;
+		return numRoomID + " | " + roomName + " | " + roomDescription + " | " + availableRoom + " | " + monster + " | " + item + " | " + randomProbability;
 	}
 
 	public String getExit() {
-		return exit;
+		return availableRoom;
 	}
-	public void setExit(String exit) {
-		this.exit = exit;
+	public void setExit(String availableRoom) {
+		this.availableRoom = availableRoom;
 	}
 	public String getItem() {
 		return item;
@@ -121,10 +144,10 @@ public class Rooms extends Observable {
 
 		this.monster = monster;
 	}
-	public String getRoomID() {
+	public int getRoomID() {
 		return roomID;
 	}
-	public void setRoomID(String roomID) {
+	public void setRoomID(int roomID) {
 		this.roomID = roomID;
 	}	
 	public ArrayList<Rooms> getRoomsArray() {

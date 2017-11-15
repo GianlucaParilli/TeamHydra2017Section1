@@ -31,7 +31,7 @@ public class GUI extends Login implements Observer {
 	Controller control = new Controller();
 	private String character;
 	private ComboBox<String> roomsDropDown = new ComboBox<>();
-	private String currentPicture = "00";
+	private String currentPicture = "0";
 
 	public ComboBox<String> getRoomsDropDown() {
 		return roomsDropDown;
@@ -64,6 +64,7 @@ public class GUI extends Login implements Observer {
 		pane.add(buttonHPane(), 0, 3);
 		pane.add(navButtonPane(), 0, 4);
 		pane.add(inventoryPane(), 1, 3);
+		pane.add(healthPane(), 1, 4);
 		pane.add(exitPane(), 2, 5);
 		return pane;
 	}
@@ -143,7 +144,15 @@ public class GUI extends Login implements Observer {
 		hBox.getChildren().add(bag);
 		return hBox;
 	}
-
+	private HBox healthPane() {
+		HBox hBox = new HBox(20);
+		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
+				+ "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
+		Label hp = new Label("HP: 100/100");
+		hp.setFont(Font.font("Verdana", 20));
+		hBox.getChildren().add(hp);
+		return hBox;
+	}
 	private HBox navButtonPane() {
 		HBox hBox = new HBox(15);
 		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
@@ -197,6 +206,8 @@ public class GUI extends Login implements Observer {
 
 		if (o instanceof Navigation) {
 			// setCurrentPicture(arg.toString());
+			System.out.println("update nav "+ arg);
+			
 			mapView.setImage(new Image("Maps/r" + arg + ".png"));
 		} else if (o instanceof Rooms) {
 			descriptionText.setText(arg.toString());
