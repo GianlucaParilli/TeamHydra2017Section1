@@ -43,6 +43,7 @@ public class Controller {
 		temp.setOnAction(e -> {
 			puzzle.addObserver(login.gui);
 			puzzle.ViewPuzzle();
+			//puzzle.ViewPuzzle();
 		});
 	}
 

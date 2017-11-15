@@ -19,7 +19,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class GUI extends LostTreasureMain implements Observer {
+public class GUI extends Login implements Observer {
 	Button examine, goButton;
 	Button view;
 	static Stage guiStage = new Stage();
@@ -29,6 +29,7 @@ public class GUI extends LostTreasureMain implements Observer {
 	Monster monster = new Monster();
 	Navigation nav = new Navigation();
 	Controller control = new Controller();
+	private String character;
 	private ComboBox<String> roomsDropDown = new ComboBox<>();
 	private String currentPicture = "00";
 
@@ -36,12 +37,15 @@ public class GUI extends LostTreasureMain implements Observer {
 		return roomsDropDown;
 	}
 
+	public void setCharacter(String character) {
+		this.character = character;
+	}
+
 	public void start(Stage primaryStage) throws InterruptedException {
 		BorderPane bPane = new BorderPane();
 		guiStage = primaryStage;
 		guiStage.setResizable(false);
 		bPane.setCenter(combinedPanes());
-		;
 		// Create a scene and place it in the stage
 		Scene scene = new Scene(bPane);
 		primaryStage.setTitle("The Lost treasure"); // Set the stage title
@@ -86,8 +90,8 @@ public class GUI extends LostTreasureMain implements Observer {
 		// adds the listener to the button
 		control.examineRoomListener(examine);
 		control.viewPuzzleListener(view);
+		//System.out.println();
 		
-
 		return hBox;
 	}
 
@@ -101,6 +105,8 @@ public class GUI extends LostTreasureMain implements Observer {
 		descriptionText.setFont(Font.font("Verdana", 26));
 		descriptionText.setWrapText(true);
 		hBox.setPadding(new Insets(15, 15, 15, 15));
+		//sets the text from the radio buttons to the description box 
+		descriptionText.setText(character);
 		hBox.getChildren().add(descriptionText);
 		return hBox;
 	}
@@ -200,6 +206,7 @@ public class GUI extends LostTreasureMain implements Observer {
 			 else if( o instanceof Monster) {
 				 descriptionText.setText(arg.toString());
 			 } 
+
 	}		
 
 

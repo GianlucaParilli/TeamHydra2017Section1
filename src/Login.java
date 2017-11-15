@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Optional;
-
 import javafx.geometry.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
@@ -17,11 +16,14 @@ public class Login extends LostTreasureMain implements Observer {
 	TextField userInput;
 	protected ArrayList<String> usernamesArray = new ArrayList<>();
 	protected ArrayList<Button> arrayButtons = new ArrayList<>();
-	//ImageView imageView = new ImageView(new Image("logo.png"));
+
+	
+	// ImageView imageView = new ImageView(new Image("logo.png"));
 	Button newGameButton;
 	Button loadGameButton;
-	//Rooms r = new Rooms();
-	 //GUI gui = new GUI(); 
+	Rooms room = new Rooms();
+	// GUI gui = new GUI();
+
 	
 
 	public void start(Stage primaryStage) throws InterruptedException {
@@ -45,7 +47,7 @@ public class Login extends LostTreasureMain implements Observer {
 	private VBox mainPane() {
 		VBox vpane = new VBox();
 		newGameButton = new Button("  New Game  ");
-	    loadGameButton = new Button("  Load  ");
+		loadGameButton = new Button("  Load  ");
 		Button exitButton = new Button("  Exit  ");
 		newGameButton.setTranslateX(70);
 		loadGameButton.setTranslateX(87);
@@ -55,8 +57,8 @@ public class Login extends LostTreasureMain implements Observer {
 		vpane.getChildren().add(loadGameButton);
 
 		vpane.getChildren().add(exitButton);
-		
-		//control.addButtonListener(loadGameButton);
+
+		// control.addButtonListener(loadGameButton);
 		newGameButton.setOnAction(e -> {
 
 			Alert popUp = new Alert(AlertType.CONFIRMATION);
@@ -64,41 +66,41 @@ public class Login extends LostTreasureMain implements Observer {
 			popUp.setTitle("Results");
 			Optional<ButtonType> result = popUp.showAndWait();
 			ButtonType button = result.orElse(ButtonType.CANCEL);
-			//when ok button pressed on the alert, the user name will be store into an array
-			//verifies that there is'nt a duplicate user name 
-			
+			// when ok button pressed on the alert, the user name will be store
+			// into an array
+			// verifies that there is'nt a duplicate user name
+
 			if (button == ButtonType.OK) {
 				String usernameString = userInput.getText();
 
-				for(int i = usernamesArray.size()-1; i>0 ; i--){
-					if(usernamesArray.get(i).equals(userInput.getText())){
-						//usernamesArray.remove(usernamesArray.size()-1);
+				for (int i = usernamesArray.size() - 1; i > 0; i--) {
+					if (usernamesArray.get(i).equals(userInput.getText())) {
+						// usernamesArray.remove(usernamesArray.size()-1);
 						System.out.println("error duplicate");
-					    usernamesArray.remove(userInput.getText());								
+						usernamesArray.remove(userInput.getText());
 					}
-					
+
 				}
 				usernamesArray.add(usernameString);
 
-				//writes user name into a txt file for the load feature
-				//writer(usernamesArray);
-				
-				   // gui = new GUI();
-				 try { 
-					 gui.start(guiStage);
-					 
+				// writes user name into a txt file for the load feature
+				// writer(usernamesArray);
 
-				 //remember to close previous stage 
-				 } catch
-				 (InterruptedException e1) {
-				 e1.printStackTrace(); }
-				 
+				// gui = new GUI();
+				try {
+					gui.start(guiStage);
+
+					// remember to close previous stage
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
+
 			} else {
 				System.out.println("canceled");
 			}
 
 		});
-		//load game listener 
+		// load game listener
 		loadGameButton.setOnAction(e -> {
 			if (usernamesArray.size() == 0) {
 				Alert errorPopUp = new Alert(AlertType.ERROR);
@@ -109,7 +111,7 @@ public class Login extends LostTreasureMain implements Observer {
 
 			}
 		});
-		//listener that closes the gui 
+		// listener that closes the gui
 		exitButton.setOnAction(e -> {
 			// quits and closes the gui
 			Stage stage = (Stage) exitButton.getScene().getWindow();
@@ -118,7 +120,8 @@ public class Login extends LostTreasureMain implements Observer {
 
 		return vpane;
 	}
-//pop up for the load button
+
+	// pop up for the load button
 	private void loadPopUp(ArrayList<String> userStringtemp) {
 		Alert popUp = new Alert(AlertType.INFORMATION);
 		popUp.setTitle("Load Game");
@@ -129,11 +132,11 @@ public class Login extends LostTreasureMain implements Observer {
 		for (String temp : userStringtemp) {
 			b = new Button(temp);
 			pop.getChildren().add(b);
-			if(temp.equals(b.getText())){
-				b.setOnAction(e->{
-				System.out.println(temp);
-			});
-			}	
+			if (temp.equals(b.getText())) {
+				b.setOnAction(e -> {
+					System.out.println(temp);
+				});
+			}
 		}
 		popUp.getDialogPane().setContent(pop);
 		popUp.show();
@@ -152,7 +155,7 @@ public class Login extends LostTreasureMain implements Observer {
 		return hBox;
 	}
 
-	private VBox popUpPane() {
+	public VBox popUpPane() {
 		VBox vBox = new VBox();
 		// organizes the form into a h box within a v box
 		HBox hBox1 = new HBox(15);
@@ -164,27 +167,35 @@ public class Login extends LostTreasureMain implements Observer {
 		hBox1.getChildren().add(userInput);
 		vBox.getChildren().add(hBox1);
 		hBox2.setPadding(new Insets(15, 15, 15, 15));
-		CheckBox character1 = new CheckBox("Archeologist");
-		CheckBox character2 = new CheckBox("Thief");
-		hBox2.getChildren().add(character1);
-		hBox2.getChildren().add(character2);
-	
-	
-		vBox.getChildren().add(hBox2);
+	    RadioButton archeologistButton = new RadioButton("Archeologist");
+		RadioButton thiefButton = new RadioButton("Thief");
+		hBox2.getChildren().add(archeologistButton);
+		hBox2.getChildren().add(thiefButton);
+		ToggleGroup toggleGroup = new ToggleGroup();;
 
+		archeologistButton.setToggleGroup(toggleGroup);
+		thiefButton.setToggleGroup(toggleGroup);
+		//setCharacterDescription("Archeologist");
+		archeologistButton.setOnAction(e->{
+			Login.gui.setCharacter("You are an Archeologist");
+		});
+		thiefButton.setOnAction(e->{
+			Login.gui.setCharacter("You are a Thief");
+			
+		});
+		         
+
+		vBox.getChildren().add(hBox2);
 
 		return vBox;
 
 	}
 
+
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		
+
 	}
-
-
-
-	
 
 }
