@@ -22,11 +22,12 @@ import javafx.stage.Stage;
 public class GUI extends Login implements Observer {
 	Button examine, goButton;
 	Button view;
+	Button view2;
 	static Stage guiStage = new Stage();
 	Label descriptionText;
 	ImageView mapView;
 	Rooms room = new Rooms();
-	Monster monster = new Monster();
+	Monster monsters = new Monster();
 	Navigation nav = new Navigation();
 	Controller control = new Controller();
 	private String character;
@@ -67,6 +68,7 @@ public class GUI extends Login implements Observer {
 		pane.add(healthPane(), 1, 4);
 		pane.add(exitPane(), 2, 5);
 		return pane;
+		
 	}
 
 	/*
@@ -80,17 +82,23 @@ public class GUI extends Login implements Observer {
 				+ "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
 		examine = new Button("Examine Room");
 		view =  new Button("View Puzzle");
+		view2 = new Button("View Monster");
+		
 		Button button2 = new Button("Fight");
-		Button button3 = new Button("Flee");
-		//Button button4 = new Button("View Puzzle");
+		Button button3 = new Button("View Monster");
+		Button button4 = new Button("View Puzzle");
 
 		hBox.getChildren().add(examine);
 		hBox.getChildren().add(view);
-		hBox.getChildren().add(button3);
-		//hBox.getChildren().add(button4);
+		hBox.getChildren().add(view2);
+		hBox.getChildren().add(button2);
+		
 		// adds the listener to the button
 		control.examineRoomListener(examine);
 		control.viewPuzzleListener(view);
+		
+
+//control.viewMonsterListener(view2);
 		//System.out.println();
 		
 		return hBox;

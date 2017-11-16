@@ -5,6 +5,7 @@ import java.util.Observable;
 import java.util.Scanner;
 
 public class Monster extends Observable {
+	
 	private String monsterID;
 	private String monsterName;
 	private String monsterDescription;
@@ -13,28 +14,16 @@ public class Monster extends Observable {
 	private String healthPoints;
 	private String attackPercentage;
 	private String artifactsDropped;
-
+	private int currentRoom = 0;
 	private static ArrayList<Monster> monstersArray = new ArrayList<>();
-
-	public void roomReader() throws FileNotFoundException {
-		@SuppressWarnings("resource")
-		Scanner reader = new Scanner(new File("monster.txt"));
-		;
-
-		while(reader.hasNext()){
-			String monsterID = reader.nextLine();
-			String monsterName = reader.nextLine();
-			String monsterDescription= reader.nextLine();
-			String EXP = reader.nextLine();
-			String damageGiven = reader.nextLine();
-			String healthPoints = reader.nextLine();
-			String attackPercentage = reader.nextLine();
-			String artifactsDropped = reader.nextLine();
-
-
-			Monster monster = new Monster( monsterID, monsterName, monsterDescription, EXP, 
-					damageGiven, healthPoints, attackPercentage, artifactsDropped);
-			monstersArray.add(monster);
+	
+	public Monster() {
+		try {
+			monsterReader();
+			ViewMonster();
+			
+		} catch(FileNotFoundException e){
+			System.out.println("No File Found");
 		}
 	}
 
@@ -50,6 +39,52 @@ public class Monster extends Observable {
 		this.healthPoints = healthPoints;
 		this.attackPercentage = attackPercentage;
 		this.artifactsDropped = artifactsDropped;
+	}
+	
+	public void setMonsterDescription(String monsterDescription) {
+		this.monsterDescription = monsterDescription;
+		setChanged();
+		notifyObservers(monsterDescription);
+	}
+	
+	public String ViewMonster() {
+		try{
+			setMonsterDescription(getMonstersArray().get(getCurrentRoom()).getMonsterDescription());
+			currentRoom++;
+			
+		}catch(Exception e){
+			System.out.println(monsterDescription);
+		}
+		return monsterDescription;
+		
+	}
+	
+	
+	public void monsterReader() throws FileNotFoundException {
+		@SuppressWarnings("resource")
+		Scanner reader = new Scanner(new File("monster.txt"));
+		;
+
+		while(reader.hasNext()){
+			String monsterID = reader.nextLine();
+			String monsterName = reader.nextLine();
+			String monsterDescription= reader.nextLine();
+			String EXP = reader.nextLine();
+			String damageGiven = reader.nextLine();
+			String healthPoints = reader.nextLine();
+			String attackPercentage = reader.nextLine();
+			String artifactsDropped = reader.nextLine();
+
+			Monster monster = new Monster( monsterID, monsterName, monsterDescription, EXP, 
+					damageGiven, healthPoints, attackPercentage, artifactsDropped);
+			monstersArray.add(monster);
+		}
+	}
+
+
+	public String toString() {
+		return monsterID + " | " + monsterDescription + " | " + EXP + " | " + damageGiven + " | " + healthPoints + "|" +
+				attackPercentage + "|" + artifactsDropped + "|";
 	}
 
 	public String getMonsterID() {
@@ -70,10 +105,6 @@ public class Monster extends Observable {
 
 	public String getMonsterDescription() {
 		return monsterDescription;
-	}
-
-	public void setMonsterDescription(String monsterDescription) {
-		this.monsterDescription = monsterDescription;
 	}
 
 	public String getEXP() {
@@ -115,17 +146,21 @@ public class Monster extends Observable {
 	public void setArtifactsDropped(String artifactsDropped) {
 		this.artifactsDropped = artifactsDropped;
 	}
-
-
-	public Monster() {
-
+	
+	
+	public int getCurrentRoom() {
+		return currentRoom;
 	}
-
-	public void monsterTest(){
-		System.out.println("test");
+	public void setCurrentRoom(int currentRoom) {
+		this.currentRoom = currentRoom;
 		
 	}
-	public void printMonster() {
-		System.out.println("monsters description");
+	
+	public ArrayList<Monster> getMonstersArray() {
+		return monstersArray;
 	}
+
+
+
+	
 }

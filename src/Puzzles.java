@@ -2,9 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Observable;
-//import java.util.Random;
 import java.util.Scanner;
-
 
 public class Puzzles extends Observable {
 
@@ -15,18 +13,43 @@ public class Puzzles extends Observable {
 	//private String numAttempts = 0;
 	private int currentRoom = 0;
 	private static ArrayList<Puzzles> puzzlesArray = new ArrayList<>();
-	
 
 	public Puzzles() {
 		try {
 			puzzleReader();
-			//ViewPuzzle();
+			ViewPuzzle();
 
 		} catch(FileNotFoundException e){
 			System.out.println("No File Found");
 		}
 	}
 
+	public Puzzles(String puzzleID, String puzzleDescription, String puzzleAnswer, String puzzleHint)
+	{
+		this.puzzleID = puzzleID;
+		this.puzzleDescription = puzzleDescription;
+		this.puzzleAnswer = puzzleAnswer;
+		this.puzzleHint = puzzleHint;
+		//this.numAttempts = numAttempts;
+	}
+	
+	public void setPuzzleDescription(String puzzleDescription) {
+		this.puzzleDescription = puzzleDescription;
+		setChanged();
+		notifyObservers(puzzleDescription);
+	}
+	
+	public String ViewPuzzle() { 
+		try{
+			setPuzzleDescription(getPuzzlesArray().get(getCurrentRoom()-1).getPuzzleDescription());
+		}catch(Exception e){
+			currentRoom ++;
+				//System.out.println(puzzleDescription);
+		}
+		return puzzleDescription;
+		
+	}
+	
 	public void puzzleReader() throws FileNotFoundException {
 		@SuppressWarnings("resource")
 		Scanner reader = new Scanner(new File("puzzle.txt"));
@@ -45,52 +68,19 @@ public class Puzzles extends Observable {
 		}
 	}
 
-	public Puzzles(String puzzleID, String puzzleDescription, String puzzleAnswer, String puzzleHint)
-	{
-		this.puzzleID = puzzleID;
-		this.puzzleDescription = puzzleDescription;
-		this.puzzleAnswer = puzzleAnswer;
-		this.puzzleHint = puzzleHint;
-		//this.numAttempts = numAttempts;
-	}
-
-	// called in the Controller class 
-	/*public void testMethod (){
-		System.out.println("test");
-	}
-*/
-	public void setPuzzleDescription(String puzzleDescription) {
-		this.puzzleDescription = puzzleDescription;
-		setChanged();
-		notifyObservers(puzzleDescription);
-	}
-
-	public String ViewPuzzle() { //Placeholder
-		//randomPuzzle();
-		//room.getStartRoom(); //0 
-		 setPuzzleDescription(getPuzzlesArray().get(getCurrentRoom()).getPuzzleDescription());
-		System.out.println(puzzleDescription);
-		currentRoom++;
-		
-		return puzzleDescription;
-	}
 	
-	/*private ArrayList<Puzzles> getPuzzlesArray() {
-		// TODO Auto-generated method stub
-		return null
+	@Override
+	public String toString() {
+		return puzzleID + " | " + puzzleDescription + " | " + puzzleAnswer + " | " + puzzleHint + " | ";
 	}
-*/
 
 	public String getPuzzleID() {
 		return puzzleID;
 	}
 
-
 	public void setPuzzleID(String puzzleID) {
 		this.puzzleID = puzzleID;
 	}
-
-
 	public String getPuzzleDescription() {
 		return puzzleDescription;
 	}
@@ -98,8 +88,6 @@ public class Puzzles extends Observable {
 	public String getPuzzleAnswer() {
 		return puzzleAnswer;
 	}
-
-
 	public void setPuzzleAnswer(String puzzleAnswer) {
 		this.puzzleAnswer = puzzleAnswer;
 	}
@@ -122,20 +110,17 @@ public class Puzzles extends Observable {
 	public void setCurrentRoom(int currentRoom) {
 		this.currentRoom = currentRoom;
 	}
-	
-	public void printPuzzle() {
+	/*public void printPuzzle() {
 		System.out.println("puzzle");
-		
 	}
+	 */
 	/*public int getNumAttempts() {
 		return numAttempts;
 	}
-
 	 */
 	/*	public void setNumAttempts(int numAttempts) {
 		this.numAttempts = numAttempts;
 	}
-
 	 */
 
 }

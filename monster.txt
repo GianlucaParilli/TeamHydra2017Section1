@@ -4,7 +4,7 @@ Robber belonging to a pirate organization
 10 EXP
 10
 50
-40%
+40
 Sword and Ammo
 M2
 Stone Guard Boss
@@ -26,8 +26,9 @@ M4
 Bat Eye
 One eyed flying bat
 5 EXP
+5
+20
 10
-2010
 Bat meat
 M5
 Mummies

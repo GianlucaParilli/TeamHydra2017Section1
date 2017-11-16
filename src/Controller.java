@@ -5,16 +5,19 @@ public class Controller {
 	Monster monster;
 	Commands command;
 	Puzzles puzzle = new Puzzles();
+	//Monster monster = new Monster();
 	Rooms room = new Rooms();
 	Login login = new Login();
 	Navigation nav = new Navigation();
 
 	public void newGameListener(Button button) {
-		monster = new Monster();
+		Monster monster = new Monster();
 		button.setOnAction(e -> {
 			// System.out.println("s");
 			//monster.printMonster();
 			puzzle.ViewPuzzle();
+			//monster.ViewMonster();
+
 		});
 	}
 
@@ -44,9 +47,19 @@ public class Controller {
 		temp.setOnAction(e -> {
 			puzzle.addObserver(login.gui);
 			puzzle.ViewPuzzle();
-			//puzzle.ViewPuzzle();
+
 		});
 	}
+
+	public void viewMonsterListener(Button temp){
+		temp.setId(monster.getMonsterDescription());
+		temp.setOnAction(e -> {
+			monster.addObserver(login.gui);
+			monster.ViewMonster();
+
+		});
+	}
+	
 
 	public void refreshMap(Button temp){
 		//temp.setId(GUI.gui.getRoomsDropDown().getId());
