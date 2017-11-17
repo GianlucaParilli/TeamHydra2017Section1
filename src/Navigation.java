@@ -16,6 +16,7 @@ System.out.println("show map method");
 		
 		System.out.println("refresh map" +  dropdownString);
 		setCurrentRoom(dropdownString);
+		
 	}
 
 	public void setCurrentRoom(int current) {

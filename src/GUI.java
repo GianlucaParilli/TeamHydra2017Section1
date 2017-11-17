@@ -32,6 +32,10 @@ public class GUI extends Login implements Observer {
 	Controller control = new Controller();
 	private String character;
 	private ComboBox<String> roomsDropDown = new ComboBox<>();
+	public void setRoomsDropDown(ComboBox<String> roomsDropDown) {
+		this.roomsDropDown = roomsDropDown;
+	}
+
 	private String currentPicture = "0";
 
 	public ComboBox<String> getRoomsDropDown() {
@@ -172,18 +176,21 @@ public class GUI extends Login implements Observer {
 		text.setFont(Font.font("Verdana", 20));
 		roomsDropDown = new ComboBox<>();
 
-		ArrayList<String> roomArray = new ArrayList<>();
+		ArrayList<String> roomNameArray = new ArrayList<>();
 		//get name from array -- fix
-		roomArray.add("Guards Quarters A");
-		roomArray.add("Guards Quarters B");
-		roomArray.add("Guards Quarters C");
-		roomArray.add("Guards Quarters D");
-		roomArray.add("Guards Quarters E");
-		roomArray.add("Guards Quarters F");
-		roomArray.add("Guards Quarters G");
-		roomArray.add("Guards Quarters H");
+		for(Rooms temp : room.getRoomsArray()){
+			roomNameArray.add(temp.getRoomName());
+		}
+		//roomArray.add("Guards Quarters A");
+		//roomArray.add("Guards Quarters B");
+		//roomArray.add("Guards Quarters C");
+		//roomArray.add("Guards Quarters D");
+		//roomArray.add("Guards Quarters E");
+		//roomArray.add("Guards Quarters F");
+		//roomArray.add("Guards Quarters G");
+		//roomArray.add("Guards Quarters H");
 
-		roomsDropDown.getItems().addAll(roomArray);
+		roomsDropDown.getItems().addAll(roomNameArray);
 		hBox.getChildren().add(text);
 		hBox.getChildren().add(roomsDropDown);
 		hBox.getChildren().add(goButton);
@@ -210,21 +217,27 @@ public class GUI extends Login implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		System.out.println();
 
 		if (o instanceof Navigation) {
 			// setCurrentPicture(arg.toString());
 			System.out.println("update nav "+ arg);
 			
 			mapView.setImage(new Image("Maps/r" + arg + ".png"));
-		} else if (o instanceof Rooms) {
-			descriptionText.setText(arg.toString());
-		}else if( o instanceof Puzzles) {
+		} 
+		else if (o instanceof Rooms) {
+			if(((Rooms) o).hasExaminedRoom(examine.isArmed())){
+				descriptionText.setText(arg.toString());
+			}else if(((Rooms) o).hasExaminedRoom(goButton.isArmed())){
+				System.out.println("f");
+			}
+			
+		}
+		else if( o instanceof Puzzles) {
 			descriptionText.setText(arg.toString());
 			}
-			 else if( o instanceof Monster) {
-				 descriptionText.setText(arg.toString());
-			 } 
+	    else if( o instanceof Monster) {
+		    descriptionText.setText(arg.toString());
+			} 
 
 	}		
 

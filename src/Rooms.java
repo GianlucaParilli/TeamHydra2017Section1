@@ -51,11 +51,14 @@ public class Rooms extends Observable {
 
 	public String ExamineRoom() { //Placeholder
 		randomPuzzle();
-		//room.getStartRoom(); //0 
 		setRoomDescription(getRoomsArray().get(getCurrentRoom()).getRoomDescription());
 		//System.out.println(roomDescription);
-		currentRoom++;
+		
 		return roomDescription;
+	}
+	public boolean hasExaminedRoom(boolean bool){
+		
+		return bool;
 	}
 	public void ExitRoom() { //Placeholder
 
@@ -81,7 +84,6 @@ public class Rooms extends Observable {
 		Scanner reader = new Scanner(new File("rooms.txt"));
 
 		while (reader.hasNext()) {
-			String regex = "^[0-9]";
 			String roomID = reader.nextLine();
 			String digits = roomID.replaceAll("[^0-9.]","");
 			numRoomID = Integer.parseInt(digits);	
@@ -108,14 +110,28 @@ public class Rooms extends Observable {
 		this.numRoomID = numRoomID;
 	}
 
-	public void availableRoom(){
+	public void availableRoom(int room){
+		System.out.println("avalaible room print "+ room);
+		ArrayList<String> split = new ArrayList<>();
 		//int t = Integer.parseInt(roomsArray.get(0).roomID);
 		//System.out.println("roomID " + roomsArray.get(0).roomID);
 		for(Rooms tempAvailable : roomsArray){
 			//System.out.println(tempAvailable.roomID);
+			int tempID = tempAvailable.getRoomID();
+			if(tempID == room){
+				String tempString = tempAvailable.getExit();
+				
+					String[] splitAr = tempString.split(",\\s+");
+					for(int i = 0;i<splitAr.length;i++){
+						split.add(splitAr[i]);
+	
+					}
+					Login.gui.getRoomsDropDown().getItems().removeAll();
+					//Login.gui.setRoomsDropDown(Login.gui.getRoomsDropDown().getItems().addAll(split));
+					System.out.println("split "+split.size());
+					 System.out.println("ddd " + tempAvailable.getExit());
 
-			if(tempAvailable.getRoomID()==currentRoom){
-			 System.out.println("ddd");
+				
 		 }
 		}
 		

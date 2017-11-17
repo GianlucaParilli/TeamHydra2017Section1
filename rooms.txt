@@ -1,7 +1,7 @@
 ﻿r0
 Entrance Hall
 Description: A large, rectangular room with the skeletons of the men sworn to guard the Kings treasure strewn about the ground. There is a large, metal door on the southern end of the room, and four small stone archways on the east and west ends of the room.
-e00, e02, e04, e06, e07, e09, e11, e13, L1
+r1, r2, r3, r4, r5, r6, r7, r8, r9
 M1
 none
 8

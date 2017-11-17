@@ -35,11 +35,12 @@ public class Controller {
 
 	public void examineRoomListener(Button temp) {
 		//System.out.println("examine room");
-		temp.setId(""+room.getRoomID());
+		temp.setId("r"+room.getRoomID());
 		temp.setOnAction(e -> {
-			room.addObserver(login.gui);
+			room.addObserver(LostTreasureMain.gui);
 			room.ExamineRoom();
-			room.availableRoom();
+			room.availableRoom(room.getCurrentRoom());
+			
 		});
 	}
 	public void viewPuzzleListener(Button temp){
@@ -67,13 +68,16 @@ public class Controller {
 			nav.addObserver(login.gui);
 			//temp.getId();
 			String dropdown = GUI.gui.getRoomsDropDown().getValue();
-			for(Rooms room : room.getRoomsArray()){
-				if(room.getRoomName().equals(dropdown)){
-					nav.setCurrentRoom(room.getRoomID()); 
+			for(Rooms roomTemp : room.getRoomsArray()){
+				if(roomTemp.getRoomName().equals(dropdown)){
+					nav.setCurrentRoom(roomTemp.getRoomID()); 
 					//GUI.gui.setCurrentPicture(room.getRoomID());
-					System.out.println(room.getRoomID());
-					nav.refreshMap(room.getRoomID());
+					System.out.println(roomTemp.getRoomID());
+					nav.refreshMap(roomTemp.getRoomID());
+					room.setCurrentRoom(roomTemp.getRoomID());
 				}
+				//
+			
 			}
 
 			//int roomID = 0; 
