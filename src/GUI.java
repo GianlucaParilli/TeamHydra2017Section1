@@ -1,14 +1,11 @@
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
-//import javafx.application.Application;
-//import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-//import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -32,10 +29,6 @@ public class GUI extends Login implements Observer {
 	Controller control = new Controller();
 	private String character;
 	private ComboBox<String> roomsDropDown = new ComboBox<>();
-	public void setRoomsDropDown(ComboBox<String> roomsDropDown) {
-		this.roomsDropDown = roomsDropDown;
-	}
-
 	private String currentPicture = "0";
 
 	public ComboBox<String> getRoomsDropDown() {
@@ -89,8 +82,8 @@ public class GUI extends Login implements Observer {
 		view2 = new Button("View Monster");
 		
 		Button button2 = new Button("Fight");
-		Button button3 = new Button("View Monster");
-		Button button4 = new Button("View Puzzle");
+		//Button button3 = new Button("View Monster");
+		//Button button4 = new Button("View Puzzle");
 
 		hBox.getChildren().add(examine);
 		hBox.getChildren().add(view);
@@ -175,6 +168,7 @@ public class GUI extends Login implements Observer {
 		Text text = new Text("Select Room");
 		text.setFont(Font.font("Verdana", 20));
 		roomsDropDown = new ComboBox<>();
+		roomsDropDown.setEditable(true);
 
 		ArrayList<String> roomNameArray = new ArrayList<>();
 		//get name from array -- fix
@@ -214,7 +208,9 @@ public class GUI extends Login implements Observer {
 		return hBox;
 	}
 	// observer, observable methods that will update the gui
-
+	public void setRoomsDropDown(ComboBox<String> roomsDropDown) {
+		this.roomsDropDown = roomsDropDown;
+	}
 	@Override
 	public void update(Observable o, Object arg) {
 

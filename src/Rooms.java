@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Random;
 import java.util.Scanner;
@@ -17,6 +18,11 @@ public class Rooms extends Observable {
 	private int numRoomID;
 	private int currentRoom;
 	private ArrayList<Rooms> roomsArray = new ArrayList<>();
+	ArrayList<String> roomIDArray = new ArrayList<>();
+
+	public ArrayList<String> getRoomIDArray() {
+		return roomIDArray;
+	}
 
 	public Rooms() {
 		try {
@@ -112,9 +118,6 @@ public class Rooms extends Observable {
 
 	public void availableRoom(int room){
 		System.out.println("avalaible room print "+ room);
-		ArrayList<String> split = new ArrayList<>();
-		//int t = Integer.parseInt(roomsArray.get(0).roomID);
-		//System.out.println("roomID " + roomsArray.get(0).roomID);
 		for(Rooms tempAvailable : roomsArray){
 			//System.out.println(tempAvailable.roomID);
 			int tempID = tempAvailable.getRoomID();
@@ -123,18 +126,17 @@ public class Rooms extends Observable {
 				
 					String[] splitAr = tempString.split(",\\s+");
 					for(int i = 0;i<splitAr.length;i++){
-						split.add(splitAr[i]);
+						roomIDArray.add(splitAr[i]);
 	
 					}
 					Login.gui.getRoomsDropDown().getItems().removeAll();
 					//Login.gui.setRoomsDropDown(Login.gui.getRoomsDropDown().getItems().addAll(split));
-					System.out.println("split "+split.size());
+					System.out.println("split "+roomIDArray.size());
 					 System.out.println("ddd " + tempAvailable.getExit());
-
-				
-		 }
-		}
+					 Login.gui.getRoomsDropDown().getItems().addAll(roomIDArray);
 		
+				}
+		}
 	}
 	@Override
 	public String toString() {

@@ -29,14 +29,14 @@ K1(random)
 r4
 Guards Quarters D
 Description: A small room that once served as a guards living quarters. A skeleton is sitting in a wooden chair collapsed over a wooden table. You notice something in its hand.
-e05, e06
+r5, r6
 M1
 N1, K1(random)
 0
 r5
 Guards Quarters E
 Description: A small room that once served as a guards living quarters. A rat scurries through a small crack in the wall as you enter.
-e07, e08
+r7, r8
 M1
 K1(random), H1
 0

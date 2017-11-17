@@ -1,4 +1,7 @@
 
+import java.util.ArrayList;
+import java.util.function.UnaryOperator;
+
 import javafx.scene.control.Button;
 
 public class Controller {
@@ -39,7 +42,6 @@ public class Controller {
 		temp.setOnAction(e -> {
 			room.addObserver(LostTreasureMain.gui);
 			room.ExamineRoom();
-			room.availableRoom(room.getCurrentRoom());
 			
 		});
 	}
@@ -61,9 +63,11 @@ public class Controller {
 		});
 	}
 	
-
+//refreshes the map pane
+//re populates the drop-down with the available rooms
 	public void refreshMap(Button temp){
 		//temp.setId(GUI.gui.getRoomsDropDown().getId());
+	
 		temp.setOnAction(e->{
 			nav.addObserver(login.gui);
 			//temp.getId();
@@ -71,10 +75,13 @@ public class Controller {
 			for(Rooms roomTemp : room.getRoomsArray()){
 				if(roomTemp.getRoomName().equals(dropdown)){
 					nav.setCurrentRoom(roomTemp.getRoomID()); 
-					//GUI.gui.setCurrentPicture(room.getRoomID());
 					System.out.println(roomTemp.getRoomID());
 					nav.refreshMap(roomTemp.getRoomID());
 					room.setCurrentRoom(roomTemp.getRoomID());
+					GUI.gui.getRoomsDropDown().getItems().clear();
+					//roomTemp.availableRoom(0);
+					room.availableRoom(room.getCurrentRoom());
+					GUI.gui.getRoomsDropDown().getItems().addAll(roomTemp.getRoomIDArray());
 				}
 				//
 			
