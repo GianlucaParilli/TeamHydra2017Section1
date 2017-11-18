@@ -215,8 +215,7 @@ public class GUI extends Login implements Observer {
 	public void update(Observable o, Object arg) {
 
 		if (o instanceof Navigation) {
-			// setCurrentPicture(arg.toString());
-			System.out.println("update nav "+ arg);
+			//System.out.println("update nav "+ arg);
 			
 			mapView.setImage(new Image("Maps/r" + arg + ".png"));
 		} 
@@ -237,7 +236,5 @@ public class GUI extends Login implements Observer {
 
 	}		
 
-
-		// currentPicture = "01";
 	
 	}

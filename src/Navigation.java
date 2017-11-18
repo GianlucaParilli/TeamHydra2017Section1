@@ -1,9 +1,10 @@
 import java.util.Observable;
 
-public class Navigation extends Observable{
-	private int currentRoom=0;
+public class Navigation extends Observable {
+	private int currentRoom;
+
 	public void showMap() {
-System.out.println("show map method");
+		System.out.println("show map method");
 	}
 
 	public void hideMap() {
@@ -11,18 +12,16 @@ System.out.println("show map method");
 	}
 
 	public void refreshMap(int dropdownString) {
-		//tempID = GUI.gui.getRoomsDropDown().getValue(); 
-		
-		
-		System.out.println("refresh map" +  dropdownString);
+
+		// System.out.println("refresh map" + dropdownString);
 		setCurrentRoom(dropdownString);
-		
+
 	}
 
 	public void setCurrentRoom(int current) {
 		this.currentRoom = current;
 		setChanged();
 		notifyObservers(currentRoom);
-		System.out.println("setCurrentRoom" + currentRoom);
+		// System.out.println("setCurrentRoom" + currentRoom);
 	}
 }

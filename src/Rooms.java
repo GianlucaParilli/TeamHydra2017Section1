@@ -1,14 +1,13 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Observable;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Rooms extends Observable {
 
-	private int roomID;
+	private String roomID;
 	private String roomName;
 	private String roomDescription;
 	private String availableRoom;
@@ -19,7 +18,8 @@ public class Rooms extends Observable {
 	private int currentRoom;
 	private ArrayList<Rooms> roomsArray = new ArrayList<>();
 	ArrayList<String> roomIDArray = new ArrayList<>();
-
+	ArrayList<String> roomNameArray = new ArrayList<>();
+	
 	public ArrayList<String> getRoomIDArray() {
 		return roomIDArray;
 	}
@@ -28,14 +28,15 @@ public class Rooms extends Observable {
 		try {
 			roomReader();
 			randomPuzzle();
-
+			
 		} catch (FileNotFoundException e) {
 			System.out.println("No File Found");
 		}
 	}
 
-	public Rooms(int roomID, String roomName, String roomDescription, String availableRoom, String monster, String item, String randomProbability) {
+	public Rooms(String roomID, int numRoomID, String roomName, String roomDescription, String availableRoom, String monster, String item, String randomProbability) {
 		this.roomID = roomID;
+		this.numRoomID = numRoomID;
 		this.roomName = roomName;
 		this.roomDescription = roomDescription;
 		this.availableRoom = availableRoom;
@@ -92,7 +93,7 @@ public class Rooms extends Observable {
 		while (reader.hasNext()) {
 			String roomID = reader.nextLine();
 			String digits = roomID.replaceAll("[^0-9.]","");
-			numRoomID = Integer.parseInt(digits);	
+			int roomNumID =Integer.parseInt(digits);	
 			String roomName = reader.nextLine();
 			String roomDescription = reader.nextLine();
 			String puzzle = reader.nextLine();
@@ -100,12 +101,12 @@ public class Rooms extends Observable {
 			String monster = reader.nextLine();
 			String randomProbability = reader.nextLine();
 
-			Rooms room = new Rooms(numRoomID, roomName, roomDescription, puzzle, item, monster, randomProbability);
+			Rooms room = new Rooms(roomID, roomNumID, roomName, roomDescription, puzzle, item, monster, randomProbability);
 			roomsArray.add(room);
 		}
 		//System.out.println("" + roomsArray.get(0).roomDescription);
 		//System.out.println("" + roomsArray.get(1).monster);
-		//System.out.println(roomsArray.toString());
+		//System.out.println(roomsArray.get(2).numRoomID);
 
 	}
 	public int getNumRoomID() {
@@ -117,30 +118,40 @@ public class Rooms extends Observable {
 	}
 
 	public void availableRoom(int room){
-		System.out.println("avalaible room print "+ room);
+		
+		roomNameArray.clear();
+		roomIDArray.clear();
 		for(Rooms tempAvailable : roomsArray){
-			//System.out.println(tempAvailable.roomID);
-			int tempID = tempAvailable.getRoomID();
+			//roomNameArray.clear();
+			int tempID = tempAvailable.getNumRoomID();
 			if(tempID == room){
 				String tempString = tempAvailable.getExit();
-				
-					String[] splitAr = tempString.split(",\\s+");
-					for(int i = 0;i<splitAr.length;i++){
+				//roomIDArray.clear();
+				setCurrentRoom(tempAvailable.numRoomID);
+				String[] splitAr = tempString.split(",\\s+");
+				for(int i = 0;i<splitAr.length;i++){
 						roomIDArray.add(splitAr[i]);
 	
 					}
-					Login.gui.getRoomsDropDown().getItems().removeAll();
-					//Login.gui.setRoomsDropDown(Login.gui.getRoomsDropDown().getItems().addAll(split));
-					System.out.println("split "+roomIDArray.size());
-					 System.out.println("ddd " + tempAvailable.getExit());
-					 Login.gui.getRoomsDropDown().getItems().addAll(roomIDArray);
-		
-				}
-		}
+				
+					Login.gui.getRoomsDropDown().getItems().clear();
+					//System.out.println("ddd " + tempAvailable.getExit());
+				
+			          for(String temp: roomIDArray){
+			        	  int replacement = Integer.parseInt(temp.replaceAll("[^0-9.]",""));
+							//System.out.println("available rooms "+ roomsArray.get(replacement).roomName );
+							roomNameArray.add(roomsArray.get(replacement).roomName);
+			        	  												
+						}
+						 Login.gui.getRoomsDropDown().getItems().addAll(roomNameArray);
+
+				}		
+		}	
 	}
+	
 	@Override
 	public String toString() {
-		return numRoomID + " | " + roomName + " | " + roomDescription + " | " + availableRoom + " | " + monster + " | " + item + " | " + randomProbability;
+		return roomID + " | " + roomName + " | " + roomDescription + " | " + availableRoom + " | " + monster + " | " + item + " | " + randomProbability;
 	}
 
 	public String getExit() {
@@ -162,10 +173,10 @@ public class Rooms extends Observable {
 
 		this.monster = monster;
 	}
-	public int getRoomID() {
+	public String getRoomID() {
 		return roomID;
 	}
-	public void setRoomID(int roomID) {
+	public void setRoomID(String roomID) {
 		this.roomID = roomID;
 	}	
 	public ArrayList<Rooms> getRoomsArray() {
