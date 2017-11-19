@@ -1,6 +1,4 @@
 
-import java.util.ArrayList;
-import java.util.function.UnaryOperator;
 
 import javafx.scene.control.Button;
 
@@ -48,7 +46,7 @@ public class Controller {
 	public void viewPuzzleListener(Button temp){
 		temp.setId(puzzle.getPuzzleDescription());
 		temp.setOnAction(e -> {
-			puzzle.addObserver(login.gui);
+			puzzle.addObserver(LostTreasureMain.gui);
 			puzzle.ViewPuzzle();
 
 		});
@@ -57,7 +55,7 @@ public class Controller {
 	public void viewMonsterListener(Button temp){
 		temp.setId(monster.getMonsterDescription());
 		temp.setOnAction(e -> {
-			monster.addObserver(login.gui);
+			monster.addObserver(LostTreasureMain.gui);
 			monster.ViewMonster();
 
 		});
@@ -68,18 +66,23 @@ public class Controller {
 	public void refreshMap(Button temp){
 	
 		temp.setOnAction(e->{
-			nav.addObserver(login.gui);
+			nav.addObserver(LostTreasureMain.gui);
 			String dropdown = GUI.gui.getRoomsDropDown().getValue();
 				
 			for(Rooms roomTemp : room.getRoomsArray()){
 				if(roomTemp.getRoomName().equals(dropdown)){
+					if(roomTemp.isLocked() == true){
+						room.loadPopUp(roomTemp.getRoomName());
+					
+						break;
+					}
 					nav.setCurrentRoom(roomTemp.getNumRoomID()); 
 					nav.refreshMap(roomTemp.getNumRoomID());
 					room.setCurrentRoom(roomTemp.getNumRoomID());
 					GUI.gui.getRoomsDropDown().getItems().clear();//clears the previous drop-down
 					room.availableRoom(room.getCurrentRoom());//calls the available room method wit the room number that user went to
 					//GUI.gui.getRoomsDropDown().getItems().addAll(roomTemp.getRoomIDArray());
-					
+					System.out.println(roomTemp.isLocked());
 				}
 				
 				//

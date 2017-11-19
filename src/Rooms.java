@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Random;
 import java.util.Scanner;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 
 public class Rooms extends Observable {
 
@@ -14,6 +17,7 @@ public class Rooms extends Observable {
 	private String item;
 	private String monster;
 	private String randomProbability;
+	private boolean isLocked;
 	private int numRoomID;
 	private int currentRoom;
 	private ArrayList<Rooms> roomsArray = new ArrayList<>();
@@ -34,7 +38,7 @@ public class Rooms extends Observable {
 		}
 	}
 
-	public Rooms(String roomID, int numRoomID, String roomName, String roomDescription, String availableRoom, String monster, String item, String randomProbability) {
+	public Rooms(String roomID, int numRoomID, String roomName, String roomDescription, String availableRoom, String monster, String item, String randomProbability, boolean isLocked) {
 		this.roomID = roomID;
 		this.numRoomID = numRoomID;
 		this.roomName = roomName;
@@ -43,6 +47,7 @@ public class Rooms extends Observable {
 		this.monster = monster;
 		this.item = item;
 		this.randomProbability = randomProbability;
+		this.isLocked = isLocked;
 	}
 
 	public void setRoomDescription(String roomDescriptionn) {
@@ -93,15 +98,17 @@ public class Rooms extends Observable {
 		while (reader.hasNext()) {
 			String roomID = reader.nextLine();
 			String digits = roomID.replaceAll("[^0-9.]","");
-			int roomNumID =Integer.parseInt(digits);	
+			int roomNumID = Integer.parseInt(digits);	
 			String roomName = reader.nextLine();
 			String roomDescription = reader.nextLine();
 			String puzzle = reader.nextLine();
 			String item = reader.nextLine();
 			String monster = reader.nextLine();
 			String randomProbability = reader.nextLine();
+			String lockedString = reader.nextLine();
+			boolean isLocked = Boolean.parseBoolean(lockedString);//reader.nextBoolean();
 
-			Rooms room = new Rooms(roomID, roomNumID, roomName, roomDescription, puzzle, item, monster, randomProbability);
+			Rooms room = new Rooms(roomID, roomNumID, roomName, roomDescription, puzzle, item, monster, randomProbability, isLocked);
 			roomsArray.add(room);
 		}
 		//System.out.println("" + roomsArray.get(0).roomDescription);
@@ -149,9 +156,15 @@ public class Rooms extends Observable {
 		}	
 	}
 	
+	public void loadPopUp(String lockedRoom) {
+		Alert errorPopUp = new Alert(AlertType.ERROR);
+		errorPopUp.setHeaderText("The Room " + lockedRoom + " is locked");
+		errorPopUp.show();
+	}
+	
 	@Override
 	public String toString() {
-		return roomID + " | " + roomName + " | " + roomDescription + " | " + availableRoom + " | " + monster + " | " + item + " | " + randomProbability;
+		return roomID + " | " + roomName + " | " + roomDescription + " | " + availableRoom + " | " + monster + " | " + item + " | " + randomProbability  + " | " + isLocked;
 	}
 
 	public String getExit() {
@@ -198,4 +211,13 @@ public class Rooms extends Observable {
 	public void setCurrentRoom(int currentRoom) {
 		this.currentRoom = currentRoom;
 	}
+
+	public boolean isLocked() {
+		return isLocked;
+	}
+
+	public void setLocked(boolean isLocked) {
+		this.isLocked = isLocked;
+	}
+	
 }

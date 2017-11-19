@@ -155,7 +155,7 @@ public class Login extends LostTreasureMain implements Observer {
 		return hBox;
 	}
 
-	public VBox popUpPane() {
+	private VBox popUpPane() {
 		VBox vBox = new VBox();
 		// organizes the form into a h box within a v box
 		HBox hBox1 = new HBox(15);

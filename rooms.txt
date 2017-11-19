@@ -5,6 +5,7 @@ r1, r2, r3, r4, r5, r6, r7, r8, r9
 M1
 none
 8
+false
 r1
 Guards Quarters A
 Description: A small room that once served as a guards living quarters. There is a stone bed and a decrepit wooden shelf.
@@ -12,6 +13,7 @@ r0, r2
 M1
 K1(random), W5
 0
+false
 r2
 Guards Quarters B
 Description: A small room that once served as a guards living quarters. There is a decaying skeleton lying on a stone bed.
@@ -19,6 +21,7 @@ r1, r2, r3
 M1
 K1(random)
 0
+false
 r3
 Guards Quarters C
 Description: A small room that once served as a guards living quarters. An feeble, rusty sword and shield hang on the wall.
@@ -26,6 +29,7 @@ r3, r4, r5
 M1
 K1(random)
 0
+false
 r4
 Guards Quarters D
 Description: A small room that once served as a guards living quarters. A skeleton is sitting in a wooden chair collapsed over a wooden table. You notice something in its hand.
@@ -33,6 +37,7 @@ r5, r6
 M1
 N1, K1(random)
 0
+false
 r5
 Guards Quarters E
 Description: A small room that once served as a guards living quarters. A rat scurries through a small crack in the wall as you enter.
@@ -40,6 +45,7 @@ r7, r8
 M1
 K1(random), H1
 0
+false
 r6
 Guards Quarters F
 Description: A small room that once served as a guards living quarters. There is a stone bed lined with rotten leather. The smell is almost unbearable. 
@@ -47,6 +53,7 @@ r8, r9, r10
 M1
 K1(random), W5
 0
+false
 r7
 Guards Quarters G
 Description: A small room that once served as a guards living quarters. It seems like someone lit a fire in here. Everything is charred and covered in ash.
@@ -54,6 +61,7 @@ r10, r11, r12
 M1
 K1(random)
 0
+false
 r8
 Guards Quarters H
 Description: A small room that once served as a guards living quarters. Rotten, unreadable papers cover the dusty, stone floor.
@@ -61,6 +69,7 @@ r12, r13
 M1
 K1(random), H1
 0
+false
 r9
 Main Hallway
 Description: Hallway with dusty old carpet, cracked walls, dusty shelves infested with cobwebs, ripped couches.
@@ -68,6 +77,7 @@ L1, r14
 M1
 none
 0
+true
 r10
 Hexagon Chamber
 Description: A room with with six sides. This room has two doors, one located to the east and another located to the west.
@@ -75,6 +85,7 @@ r14, r15, r17, L2
 M1
 none
 0
+false
 r11
 West Hallway
 Description: Hallway with dusty shelves and couches. Has candles lit for light along with skeletons lying on the carpet in pieces. Has two doors leading to the west chamber and the elevator room
@@ -82,6 +93,7 @@ r15, r16
 M1
 none
 0
+false
 r12
 West Chamber
 Description: A chamber with ancient artifacts, shelves, tables, chairs. 
@@ -89,6 +101,7 @@ r16
 M1
 K2
 0
+false
 r13
 East Hallway
 Description: A hallway with a lit torch will with cobwebs and rats running around. The ceiling has a water leak dripping from above. 
@@ -96,6 +109,7 @@ r17, r18
 M1
 none
 0
+false
 r14
 East Chamber
 Description: A chamber with book shelves, tables, cobwebs, old ripped scripts and skeletons. 
@@ -103,6 +117,7 @@ r18
 M1
 K3
 0
+false
 r15
 South Hallway
 Description: A dark stoned hallway with glowworms on the ceiling. 
@@ -110,6 +125,7 @@ L2, r19
 M1
 none
 0
+true
 r16
 Elevator Room
 Description: Wide open room with a hole in the middle with one room in each corner.
@@ -117,6 +133,7 @@ r19, r20, r21, r22, r23, L3
 M2
 none
 0
+false
 r17
 Armory
 Description: A room with knives, swords, bow and arrows, and spears. You see a large wooden chest with a riddle written around the lock.
@@ -124,6 +141,7 @@ r20
 M1
 W6
 0
+false
 r18
 Switch Room
 Description: A small room with a large mechanical device in the center. There is an ornate metal lever in the middle of it. 
@@ -131,6 +149,7 @@ r21
 M1
 none
 0
+false
 r19
 Alchemy Lab
 Description: Room with various herbs potions and remedies. There are empty flasks and laboratory equipment all over the room.
@@ -138,6 +157,7 @@ r22
 M1
 H1x3, H2x5
 0
+false
 r20
 Closet
 Description: A small closet with dusty, ripped shirts, pants, and hats.
@@ -145,6 +165,7 @@ r23
 M1
 S1
 0
+false
 r21
 Antechamber
 Description: A large rectangular chamber with an elevator to the upper levels in the center. It looks as though no one has been down here in a very long time. There is an exit to the east and west, but massive metal door on the south side of the room catches your eye.
@@ -152,6 +173,7 @@ L3, r24, r26, L4
 M3, M4, M5
 none
 0
+false
 r22
 Dark Hallway
 Description: A pitch-black hallway. The only thing you can see is a small beam of light at either end.
@@ -159,6 +181,7 @@ r24, r25
 M3, M4, M5
 none
 0
+false
 r23
 West Dungeon
 Description: Dungeon room with skulls, prisoners bones, chains, and metal shackles.
@@ -166,6 +189,7 @@ r25
 M3, M4, M5
 K4
 0
+false
 r24
 Collapsing Hallway
 Description: A hallway with collapsed ceilings, cracked walls, cobwebs, bits and pieces of the ceiling on the ground with dusk in the air.
@@ -173,6 +197,7 @@ r26, r27
 M3, M4, M5
 none
 0
+false
 r25
 East Dungeon
 Description: Dungeon room with skulls, prisoners bones, chains, and metal shackles.
@@ -180,6 +205,7 @@ r27
 M6
 K5
 0
+false
 r26
 Path of Corpses
 Description: An underground fork tunnel that has human remains stacked against the walls.
@@ -187,6 +213,7 @@ L4, r28, r29
 M3, M4, M5
 none
 0
+true
 r27
 West Burial Chamber
 Description: A chamber that is used as a grave for the Kings nobles and the human remains are placed on manmade beds within the walls. 
@@ -194,6 +221,7 @@ r28, r30
 M3, M4, M5
 K6
 0
+false
 r28
 East Burial Chamber
 Description: A chamber that is used as a grave for the Kings nobles and the human remains are placed on manmade beds within the walls.
@@ -201,6 +229,7 @@ r29, r31
 M8
 K7
 0
+false
 r29
 Golden Hallway
 Description: Gold hallway with shiny gold chairs, picture frames, shelves, books, gold doors and door knobs
@@ -208,6 +237,7 @@ r30, L5
 M3, M4, M5
 H2
 0
+false
 r30
 Path of Statues
 Description: This hallway is many statues of the king and his trustworthy noblemen made of shiny silver granite 
@@ -215,6 +245,7 @@ r31, L6
 M3, M4, M5
 H2
 0
+false
 r31
 Treasure Room
 Description: A large room filled with ancient gold treasure that belongs to the King.
@@ -222,3 +253,4 @@ L5, L6
 M6
 none
 0
+true

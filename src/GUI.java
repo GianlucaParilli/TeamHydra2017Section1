@@ -129,9 +129,6 @@ public class GUI extends Login implements Observer {
 		return hBox;
 	}
 
-	public void setCurrentPicture(String currentPicture) {
-		this.currentPicture = currentPicture;
-	}
 
 	/*
 	 * h box that assigns the exit button to an individual panel assigns a
