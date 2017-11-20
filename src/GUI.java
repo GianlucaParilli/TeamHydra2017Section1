@@ -17,10 +17,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class GUI extends Login implements Observer {
-	Button examine, goButton;
-	Button view;
-	Button view2;
-	Button hint;
+	Button examine, goButton, searchRoom, fightMonster, fleeMonster, examineMonster, viewPuzzle, answerPuzzle, hintPuzzle;
 	static Stage guiStage = new Stage();
 	Label descriptionText;
 	ImageView mapView;
@@ -50,7 +47,7 @@ public class GUI extends Login implements Observer {
 		primaryStage.setTitle("The Lost treasure"); // Set the stage title
 		primaryStage.setScene(scene); // Place the scene in the stage
 		primaryStage.setWidth(1040);
-		primaryStage.setHeight(585);
+		primaryStage.setHeight(710);
 		primaryStage.show(); // Display the stage
 	}
 
@@ -58,12 +55,14 @@ public class GUI extends Login implements Observer {
 		GridPane pane = new GridPane();
 		pane.setHgap(5);
 		// node,column,row
-		pane.add(descriptionPane(), 0, 0);
-		pane.add(mapPane(), 1, 0);
-		pane.add(buttonHPane(), 0, 3);
-		pane.add(navButtonPane(), 0, 4);
-		pane.add(inventoryPane(), 1, 3);
-		pane.add(healthPane(), 1, 4);
+		pane.add(mapPane(), 0, 0);
+		pane.add(descriptionPane(), 1, 0);
+		pane.add(roomButtonHPane(), 1, 2);
+		pane.add(monsterButtonHPane(), 1, 3);
+		pane.add(puzzleButtonHPane(), 1, 4);
+		pane.add(navButtonPane(), 1, 1);
+		pane.add(inventoryPane(), 0, 1);
+		pane.add(healthPane(), 0, 2);
 		pane.add(exitPane(), 2, 5);
 		return pane;
 		
@@ -74,30 +73,58 @@ public class GUI extends Login implements Observer {
 	 * hbox will be added to the main pane
 	 *
 	 **/
-	private HBox buttonHPane() {
+	private HBox roomButtonHPane() {
 		HBox hBox = new HBox(5);
 		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
 				+ "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
-		
 		examine = new Button("Examine Room");
-		hBox.getChildren().add(examine);
-	
-		view =  new Button("View Puzzle");
-		hBox.getChildren().add(view);
-		
-		view2 = new Button("View Monster");
-		hBox.getChildren().add(view2);
-		
-		hint = new Button("View Puzzle Hint");
-		hBox.getChildren().add(hint);
-	
+		searchRoom =  new Button("Search Room");
 
+		hBox.getChildren().add(examine);
+		hBox.getChildren().add(searchRoom);
 		
 		// adds the listener to the button
 		control.examineRoomListener(examine);
-		control.viewPuzzleListener(view);
-		control.viewMonsterListener(view2);
-		control.viewHintListener(hint);
+		
+		
+		return hBox;
+	}
+	
+	private HBox monsterButtonHPane() {
+		HBox hBox = new HBox(5);
+		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
+				+ "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
+		examineMonster = new Button("Examine Monster");
+		fightMonster =  new Button("Fight Monster");
+		fleeMonster = new Button("Flee Monster");
+
+		hBox.getChildren().add(examineMonster);
+		hBox.getChildren().add(fightMonster);
+		hBox.getChildren().add(fleeMonster);
+		
+		// adds the listener to the button
+		control.viewMonsterListener(examineMonster);
+		
+		//System.out.println();
+		
+		return hBox;
+	}
+	private HBox puzzleButtonHPane() {
+		HBox hBox = new HBox(5);
+		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
+				+ "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
+		viewPuzzle = new Button("View Puzzle");
+		answerPuzzle = new Button("Answer Puzzle");
+		hintPuzzle =  new Button("View Hint");
+
+
+		hBox.getChildren().add(viewPuzzle);
+		hBox.getChildren().add(answerPuzzle);
+		hBox.getChildren().add(hintPuzzle);
+		
+		// adds the listener to the button
+		control.viewPuzzleListener(viewPuzzle);
+		control.viewHintListener(hintPuzzle);
 		
 		//System.out.println();
 		
