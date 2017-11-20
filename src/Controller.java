@@ -1,12 +1,10 @@
-
-
 import javafx.scene.control.Button;
 
 public class Controller {
-	Monster monster;
+	//Monster monster;
 	Commands command;
 	Puzzles puzzle = new Puzzles();
-	//Monster monster = new Monster();
+	Monster monster = new Monster();
 	Rooms room = new Rooms();
 	Login login = new Login();
 	Navigation nav = new Navigation();
@@ -53,13 +51,20 @@ public class Controller {
 	}
 
 	public void viewMonsterListener(Button temp){
-		temp.setId(monster.getMonsterDescription());
+		temp.setId(monster.getMonsterName());
 		temp.setOnAction(e -> {
 			monster.addObserver(LostTreasureMain.gui);
 			monster.ViewMonster();
-
 		});
 	}
+		public void viewHintListener(Button temp){
+			temp.setId(puzzle.getPuzzleHint());
+			temp.setOnAction(e -> {
+				puzzle.addObserver(LostTreasureMain.gui);
+				puzzle.ViewHint();
+			});
+		}
+
 	
 //refreshes the map pane
 //re populates the drop-down with the available rooms

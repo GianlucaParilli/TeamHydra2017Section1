@@ -23,7 +23,7 @@ public class Rooms extends Observable {
 	private ArrayList<Rooms> roomsArray = new ArrayList<>();
 	ArrayList<String> roomIDArray = new ArrayList<>();
 	ArrayList<String> roomNameArray = new ArrayList<>();
-	
+
 	public ArrayList<String> getRoomIDArray() {
 		return roomIDArray;
 	}
@@ -32,7 +32,7 @@ public class Rooms extends Observable {
 		try {
 			roomReader();
 			randomPuzzle();
-			
+
 		} catch (FileNotFoundException e) {
 			System.out.println("No File Found");
 		}
@@ -65,11 +65,11 @@ public class Rooms extends Observable {
 		randomPuzzle();
 		setRoomDescription(getRoomsArray().get(getCurrentRoom()).getRoomDescription());
 		//System.out.println(roomDescription);
-		
+
 		return roomDescription;
 	}
 	public boolean hasExaminedRoom(boolean bool){
-		
+
 		return bool;
 	}
 	public void ExitRoom() { //Placeholder
@@ -125,7 +125,7 @@ public class Rooms extends Observable {
 	}
 
 	public void availableRoom(int room){
-		
+
 		roomNameArray.clear();
 		roomIDArray.clear();
 		for(Rooms tempAvailable : roomsArray){
@@ -137,31 +137,31 @@ public class Rooms extends Observable {
 				setCurrentRoom(tempAvailable.numRoomID);
 				String[] splitAr = tempString.split(",\\s+");
 				for(int i = 0;i<splitAr.length;i++){
-						roomIDArray.add(splitAr[i]);
-	
-					}
-				
-					Login.gui.getRoomsDropDown().getItems().clear();
-					//System.out.println("ddd " + tempAvailable.getExit());
-				
-			          for(String temp: roomIDArray){
-			        	  int replacement = Integer.parseInt(temp.replaceAll("[^0-9.]",""));
-							//System.out.println("available rooms "+ roomsArray.get(replacement).roomName );
-							roomNameArray.add(roomsArray.get(replacement).roomName);
-			        	  												
-						}
-						 Login.gui.getRoomsDropDown().getItems().addAll(roomNameArray);
+					roomIDArray.add(splitAr[i]);
 
-				}		
+				}
+
+				Login.gui.getRoomsDropDown().getItems().clear();
+				//System.out.println("ddd " + tempAvailable.getExit());
+
+				for(String temp: roomIDArray){
+					int replacement = Integer.parseInt(temp.replaceAll("[^0-9.]",""));
+					//System.out.println("available rooms "+ roomsArray.get(replacement).roomName );
+					roomNameArray.add(roomsArray.get(replacement).roomName);
+
+				}
+				Login.gui.getRoomsDropDown().getItems().addAll(roomNameArray);
+
+			}		
 		}	
 	}
-	
+
 	public void loadPopUp(String lockedRoom) {
 		Alert errorPopUp = new Alert(AlertType.ERROR);
 		errorPopUp.setHeaderText("The Room " + lockedRoom + " is locked");
 		errorPopUp.show();
 	}
-	
+
 	@Override
 	public String toString() {
 		return roomID + " | " + roomName + " | " + roomDescription + " | " + availableRoom + " | " + monster + " | " + item + " | " + randomProbability  + " | " + isLocked;
@@ -219,5 +219,5 @@ public class Rooms extends Observable {
 	public void setLocked(boolean isLocked) {
 		this.isLocked = isLocked;
 	}
-	
+
 }

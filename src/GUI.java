@@ -20,6 +20,7 @@ public class GUI extends Login implements Observer {
 	Button examine, goButton;
 	Button view;
 	Button view2;
+	Button hint;
 	static Stage guiStage = new Stage();
 	Label descriptionText;
 	ImageView mapView;
@@ -77,25 +78,31 @@ public class GUI extends Login implements Observer {
 		HBox hBox = new HBox(5);
 		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
 				+ "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
-		examine = new Button("Examine Room");
-		view =  new Button("View Puzzle");
-		view2 = new Button("View Monster");
 		
-		Button button2 = new Button("Fight");
-		//Button button3 = new Button("View Monster");
-		//Button button4 = new Button("View Puzzle");
-
+		examine = new Button("Examine Room");
 		hBox.getChildren().add(examine);
+	
+		view =  new Button("View Puzzle");
 		hBox.getChildren().add(view);
+		
+		view2 = new Button("View Monster");
 		hBox.getChildren().add(view2);
-		hBox.getChildren().add(button2);
+		
+		hint = new Button("View Puzzle Hint");
+		hBox.getChildren().add(hint);
+		
+		Button button2 = new Button("Examine Room");
+		Button button4 = new Button("View Puzzle");
+		Button button3 = new Button("View Monster");
+		Button button1 = new Button("Fight");
+
 		
 		// adds the listener to the button
 		control.examineRoomListener(examine);
 		control.viewPuzzleListener(view);
+		control.viewMonsterListener(view2);
+		control.viewHintListener(hint);
 		
-
-//control.viewMonsterListener(view2);
 		//System.out.println();
 		
 		return hBox;

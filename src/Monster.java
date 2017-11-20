@@ -43,19 +43,23 @@ public class Monster extends Observable {
 	
 	public void setMonsterDescription(String monsterDescription) {
 		this.monsterDescription = monsterDescription;
+		
+	}
+	
+	public void setMonsterName(String monsterName) {
+		this.monsterName = monsterName;
 		setChanged();
-		notifyObservers(monsterDescription);
+		notifyObservers(monsterName);
 	}
 	
 	public String ViewMonster() {
 		try{
-			setMonsterDescription(getMonstersArray().get(getCurrentRoom()).getMonsterDescription());
-			currentRoom++;
-			
+			setMonsterName(getMonstersArray().get(getCurrentRoom()).getMonsterName());
+			currentRoom ++;
 		}catch(Exception e){
-			System.out.println(monsterDescription);
+			System.out.println(monsterName);
 		}
-		return monsterDescription;
+		return monsterName;
 		
 	}
 	
@@ -99,9 +103,6 @@ public class Monster extends Observable {
 		return monsterName;
 	}
 
-	public void setMonsterName(String monsterName) {
-		this.monsterName = monsterName;
-	}
 
 	public String getMonsterDescription() {
 		return monsterDescription;
@@ -149,7 +150,8 @@ public class Monster extends Observable {
 	
 	
 	public int getCurrentRoom() {
-		return currentRoom;
+		return currentRoom +1;
+		
 	}
 	public void setCurrentRoom(int currentRoom) {
 		this.currentRoom = currentRoom;

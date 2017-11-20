@@ -10,7 +10,6 @@ public class Puzzles extends Observable {
 	private String puzzleDescription;
 	private String puzzleAnswer;
 	private String puzzleHint;
-	//private String numAttempts = 0;
 	private int currentRoom = 0;
 	private static ArrayList<Puzzles> puzzlesArray = new ArrayList<>();
 
@@ -32,24 +31,40 @@ public class Puzzles extends Observable {
 		this.puzzleHint = puzzleHint;
 		//this.numAttempts = numAttempts;
 	}
-	
+
 	public void setPuzzleDescription(String puzzleDescription) {
 		this.puzzleDescription = puzzleDescription;
 		setChanged();
 		notifyObservers(puzzleDescription);
 	}
-	
+
+	public void setPuzzleHint(String puzzleHint) {
+		this.puzzleHint = puzzleHint;
+		setChanged();
+		notifyObservers(puzzleHint);
+	}
+
 	public String ViewPuzzle() { 
 		try{
-			setPuzzleDescription(getPuzzlesArray().get(getCurrentRoom()-1).getPuzzleDescription());
+			setPuzzleDescription(getPuzzlesArray().get(getCurrentRoom()).getPuzzleDescription());
 		}catch(Exception e){
 			currentRoom ++;
-				//System.out.println(puzzleDescription);
+			//System.out.println(puzzleDescription);
 		}
 		return puzzleDescription;
-		
+
 	}
-	
+
+	public String ViewHint() {
+		try{
+			setPuzzleHint(getPuzzlesArray().get(getCurrentRoom()).getPuzzleHint());
+		}catch(Exception e){
+			currentRoom  ++;
+		}
+		return puzzleHint;
+	}
+
+
 	public void puzzleReader() throws FileNotFoundException {
 		@SuppressWarnings("resource")
 		Scanner reader = new Scanner(new File("puzzle.txt"));
@@ -68,7 +83,7 @@ public class Puzzles extends Observable {
 		}
 	}
 
-	
+
 	@Override
 	public String toString() {
 		return puzzleID + " | " + puzzleDescription + " | " + puzzleAnswer + " | " + puzzleHint + " | ";
@@ -96,19 +111,16 @@ public class Puzzles extends Observable {
 		return puzzleHint;
 	}
 
-	public void setPuzzleHint(String puzzleHint) {
-		this.puzzleHint = puzzleHint;
-	}
-
-	public ArrayList<Puzzles> getPuzzlesArray() {
-		return puzzlesArray;
-	}
 
 	public int getCurrentRoom() {
 		return currentRoom;
 	}
+
 	public void setCurrentRoom(int currentRoom) {
 		this.currentRoom = currentRoom;
+	}
+	public ArrayList<Puzzles> getPuzzlesArray() {
+		return puzzlesArray;
 	}
 	/*public void printPuzzle() {
 		System.out.println("puzzle");
