@@ -10,10 +10,8 @@ public class Controller {
 	Navigation nav = new Navigation();
 
 	public void newGameListener(Button button) {
-		Monster monster = new Monster();
 		button.setOnAction(e -> {
 			// System.out.println("s");
-			//monster.printMonster();
 			puzzle.ViewPuzzle();
 			//monster.ViewMonster();
 

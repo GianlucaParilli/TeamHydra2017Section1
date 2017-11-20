@@ -16,7 +16,8 @@ public class Login extends LostTreasureMain implements Observer {
 	TextField userInput;
 	protected ArrayList<String> usernamesArray = new ArrayList<>();
 	protected ArrayList<Button> arrayButtons = new ArrayList<>();
-
+	boolean isCharacterSelected = false;
+	boolean invalidUsername = true;
 	
 	// ImageView imageView = new ImageView(new Image("logo.png"));
 	Button newGameButton;
@@ -55,51 +56,64 @@ public class Login extends LostTreasureMain implements Observer {
 		vpane.getChildren().add(picturePane());
 		vpane.getChildren().add(newGameButton);
 		vpane.getChildren().add(loadGameButton);
-
 		vpane.getChildren().add(exitButton);
-
+		
 		// control.addButtonListener(loadGameButton);
+
 		newGameButton.setOnAction(e -> {
 
 			Alert popUp = new Alert(AlertType.CONFIRMATION);
 			popUp.getDialogPane().setContent(popUpPane());
-			popUp.setTitle("Results");
+			popUp.setTitle("Create UserName");
 			Optional<ButtonType> result = popUp.showAndWait();
 			ButtonType button = result.orElse(ButtonType.CANCEL);
 			// when ok button pressed on the alert, the user name will be store
 			// into an array
 			// verifies that there is'nt a duplicate user name
+			
+			if(userInput.getText().equals("") )  {
+				Alert errorPopUp = new Alert(AlertType.ERROR);
+				errorPopUp.setHeaderText("You Entered an invalid user name");
+				errorPopUp.show();
+				}
+			else {
+				if (button == ButtonType.OK && isCharacterSelected) {
+					String usernameString = userInput.getText();
+					
+					for (int i = usernamesArray.size() - 1; i > 0; i--) {
+						if (usernamesArray.get(i).equals(userInput.getText())) {
+							// usernamesArray.remove(usernamesArray.size()-1);
+							System.out.println("error duplicate");
+							usernamesArray.remove(userInput.getText());
+						}
 
-			if (button == ButtonType.OK) {
-				String usernameString = userInput.getText();
+					}
+					usernamesArray.add(usernameString);
 
-				for (int i = usernamesArray.size() - 1; i > 0; i--) {
-					if (usernamesArray.get(i).equals(userInput.getText())) {
-						// usernamesArray.remove(usernamesArray.size()-1);
-						System.out.println("error duplicate");
-						usernamesArray.remove(userInput.getText());
+					// writes user name into a txt file for the load feature
+					// writer(usernamesArray);
+
+					// gui = new GUI();
+					try {
+						gui.start(guiStage);
+
+						// remember to close previous stage
+					} catch (InterruptedException e1) {
+						System.out.println("GUI failed to start");
 					}
 
+				} else if(button == ButtonType.OK && isCharacterSelected==false){
+					Alert errorPopUp = new Alert(AlertType.ERROR);
+					errorPopUp.setHeaderText("You did not select a Character");
+					errorPopUp.show();
 				}
-				usernamesArray.add(usernameString);
-
-				// writes user name into a txt file for the load feature
-				// writer(usernamesArray);
-
-				// gui = new GUI();
-				try {
-					gui.start(guiStage);
-
-					// remember to close previous stage
-				} catch (InterruptedException e1) {
-					e1.printStackTrace();
+				else {
+					System.out.println("canceled");
 				}
-
-			} else {
-				System.out.println("canceled");
-			}
-
-		});
+			 
+		}});
+		
+		
 		// load game listener
 		loadGameButton.setOnAction(e -> {
 			if (usernamesArray.size() == 0) {
@@ -178,10 +192,12 @@ public class Login extends LostTreasureMain implements Observer {
 		//setCharacterDescription("Archeologist");
 		archeologistButton.setOnAction(e->{
 			Login.gui.setCharacter("You are an Archeologist");
+			isCharacterSelected = true;
 		});
 		thiefButton.setOnAction(e->{
 			Login.gui.setCharacter("You are a Thief");
-			
+			isCharacterSelected = true;
+
 		});
 		         
 

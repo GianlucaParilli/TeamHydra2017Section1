@@ -90,11 +90,7 @@ public class GUI extends Login implements Observer {
 		
 		hint = new Button("View Puzzle Hint");
 		hBox.getChildren().add(hint);
-		
-		Button button2 = new Button("Examine Room");
-		Button button4 = new Button("View Puzzle");
-		Button button3 = new Button("View Monster");
-		Button button1 = new Button("Fight");
+	
 
 		
 		// adds the listener to the button
