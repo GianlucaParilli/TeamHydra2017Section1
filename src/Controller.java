@@ -52,7 +52,7 @@ public class Controller {
 		temp.setId(monster.getMonsterName());
 		temp.setOnAction(e -> {
 			monster.addObserver(LostTreasureMain.gui);
-			monster.ViewMonster();
+			monster.ViewMonster(room.getCurrentRoom());
 		});
 	}
 		public void viewHintListener(Button temp){

@@ -20,7 +20,7 @@ public class Monster extends Observable {
 	public Monster() {
 		try {
 			monsterReader();
-			ViewMonster();
+			//ViewMonster();
 			
 		} catch(FileNotFoundException e){
 			System.out.println("No File Found");
@@ -52,13 +52,10 @@ public class Monster extends Observable {
 		notifyObservers(monsterName);
 	}
 	
-	public String ViewMonster() {
-		try{
-			setMonsterName(getMonstersArray().get(getCurrentRoom()).getMonsterName());
-			currentRoom ++;
-		}catch(Exception e){
-			System.out.println(monsterName);
-		}
+	public String ViewMonster(int currentRoom) {
+		System.out.println(currentRoom);
+			setMonsterName(getMonstersArray().get(currentRoom).getMonsterName());
+			//currentRoom ++;
 		return monsterName;
 		
 	}
@@ -150,7 +147,7 @@ public class Monster extends Observable {
 	
 	
 	public int getCurrentRoom() {
-		return currentRoom +1;
+		return currentRoom ;
 		
 	}
 	public void setCurrentRoom(int currentRoom) {
