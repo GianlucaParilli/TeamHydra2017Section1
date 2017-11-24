@@ -43,20 +43,19 @@ public class Monster extends Observable {
 	
 	public void setMonsterDescription(String monsterDescription) {
 		this.monsterDescription = monsterDescription;
-		
+		setChanged();
+		notifyObservers(monsterDescription);
 	}
 	
 	public void setMonsterName(String monsterName) {
 		this.monsterName = monsterName;
-		setChanged();
-		notifyObservers(monsterName);
+	
 	}
 	
 	public String ViewMonster(int currentRoom) {
 		System.out.println(currentRoom);
-			setMonsterName(getMonstersArray().get(currentRoom).getMonsterName());
-			//currentRoom ++;
-		return monsterName;
+			setMonsterDescription(getMonstersArray().get(currentRoom).getMonsterDescription());
+		return monsterDescription;
 		
 	}
 	
@@ -158,8 +157,5 @@ public class Monster extends Observable {
 	public ArrayList<Monster> getMonstersArray() {
 		return monstersArray;
 	}
-
-
-
 	
 }

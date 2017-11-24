@@ -1,62 +1,62 @@
 M1
+Bandit	
 Watch out! You have encountered a Bandit! Fight him to get to the next room!
-Robber belonging to a pirate organization
 10 EXP
 10
 50
 40
 Sword and Ammo
 M2
+Stone Guard Boss
 Watch out! You have encountered a Stone Guard Boss with a body made of concrete boulders. Choose to Fight or Flee.
-Large stone like create with two arms and legs made of concrete boulders
 50 EXP
 25
 50
 10%
 Shield body armor
 M3
+Human Skeleton Warrior 
 Heads up! An ancient Human Skeleton Warrior has resurrected from the dead and is coming towards you! Choose to Fight or Flee.
-Ancient warriors resurrected from the dead 
 10 EXP
 10
 50
 40%
 Spear and shield
 M4
+Bat Eye 
 Take Cover! A flying Bat Eye is flying towards you! Choose to Fight or Flee.
-One eyed flying bat
 5 EXP
 5
 20
 10
 Bat meat
 M5
+Mummies 
 Watch out! Some Mummies are headed your way! Choose to Fight or Flee.
-Human wrapped monsters
 10 EXP
 10
 50
 40%
 Cotton wrap
 M6
+Mimic		
 Look twice, but don't be fooled! You have encountered a Mimic of a Treasure Chest! Choose to Fight or Flee.
-Monster Treasure Chest 
 30 EXP
 20
 50
 50%
 Bandages and healing potion
 M7
+Anubis Boss 
 You are close to the treasure! An Anubis Boss has reached your path! Choose to Fight or Flee.
-A boss whose job is to guard the treasure
 100 EXP
 40
 500
 30%
 Sword,shield,spear,and armor
 M8
-There's a Lizard Warrior afoot! Choose to Fight or Flee.
-Armored Lizard
+Lizard Warrior 
+There's a Lizard Warrior a foot! Choose to Fight or Flee.
 30 EXP
 50
 60

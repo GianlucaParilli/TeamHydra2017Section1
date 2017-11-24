@@ -7,14 +7,12 @@ public class Controller {
 	Monster monster = new Monster();
 	Rooms room = new Rooms();
 	Login login = new Login();
+	Items item = new Items();
 	Navigation nav = new Navigation();
 
 	public void newGameListener(Button button) {
 		button.setOnAction(e -> {
-			// System.out.println("s");
-			puzzle.ViewPuzzle();
-			//monster.ViewMonster();
-
+			
 		});
 	}
 
@@ -43,13 +41,13 @@ public class Controller {
 		temp.setId(puzzle.getPuzzleDescription());
 		temp.setOnAction(e -> {
 			puzzle.addObserver(LostTreasureMain.gui);
-			puzzle.ViewPuzzle();
+			puzzle.ViewPuzzle(room.getCurrentRoom());
 
 		});
 	}
 
 	public void viewMonsterListener(Button temp){
-		temp.setId(monster.getMonsterName());
+		temp.setId(monster.getMonsterDescription());
 		temp.setOnAction(e -> {
 			monster.addObserver(LostTreasureMain.gui);
 			monster.ViewMonster(room.getCurrentRoom());
@@ -59,10 +57,26 @@ public class Controller {
 			temp.setId(puzzle.getPuzzleHint());
 			temp.setOnAction(e -> {
 				puzzle.addObserver(LostTreasureMain.gui);
-				puzzle.ViewHint();
+				puzzle.ViewHint(room.getCurrentRoom());
+			});
+		}
+		public void viewAnswerListener(Button temp){
+			temp.setId(puzzle.getPuzzleAnswer());
+			temp.setOnAction(e -> {
+				puzzle.addObserver(LostTreasureMain.gui);
+				puzzle.ViewAnswer(room.getCurrentRoom());
 			});
 		}
 
+		public void ViewItemListener(Button temp){
+			temp.setId(item.getItemDescription());
+			temp.setOnAction(e -> {
+				item.addObserver(LostTreasureMain.gui);
+				item.viewItems(room.getCurrentRoom());
+			});
+			
+		}
+		
 	
 //refreshes the map pane
 //re populates the drop-down with the available rooms
