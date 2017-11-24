@@ -16,6 +16,7 @@ public class Rooms extends Observable {
 	private String availableRoom;
 	private String item;
 	private String monster;
+	private String puzzleID;
 	private String randomProbability;
 	private boolean isLocked;
 	private int numRoomID;
@@ -38,13 +39,14 @@ public class Rooms extends Observable {
 		}
 	}
 
-	public Rooms(String roomID, int numRoomID, String roomName, String roomDescription, String availableRoom, String monster, String item, String randomProbability, boolean isLocked) {
+	public Rooms(String roomID, int numRoomID, String roomName, String roomDescription, String availableRoom, String monster, String puzzleID, String item, String randomProbability, boolean isLocked) {
 		this.roomID = roomID;
 		this.numRoomID = numRoomID;
 		this.roomName = roomName;
 		this.roomDescription = roomDescription;
 		this.availableRoom = availableRoom;
 		this.monster = monster;
+		this.puzzleID = puzzleID;
 		this.item = item;
 		this.randomProbability = randomProbability;
 		this.isLocked = isLocked;
@@ -104,11 +106,12 @@ public class Rooms extends Observable {
 			String puzzle = reader.nextLine();
 			String item = reader.nextLine();
 			String monster = reader.nextLine();
+			String puzzleID = reader.nextLine();
 			String randomProbability = reader.nextLine();
 			String lockedString = reader.nextLine();
 			boolean isLocked = Boolean.parseBoolean(lockedString);//reader.nextBoolean();
 
-			Rooms room = new Rooms(roomID, roomNumID, roomName, roomDescription, puzzle, item, monster, randomProbability, isLocked);
+			Rooms room = new Rooms(roomID, roomNumID, roomName, roomDescription, puzzle, item, monster, puzzleID, randomProbability, isLocked);
 			roomsArray.add(room);
 		}
 		//System.out.println("" + roomsArray.get(0).roomDescription);
