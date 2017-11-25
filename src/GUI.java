@@ -26,7 +26,7 @@ import javafx.stage.Stage;
 
 public class GUI extends Login implements Observer {
 	Button examine, goButton, searchRoom, fightMonster, 
-	fleeMonster, examineMonster, viewPuzzle, answerPuzzle, hintPuzzle;
+	fleeMonster, examineMonster, viewPuzzle, answerPuzzle, pickupItem, hintPuzzle;
 	static Stage guiStage = new Stage();
 	Label descriptionText;
 	ImageView mapView;
@@ -97,11 +97,14 @@ public class GUI extends Login implements Observer {
 				+ "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
 		searchRoom =  new Button("Search Room");
 		examine = new Button("Examine Room");
+		pickupItem = new Button("Pickup Item");
 		hBox.getChildren().add(examine);
 		hBox.getChildren().add(searchRoom);
+		hBox.getChildren().add(pickupItem);
 		//adding the action listener from the controller class
 		control.examineRoomListener(examine);
 		control.ViewItemListener(searchRoom);
+		control.pickupItemListener(pickupItem);
 
 		return hBox;
 	}
