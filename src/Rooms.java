@@ -171,6 +171,12 @@ public class Rooms extends Observable {
 		errorPopUp.setHeaderText("The Room " + lockedRoom + " is locked");
 		errorPopUp.show();
 	}
+	
+	public void doorUnlockedPopUp(String lockedRoom) {
+		Alert errorPopUp = new Alert(AlertType.INFORMATION);
+		errorPopUp.setHeaderText("The Room " + lockedRoom + " is now unlocked!");
+		errorPopUp.show();
+	}
 
 	@Override
 	public String toString() {
