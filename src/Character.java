@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Observable;
 
 public class Character extends Observable{
@@ -6,6 +7,7 @@ public class Character extends Observable{
 	public String charName;
 	public String charDescription;
 	public String charHealth;
+	private static ArrayList<Items> inventory = new ArrayList<>();
 	
 	public Character(String charID, String charName, String charDescription, String charHealth){
 		
@@ -13,7 +15,7 @@ public class Character extends Observable{
 		this.charName = charName;
 		this.charDescription = charDescription;
 		this.charHealth = charHealth;
-		
+				
 	}
 
 	public String getCharID() {
@@ -48,6 +50,13 @@ public class Character extends Observable{
 		this.charHealth = charHealth;
 	}
 
+	public static ArrayList<Items> getInventory() {
+		return inventory;
+	}
+
+	public static void setInventory(ArrayList<Items> inventory) {
+		Character.inventory = inventory;
+	}
 	
 	
 }
