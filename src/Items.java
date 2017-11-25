@@ -20,7 +20,15 @@ public class Items extends Observable {
 	private String itemUsage;
 	private String itemStrength;
 	private static ArrayList<Items> itemsArray = new ArrayList<>();
+	public static ArrayList<Items> inventory = new ArrayList<>();
 	
+	public static ArrayList<Items> getInventory() {
+		return inventory;
+	}
+
+	public static void setInventory(ArrayList<Items> inventory) {
+		Items.inventory = inventory;
+	}
 
 	public Items( String itemID, String itemName, String itemDescription, String itemType, String itemUsage, String itemStrength ){
 		this.itemID = itemID;
@@ -138,5 +146,10 @@ public class Items extends Observable {
 	public String getItemName() {
 		return itemName;
 	}
-
+	
+	@Override
+	public String toString() {
+		return itemDescription;
+		
+	}
 }
