@@ -82,7 +82,7 @@ public class Items extends Observable {
 
 	public void itemsReader() throws FileNotFoundException {
 		@SuppressWarnings("resource")
-		Scanner reader = new Scanner(new File("artifacts.txt"));
+		Scanner reader = new Scanner(new File("artifact.txt"));
 		;
 
 		while(reader.hasNext()){
@@ -99,8 +99,7 @@ public class Items extends Observable {
 	}
 
 	private ArrayList<Items> getitemsArray() {
-		// TODO Auto-generated method stub
-		return null;
+		return itemsArray;
 	}
 
 	public String getItemID() {
