@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Optional;
-
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -96,13 +95,11 @@ public class GUI extends Login implements Observer {
 		HBox hBox = new HBox(5);
 		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
 				+ "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
-
+		searchRoom =  new Button("Search Room");
 		examine = new Button("Examine Room");
 		hBox.getChildren().add(examine);
-
-		searchRoom =  new Button("Search Room");
 		hBox.getChildren().add(searchRoom);
-
+		//adding the action listener from the controller class
 		control.examineRoomListener(examine);
 		control.ViewItemListener(searchRoom);
 
@@ -227,7 +224,7 @@ public class GUI extends Login implements Observer {
 		return hBox;
 	}
 
-	private HBox mapPane() {
+	public HBox mapPane() {
 		HBox hBox = new HBox(15);
 		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
 				+ "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
@@ -236,6 +233,7 @@ public class GUI extends Login implements Observer {
 		mapView.setFitHeight(300);
 		mapView.setFitWidth(300);
 		hBox.getChildren().add(mapView);
+		//hBox.setVisible(false);
 		return hBox;
 	}
 
@@ -282,16 +280,9 @@ public class GUI extends Login implements Observer {
 		for(Rooms temp : room.getRoomsArray()){
 			roomNameArray.add(temp.getRoomName());
 		}
-		//roomArray.add("Guards Quarters A");
-		//roomArray.add("Guards Quarters B");
-		//roomArray.add("Guards Quarters C");
-		//roomArray.add("Guards Quarters D");
-		//roomArray.add("Guards Quarters E");
-		//roomArray.add("Guards Quarters F");
-		//roomArray.add("Guards Quarters G");
-		//roomArray.add("Guards Quarters H");
 
 		roomsDropDown.getItems().addAll(roomNameArray);
+		roomsDropDown.setPromptText("Entrance Hall");
 		hBox.getChildren().add(text);
 		hBox.getChildren().add(roomsDropDown);
 		hBox.getChildren().add(goButton);

@@ -84,6 +84,7 @@ public class Controller {
 		public void attactMonsterListener(Button attack) {
 			attack.setOnAction(e->{
 				System.out.println("you have attacked the monster");
+				LostTreasureMain.gui.mapPane().setVisible(true);
 			});
 		}
 		

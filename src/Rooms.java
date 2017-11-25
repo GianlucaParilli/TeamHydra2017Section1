@@ -154,6 +154,8 @@ public class Rooms extends Observable {
 
 				}
 				Login.gui.getRoomsDropDown().getItems().addAll(roomNameArray);
+				Login.gui.getRoomsDropDown().setPromptText(tempAvailable.getRoomName());
+
 
 			}		
 		}	
