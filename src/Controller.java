@@ -38,6 +38,15 @@ public class Controller {
 		});
 	}
 	
+	public void pickupItemListener(Button temp) {
+		temp.setId(item.getItemID() + "Added to Inventory");
+		temp.setOnAction(e -> {
+			item.addObserver(LostTreasureMain.gui);
+			item.viewItems(room.getCurrentRoom());
+			Character.getInventory().add(item);
+		});
+	}
+	
 	public void viewPuzzleListener(Button temp){
 		temp.setId(puzzle.getPuzzleDescription());
 		temp.setOnAction(e -> {
@@ -102,6 +111,9 @@ public class Controller {
 			for(Rooms roomTemp : room.getRoomsArray()){
 				if(roomTemp.getRoomName().equals(dropdown)){
 					if(roomTemp.isLocked() == true){
+						if(Character.getInventory().contains(item)) {
+							roomTemp.setLocked(item.unlockDoor());
+						}
 						room.loadPopUp(roomTemp.getRoomName());
 					
 						break;
