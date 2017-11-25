@@ -53,11 +53,14 @@ public class Items extends Observable {
 	}
 	
 	public void pickupItem() {
-		
 	}
 	
 	public void dropItem() {
 		
+	}
+	
+	public boolean unlockDoor() {
+		return false;
 	}
 
 	public void setItemDescription(String itemDescription) {
@@ -74,7 +77,7 @@ public class Items extends Observable {
 
 
 	String viewItems(int currentRoom){
-		System.out.println(currentRoom);
+		System.out.println(getitemsArray().get(currentRoom).getItemDescription());
 		setItemDescription(getitemsArray().get(currentRoom).getItemDescription());
 		return itemDescription;
 	}
