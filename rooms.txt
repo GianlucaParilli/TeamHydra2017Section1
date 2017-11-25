@@ -3,6 +3,7 @@ Entrance Hall
 Description: A large, rectangular room with the skeletons of the men sworn to guard the Kings treasure strewn about the ground. There is a large, metal door on the southern end of the room, and four small stone archways on the east and west ends of the room.
 r1, r2, r3, r4, r5, r6, r7, r8, r9
 M1
+P1
 none
 8
 false
@@ -11,7 +12,8 @@ Guards Quarters A
 Description: A small room that once served as a guards living quarters. There is a stone bed and a decrepit wooden shelf.
 r0, r2
 M1
-K1(random), W5
+P1
+K1, W5
 0
 false
 r2
@@ -19,7 +21,8 @@ Guards Quarters B
 Description: A small room that once served as a guards living quarters. There is a decaying skeleton lying on a stone bed.
 r1, r2, r3
 M1
-K1(random)
+P1
+K1
 0
 false
 r3
@@ -27,7 +30,8 @@ Guards Quarters C
 Description: A small room that once served as a guards living quarters. An feeble, rusty sword and shield hang on the wall.
 r3, r4, r5
 M1
-K1(random)
+P1
+K1
 0
 false
 r4
@@ -35,7 +39,8 @@ Guards Quarters D
 Description: A small room that once served as a guards living quarters. A skeleton is sitting in a wooden chair collapsed over a wooden table. You notice something in its hand.
 r5, r6
 M1
-N1, K1(random)
+P1
+N1, K1
 0
 false
 r5
@@ -43,7 +48,8 @@ Guards Quarters E
 Description: A small room that once served as a guards living quarters. A rat scurries through a small crack in the wall as you enter.
 r7, r8
 M1
-K1(random), H1
+P1
+K1, H1
 0
 false
 r6
@@ -51,7 +57,8 @@ Guards Quarters F
 Description: A small room that once served as a guards living quarters. There is a stone bed lined with rotten leather. The smell is almost unbearable. 
 r8, r9, r10
 M1
-K1(random), W5
+P1
+K1, W5
 0
 false
 r7
@@ -59,7 +66,8 @@ Guards Quarters G
 Description: A small room that once served as a guards living quarters. It seems like someone lit a fire in here. Everything is charred and covered in ash.
 r10, r11, r12
 M1
-K1(random)
+P1
+K1
 0
 false
 r8
@@ -67,7 +75,8 @@ Guards Quarters H
 Description: A small room that once served as a guards living quarters. Rotten, unreadable papers cover the dusty, stone floor.
 r12, r13
 M1
-K1(random), H1
+P1
+K1, H1
 0
 false
 r9
@@ -75,6 +84,7 @@ Main Hallway
 Description: Hallway with dusty old carpet, cracked walls, dusty shelves infested with cobwebs, ripped couches.
 L1, r14
 M1
+none
 none
 0
 true
@@ -84,6 +94,7 @@ Description: A room with with six sides. This room has two doors, one located to
 r14, r15, r17, L2
 M1
 none
+none
 0
 false
 r11
@@ -92,6 +103,7 @@ Description: Hallway with dusty shelves and couches. Has candles lit for light a
 r15, r16
 M1
 none
+none
 0
 false
 r12
@@ -99,6 +111,7 @@ West Chamber
 Description: A chamber with ancient artifacts, shelves, tables, chairs. 
 r16
 M1
+P2
 K2
 0
 false
@@ -108,6 +121,7 @@ Description: A hallway with a lit torch will with cobwebs and rats running aroun
 r17, r18
 M1
 none
+none
 0
 false
 r14
@@ -115,6 +129,7 @@ East Chamber
 Description: A chamber with book shelves, tables, cobwebs, old ripped scripts and skeletons. 
 r18
 M1
+p3
 K3
 0
 false
@@ -124,6 +139,7 @@ Description: A dark stoned hallway with glowworms on the ceiling.
 L2, r19
 M1
 none
+none
 0
 true
 r16
@@ -132,6 +148,7 @@ Description: Wide open room with a hole in the middle with one room in each corn
 r19, r20, r21, r22, r23, L3
 M2
 none
+none
 0
 false
 r17
@@ -139,6 +156,7 @@ Armory
 Description: A room with knives, swords, bow and arrows, and spears. You see a large wooden chest with a riddle written around the lock.
 r20
 M1
+p4
 W6
 0
 false
@@ -147,6 +165,7 @@ Switch Room
 Description: A small room with a large mechanical device in the center. There is an ornate metal lever in the middle of it. 
 r21
 M1
+p5
 none
 0
 false
@@ -155,6 +174,7 @@ Alchemy Lab
 Description: Room with various herbs potions and remedies. There are empty flasks and laboratory equipment all over the room.
 r22
 M1
+none
 H1x3, H2x5
 0
 false
@@ -163,6 +183,7 @@ Closet
 Description: A small closet with dusty, ripped shirts, pants, and hats.
 r23
 M1
+none
 S1
 0
 false
@@ -172,6 +193,7 @@ Description: A large rectangular chamber with an elevator to the upper levels in
 L3, r24, r26, L4
 M3, M4, M5
 none
+none
 0
 false
 r22
@@ -180,6 +202,7 @@ Description: A pitch-black hallway. The only thing you can see is a small beam o
 r24, r25
 M3, M4, M5
 none
+none
 0
 false
 r23
@@ -187,6 +210,7 @@ West Dungeon
 Description: Dungeon room with skulls, prisoners bones, chains, and metal shackles.
 r25
 M3, M4, M5
+p6
 K4
 0
 false
@@ -196,6 +220,7 @@ Description: A hallway with collapsed ceilings, cracked walls, cobwebs, bits and
 r26, r27
 M3, M4, M5
 none
+none
 0
 false
 r25
@@ -203,6 +228,7 @@ East Dungeon
 Description: Dungeon room with skulls, prisoners bones, chains, and metal shackles.
 r27
 M6
+p7
 K5
 0
 false
@@ -212,6 +238,7 @@ Description: An underground fork tunnel that has human remains stacked against t
 L4, r28, r29
 M3, M4, M5
 none
+none
 0
 true
 r27
@@ -219,6 +246,7 @@ West Burial Chamber
 Description: A chamber that is used as a grave for the Kings nobles and the human remains are placed on manmade beds within the walls. 
 r28, r30
 M3, M4, M5
+p8
 K6
 0
 false
@@ -227,6 +255,7 @@ East Burial Chamber
 Description: A chamber that is used as a grave for the Kings nobles and the human remains are placed on manmade beds within the walls.
 r29, r31
 M8
+none
 K7
 0
 false
@@ -235,6 +264,7 @@ Golden Hallway
 Description: Gold hallway with shiny gold chairs, picture frames, shelves, books, gold doors and door knobs
 r30, L5
 M3, M4, M5
+none
 H2
 0
 false
@@ -243,6 +273,7 @@ Path of Statues
 Description: This hallway is many statues of the king and his trustworthy noblemen made of shiny silver granite 
 r31, L6
 M3, M4, M5
+none
 H2
 0
 false
@@ -251,6 +282,7 @@ Treasure Room
 Description: A large room filled with ancient gold treasure that belongs to the King.
 L5, L6
 M6
+none
 none
 0
 true
