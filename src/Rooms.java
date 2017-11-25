@@ -77,7 +77,7 @@ public class Rooms extends Observable {
 
 	public String SearchRoom() {
 		try{
-			setItem(getRoomsArray().get(getCurrentRoom()).getItem());
+			setRoomDescription(getRoomsArray().get(getCurrentRoom()).getItem());
 			System.out.println(item);
 		}catch(Exception e){
 

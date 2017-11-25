@@ -38,15 +38,6 @@ public class Controller {
 		});
 	}
 	
-	public void searchRoomListener(Button temp) {
-		//System.out.println("examine room");
-		temp.setId(room.getItem());
-		temp.setOnAction(e -> {
-			room.addObserver(LostTreasureMain.gui);
-			room.SearchRoom();
-			
-		});
-	}
 	public void viewPuzzleListener(Button temp){
 		temp.setId(puzzle.getPuzzleDescription());
 		temp.setOnAction(e -> {
