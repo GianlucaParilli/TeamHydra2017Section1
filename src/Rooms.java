@@ -74,12 +74,17 @@ public class Rooms extends Observable {
 
 		return bool;
 	}
-	public void ExitRoom() { //Placeholder
 
-	}
-	public void SearchRoom() { //Placeholder
+	public String SearchRoom() {
+		try{
+			setItem(getRoomsArray().get(getCurrentRoom()).getItem());
+			System.out.println(item);
+		}catch(Exception e){
 
+		}
+		return item;
 	}
+	
 	public void randomPuzzle(){
 		Random rand = new Random();
 
@@ -183,6 +188,8 @@ public class Rooms extends Observable {
 	}
 	public void setItem(String item) {
 		this.item = item;
+		setChanged();
+		notifyObservers(item);
 	}
 	public String getMonster() {
 		return monster;
