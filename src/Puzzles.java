@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -10,13 +11,11 @@ public class Puzzles extends Observable {
 	private String puzzleDescription;
 	private String puzzleAnswer;
 	private String puzzleHint;
-	private int currentRoom = 0;
 	private static ArrayList<Puzzles> puzzlesArray = new ArrayList<>();
 
 	public Puzzles() {
 		try {
 			puzzleReader();
-			ViewPuzzle();
 
 		} catch(FileNotFoundException e){
 			System.out.println("No File Found");
@@ -29,7 +28,7 @@ public class Puzzles extends Observable {
 		this.puzzleDescription = puzzleDescription;
 		this.puzzleAnswer = puzzleAnswer;
 		this.puzzleHint = puzzleHint;
-		//this.numAttempts = numAttempts;
+
 	}
 
 	public void setPuzzleDescription(String puzzleDescription) {
@@ -43,27 +42,33 @@ public class Puzzles extends Observable {
 		setChanged();
 		notifyObservers(puzzleHint);
 	}
+	
+	public void setPuzzleAnswer(String puzzleAnswer) {
+		this.puzzleAnswer = puzzleAnswer;
+		setChanged();
+		notifyObservers(puzzleAnswer);
+	}
 
-	public String ViewPuzzle() { 
-		try{
-			setPuzzleDescription(getPuzzlesArray().get(getCurrentRoom()).getPuzzleDescription());
-		}catch(Exception e){
-			currentRoom ++;
-			//System.out.println(puzzleDescription);
-		}
+	public String ViewPuzzle(int currentRoom) { 
+		System.out.println(currentRoom);
+		setPuzzleDescription(getPuzzlesArray().get(currentRoom).getPuzzleDescription());
 		return puzzleDescription;
 
 	}
 
-	public String ViewHint() {
-		try{
-			setPuzzleHint(getPuzzlesArray().get(getCurrentRoom()).getPuzzleHint());
-		}catch(Exception e){
-			currentRoom  ++;
-		}
+	public String ViewHint(int currentRoom) {
+		System.out.println(currentRoom);
+		setPuzzleHint(getPuzzlesArray().get(currentRoom).getPuzzleHint());
 		return puzzleHint;
 	}
+	
+	public String ViewAnswer(int currentRoom){
+		System.out.println(currentRoom);
+		setPuzzleAnswer(getPuzzlesArray().get(currentRoom).getPuzzleAnswer());
+		return puzzleAnswer;
 
+	}
+	
 
 	public void puzzleReader() throws FileNotFoundException {
 		@SuppressWarnings("resource")
@@ -82,7 +87,6 @@ public class Puzzles extends Observable {
 
 		}
 	}
-
 
 	@Override
 	public String toString() {
@@ -103,36 +107,14 @@ public class Puzzles extends Observable {
 	public String getPuzzleAnswer() {
 		return puzzleAnswer;
 	}
-	public void setPuzzleAnswer(String puzzleAnswer) {
-		this.puzzleAnswer = puzzleAnswer;
-	}
 
 	public String getPuzzleHint() {
 		return puzzleHint;
 	}
 
-
-	public int getCurrentRoom() {
-		return currentRoom;
-	}
-
-	public void setCurrentRoom(int currentRoom) {
-		this.currentRoom = currentRoom;
-	}
 	public ArrayList<Puzzles> getPuzzlesArray() {
 		return puzzlesArray;
 	}
-	/*public void printPuzzle() {
-		System.out.println("puzzle");
-	}
-	 */
-	/*public int getNumAttempts() {
-		return numAttempts;
-	}
-	 */
-	/*	public void setNumAttempts(int numAttempts) {
-		this.numAttempts = numAttempts;
-	}
-	 */
+
 
 }

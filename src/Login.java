@@ -18,14 +18,14 @@ public class Login extends LostTreasureMain implements Observer {
 	protected ArrayList<Button> arrayButtons = new ArrayList<>();
 	boolean isCharacterSelected = false;
 	boolean invalidUsername = true;
-	
+
 	// ImageView imageView = new ImageView(new Image("logo.png"));
 	Button newGameButton;
 	Button loadGameButton;
 	Rooms room = new Rooms();
 	// GUI gui = new GUI();
 
-	
+
 
 	public void start(Stage primaryStage) throws InterruptedException {
 		BorderPane bPane = new BorderPane();
@@ -57,7 +57,7 @@ public class Login extends LostTreasureMain implements Observer {
 		vpane.getChildren().add(newGameButton);
 		vpane.getChildren().add(loadGameButton);
 		vpane.getChildren().add(exitButton);
-		
+
 		// control.addButtonListener(loadGameButton);
 
 		newGameButton.setOnAction(e -> {
@@ -70,16 +70,16 @@ public class Login extends LostTreasureMain implements Observer {
 			// when ok button pressed on the alert, the user name will be store
 			// into an array
 			// verifies that there is'nt a duplicate user name
-			
+
 			if(userInput.getText().equals("") )  {
 				Alert errorPopUp = new Alert(AlertType.ERROR);
 				errorPopUp.setHeaderText("You Entered an invalid user name");
 				errorPopUp.show();
-				}
+			}
 			else {
 				if (button == ButtonType.OK && isCharacterSelected) {
 					String usernameString = userInput.getText();
-					
+
 					for (int i = usernamesArray.size() - 1; i > 0; i--) {
 						if (usernamesArray.get(i).equals(userInput.getText())) {
 							// usernamesArray.remove(usernamesArray.size()-1);
@@ -110,10 +110,10 @@ public class Login extends LostTreasureMain implements Observer {
 				else {
 					System.out.println("canceled");
 				}
-			 
-		}});
-		
-		
+
+			}});
+
+
 		// load game listener
 		loadGameButton.setOnAction(e -> {
 			if (usernamesArray.size() == 0) {
@@ -181,8 +181,10 @@ public class Login extends LostTreasureMain implements Observer {
 		hBox1.getChildren().add(userInput);
 		vBox.getChildren().add(hBox1);
 		hBox2.setPadding(new Insets(15, 15, 15, 15));
-	    RadioButton archeologistButton = new RadioButton("Archeologist");
+
+		RadioButton archeologistButton = new RadioButton("Archeologist");
 		RadioButton thiefButton = new RadioButton("Thief");
+		
 		hBox2.getChildren().add(archeologistButton);
 		hBox2.getChildren().add(thiefButton);
 		ToggleGroup toggleGroup = new ToggleGroup();;
@@ -190,6 +192,7 @@ public class Login extends LostTreasureMain implements Observer {
 		archeologistButton.setToggleGroup(toggleGroup);
 		thiefButton.setToggleGroup(toggleGroup);
 		//setCharacterDescription("Archeologist");
+
 		archeologistButton.setOnAction(e->{
 			Login.gui.setCharacter("You are an Archeologist");
 			isCharacterSelected = true;
@@ -199,7 +202,7 @@ public class Login extends LostTreasureMain implements Observer {
 			isCharacterSelected = true;
 
 		});
-		         
+
 
 		vBox.getChildren().add(hBox2);
 

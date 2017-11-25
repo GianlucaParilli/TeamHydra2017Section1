@@ -1,40 +1,59 @@
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Optional;
+
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class GUI extends Login implements Observer {
-	Button examine, goButton, searchRoom, fightMonster, fleeMonster, examineMonster, viewPuzzle, answerPuzzle, hintPuzzle;
+	Button examine, goButton, searchRoom, fightMonster, 
+	fleeMonster, examineMonster, viewPuzzle, answerPuzzle, hintPuzzle;
 	static Stage guiStage = new Stage();
 	Label descriptionText;
 	ImageView mapView;
 	Rooms room = new Rooms();
+	Puzzles puzzles = new Puzzles();
 	Monster monsters = new Monster();
 	Navigation nav = new Navigation();
 	Controller control = new Controller();
 	private String character;
+	private String correctAnswer;
 	private ComboBox<String> roomsDropDown = new ComboBox<>();
 	private String currentPicture = "0";
+    boolean isCorrectAnswerSelected = true;
+    boolean isSelected = true;
 
+    
 	public ComboBox<String> getRoomsDropDown() {
 		return roomsDropDown;
 	}
 
 	public void setCharacter(String character) {
 		this.character = character;
+	}
+	
+	public void setCorrectAnswer(String correctAnswer){
+		this.correctAnswer = correctAnswer;
 	}
 
 	public void start(Stage primaryStage) throws InterruptedException {
@@ -65,7 +84,7 @@ public class GUI extends Login implements Observer {
 		pane.add(healthPane(), 0, 2);
 		pane.add(exitPane(), 2, 5);
 		return pane;
-		
+
 	}
 
 	/*
@@ -77,23 +96,24 @@ public class GUI extends Login implements Observer {
 		HBox hBox = new HBox(5);
 		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
 				+ "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
-		examine = new Button("Examine Room");
-		searchRoom =  new Button("Search Room");
 
+		examine = new Button("Examine Room");
 		hBox.getChildren().add(examine);
+
+		searchRoom =  new Button("Search Room");
 		hBox.getChildren().add(searchRoom);
-		
-		// adds the listener to the button
+
 		control.examineRoomListener(examine);
-		
-		
+		control.ViewItemListener(searchRoom);
+
 		return hBox;
 	}
-	
+
 	private HBox monsterButtonHPane() {
 		HBox hBox = new HBox(5);
 		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
 				+ "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
+
 		examineMonster = new Button("Examine Monster");
 		fightMonster =  new Button("Fight Monster");
 		fleeMonster = new Button("Flee Monster");
@@ -101,34 +121,93 @@ public class GUI extends Login implements Observer {
 		hBox.getChildren().add(examineMonster);
 		hBox.getChildren().add(fightMonster);
 		hBox.getChildren().add(fleeMonster);
-		
+
 		// adds the listener to the button
 		control.viewMonsterListener(examineMonster);
-		
+
 		//System.out.println();
-		
+
 		return hBox;
 	}
+
+
+
 	private HBox puzzleButtonHPane() {
 		HBox hBox = new HBox(5);
 		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
 				+ "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
+
 		viewPuzzle = new Button("View Puzzle");
 		answerPuzzle = new Button("Answer Puzzle");
 		hintPuzzle =  new Button("View Hint");
 
-
 		hBox.getChildren().add(viewPuzzle);
 		hBox.getChildren().add(answerPuzzle);
 		hBox.getChildren().add(hintPuzzle);
-		
-		// adds the listener to the button
+
 		control.viewPuzzleListener(viewPuzzle);
 		control.viewHintListener(hintPuzzle);
-		
-		//System.out.println();
+		control.viewAnswerListener(answerPuzzle);
+
+		answerPuzzle.setOnAction(e -> {
+			
+			Alert popUp = new Alert(AlertType.CONFIRMATION);
+			popUp.getDialogPane().setContent(popUpPane());
+			popUp.setTitle("Answer Puzzle");
+			
+			Optional<ButtonType> result = popUp.showAndWait();
+			ButtonType button = result.orElse(ButtonType.CANCEL);
+			
+		});
+			
 		
 		return hBox;
+	}
+	
+	private VBox popUpPane() {
+		VBox vBox = new VBox();
+		HBox hBox1 = new HBox(15);
+		HBox hBox2 = new HBox(30);
+		hBox1.setPadding(new Insets(15, 15, 15, 15));
+		//Text input = new Text("Enter User Name");
+		//userInput = new TextField();
+		//hBox1.getChildren().add(input);
+		//hBox1.getChildren().add(userInput);
+		vBox.getChildren().add(hBox1);
+		hBox2.setPadding(new Insets(15, 15, 15, 15));
+	
+		
+		RadioButton StarsButton = new RadioButton("Stars");
+		RadioButton TreesButton = new RadioButton("Trees");
+		RadioButton FlowersButton = new RadioButton("Flowers");
+		RadioButton MountainButton = new RadioButton("Mountain");
+	
+		
+		
+		hBox2.getChildren().add(StarsButton);
+		hBox2.getChildren().add(TreesButton );
+		hBox2.getChildren().add(FlowersButton);
+		hBox2.getChildren().add(MountainButton);
+		
+		
+		ToggleGroup toggleGroup = new ToggleGroup();;
+
+		StarsButton.setToggleGroup(toggleGroup);
+		TreesButton.setToggleGroup(toggleGroup);
+		FlowersButton.setToggleGroup(toggleGroup);
+		MountainButton.setToggleGroup(toggleGroup);
+		
+		MountainButton.setOnMouseClicked(e -> {
+			LostTreasureMain.gui.descriptionText.setText("correct!");
+		
+		});
+	
+		
+				
+		vBox.getChildren().add(hBox2);
+	
+		return vBox;
+
 	}
 
 	private HBox descriptionPane() {
@@ -243,7 +322,7 @@ public class GUI extends Login implements Observer {
 
 		if (o instanceof Navigation) {
 			//System.out.println("update nav "+ arg);
-			
+
 			mapView.setImage(new Image("Maps/r" + arg + ".png"));
 		} 
 		else if (o instanceof Rooms) {
@@ -252,16 +331,15 @@ public class GUI extends Login implements Observer {
 			}else if(((Rooms) o).hasExaminedRoom(goButton.isArmed())){
 				System.out.println("f");
 			}
-			
 		}
 		else if( o instanceof Puzzles) {
 			descriptionText.setText(arg.toString());
-			}
-	    else if( o instanceof Monster) {
-		    descriptionText.setText(arg.toString());
-			} 
+		}
+		else if( o instanceof Monster) {
+			descriptionText.setText(arg.toString());
+		} 
 
 	}		
 
-	
-	}
+
+}
