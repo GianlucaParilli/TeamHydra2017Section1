@@ -52,13 +52,6 @@ public class Items extends Observable {
 		
 	}
 	
-	public void pickupItem() {
-	}
-	
-	public void dropItem() {
-		
-	}
-	
 	public boolean unlockDoor() {
 		return false;
 	}
