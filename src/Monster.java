@@ -87,6 +87,9 @@ public class Monster extends Observable {
 				attackPercentage + "|" + artifactsDropped + "|";
 	}
 
+	public void fleeMonster() {
+		System.out.println("you have fleed the moster");
+	}
 	public String getMonsterID() {
 		return monsterID;
 	}

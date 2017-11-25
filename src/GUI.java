@@ -124,7 +124,8 @@ public class GUI extends Login implements Observer {
 
 		// adds the listener to the button
 		control.viewMonsterListener(examineMonster);
-
+		control.fleeMonsterListener(fleeMonster);
+		control.attactMonsterListener(fightMonster);
 		//System.out.println();
 
 		return hBox;
@@ -152,7 +153,7 @@ public class GUI extends Login implements Observer {
 		answerPuzzle.setOnAction(e -> {
 			
 			Alert popUp = new Alert(AlertType.CONFIRMATION);
-			popUp.getDialogPane().setContent(popUpPane());
+			popUp.getDialogPane().setContent(puzzlePopUpPane());
 			popUp.setTitle("Answer Puzzle");
 			
 			Optional<ButtonType> result = popUp.showAndWait();
@@ -164,7 +165,7 @@ public class GUI extends Login implements Observer {
 		return hBox;
 	}
 	
-	private VBox popUpPane() {
+	private VBox puzzlePopUpPane() {
 		VBox vBox = new VBox();
 		HBox hBox1 = new HBox(15);
 		HBox hBox2 = new HBox(30);
@@ -197,7 +198,7 @@ public class GUI extends Login implements Observer {
 		FlowersButton.setToggleGroup(toggleGroup);
 		MountainButton.setToggleGroup(toggleGroup);
 		
-		MountainButton.setOnMouseClicked(e -> {
+		MountainButton.setOnAction(e -> {
 			LostTreasureMain.gui.descriptionText.setText("correct!");
 		
 		});

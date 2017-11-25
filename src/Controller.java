@@ -76,6 +76,17 @@ public class Controller {
 			});
 			
 		}
+		public void fleeMonsterListener(Button flee) {
+			flee.setOnAction(e->{
+				monster.fleeMonster();
+			});
+		}
+		public void attactMonsterListener(Button attack) {
+			attack.setOnAction(e->{
+				System.out.println("you have attacked the monster");
+			});
+		}
+		
 		
 	
 //refreshes the map pane
