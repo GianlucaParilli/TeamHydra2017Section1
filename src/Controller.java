@@ -113,6 +113,8 @@ public class Controller {
 					if(roomTemp.isLocked() == true){
 						if(Character.getInventory().contains(item)) {
 							roomTemp.setLocked(item.unlockDoor());
+							room.doorUnlockedPopUp(roomTemp.getRoomName());
+							break;
 						}
 						room.loadPopUp(roomTemp.getRoomName());
 					
