@@ -70,8 +70,8 @@ public class Items extends Observable {
 
 
 	String viewItems(int currentRoom){
-		System.out.println(getitemsArray().get(currentRoom).getItemDescription());
-		setItemDescription(getitemsArray().get(currentRoom).getItemDescription());
+		System.out.println(getitemsArray().get(currentRoom).getItemName());
+		setItemDescription(getitemsArray().get(currentRoom).getItemName());
 		return itemDescription;
 	}
 
