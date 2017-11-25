@@ -28,6 +28,7 @@ public class GUI extends Login implements Observer {
 	Button examine, goButton, searchRoom, fightMonster, 
 	fleeMonster, examineMonster, viewPuzzle, answerPuzzle, pickupItem, hintPuzzle;
 	static Stage guiStage = new Stage();
+	static Stage inventoryStage = new Stage();
 	Label descriptionText;
 	ImageView mapView;
 	Rooms room = new Rooms();
@@ -255,6 +256,7 @@ public class GUI extends Login implements Observer {
 		bag.setFont(Font.font("Verdana", 20));
 		hBox.getChildren().add(buttonInventory);
 		hBox.getChildren().add(bag);
+		control.showInventoryListener(buttonInventory);
 		return hBox;
 	}
 	private HBox healthPane() {
