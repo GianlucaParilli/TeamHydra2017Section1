@@ -128,7 +128,7 @@ public class GUI extends Login implements Observer {
 		// adds the listener to the button
 		control.viewMonsterListener(examineMonster);
 		control.fleeMonsterListener(fleeMonster);
-		control.attactMonsterListener(fightMonster);
+		control.attackMonsterListener(fightMonster);
 		//System.out.println();
 
 		return hBox;

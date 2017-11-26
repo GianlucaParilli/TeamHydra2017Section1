@@ -97,6 +97,22 @@ public class Controller {
 				puzzle.ViewAnswer(room.getCurrentRoom());
 			});
 		}
+		public void fleeMonsterListener(Button flee) {
+			flee.setOnAction(e->{
+				monster.addObserver(LostTreasureMain.gui);
+				monster.FleeMonster(room.getCurrentRoom());
+				
+			});
+		}
+		public void attackMonsterListener(Button attack) {
+			attack.setOnAction(e->{
+				System.out.println("you have attacked the monster");
+				monster.addObserver(LostTreasureMain.gui);
+				monster.AttackMonster(room.getCurrentRoom());
+				LostTreasureMain.gui.mapPane().setVisible(true);
+				
+			});
+		}
 
 		public void searchRoomListener(Button temp){
 			temp.setId(item.getItemDescription());
@@ -112,17 +128,6 @@ public class Controller {
 				}
 			});
 			
-		}
-		public void fleeMonsterListener(Button flee) {
-			flee.setOnAction(e->{
-				monster.fleeMonster();
-			});
-		}
-		public void attactMonsterListener(Button attack) {
-			attack.setOnAction(e->{
-				System.out.println("you have attacked the monster");
-				LostTreasureMain.gui.mapPane().setVisible(true);
-			});
 		}
 		
 		

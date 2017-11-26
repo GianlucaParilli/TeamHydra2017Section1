@@ -14,6 +14,7 @@ public class Monster extends Observable {
 	private String healthPoints;
 	private String attackPercentage;
 	private String artifactsDropped;
+	private String fleeMonster;
 	private int currentRoom = 0;
 	private static ArrayList<Monster> monstersArray = new ArrayList<>();
 	
@@ -58,8 +59,45 @@ public class Monster extends Observable {
 		return monsterDescription;
 		
 	}
+	public void setAttackPercentage(String attackPercentage) {
+		this.attackPercentage = attackPercentage;
+		setChanged();
+		notifyObservers(attackPercentage);
+		
+	}
+	
+	public void setHealthPoints(String healthPoints) {
+		this.healthPoints = healthPoints;
+	}
+
+	
+	public String AttackMonster(int currentRoom){
+		System.out.println(currentRoom);
+		setAttackPercentage(getMonstersArray().get(currentRoom).getArtifactsDropped());
+		return attackPercentage;
 	
 	
+	}
+	public void setFleeMonster(String fleeMonster) {
+		this.fleeMonster = fleeMonster;
+		System.out.println("You have fled the monster, no experience gained");
+		setChanged();
+		notifyObservers(fleeMonster);
+		
+	}
+	
+	public String FleeMonster(int currentRoom){
+		System.out.println(currentRoom);
+		setFleeMonster("You have fled the monster, no experience gained");
+		return EXP;
+		
+	}
+	
+	/*public void fleeMonster() {
+		 System.out.println("You have fled the monster, no experience gained");
+	}
+	
+	*/
 	public void monsterReader() throws FileNotFoundException {
 		@SuppressWarnings("resource")
 		Scanner reader = new Scanner(new File("monster.txt"));
@@ -87,9 +125,6 @@ public class Monster extends Observable {
 				attackPercentage + "|" + artifactsDropped + "|";
 	}
 
-	public void fleeMonster() {
-		System.out.println("you have fleed the moster");
-	}
 	public String getMonsterID() {
 		return monsterID;
 	}
@@ -127,17 +162,10 @@ public class Monster extends Observable {
 		return healthPoints;
 	}
 
-	public void setHealthPoints(String healthPoints) {
-		this.healthPoints = healthPoints;
-	}
-
 	public String getAttackPercentage() {
 		return attackPercentage;
 	}
 
-	public void setAttackPercentage(String attackPercentage) {
-		this.attackPercentage = attackPercentage;
-	}
 
 	public String getArtifactsDropped() {
 		return artifactsDropped;
@@ -156,6 +184,10 @@ public class Monster extends Observable {
 		this.currentRoom = currentRoom;
 		
 	}
+	public String getFleeMonster() {
+		return fleeMonster;
+	}
+
 	
 	public ArrayList<Monster> getMonstersArray() {
 		return monstersArray;
