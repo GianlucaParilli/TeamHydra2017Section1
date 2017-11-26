@@ -86,7 +86,7 @@ public class Controller {
 			monster.ViewMonster(room.getCurrentRoom());
 		});
 	}
-<<<<<<< HEAD
+
 		public void viewHintListener(Button temp){
 			temp.setId(puzzle.getPuzzleHint());
 			temp.setOnAction(e -> {
@@ -138,62 +138,13 @@ public class Controller {
 	
 //refreshes the map pane
 //re populates the drop-down with the available rooms
-	public void refreshMap(Button temp){
-	
-		temp.setOnAction(e->{
-=======
-
-	public void viewHintListener(Button temp) {
-		temp.setId(puzzle.getPuzzleHint());
-		temp.setOnAction(e -> {
-			puzzle.addObserver(LostTreasureMain.gui);
-			puzzle.ViewHint(room.getCurrentRoom());
-		});
-	}
-
-	public void viewAnswerListener(Button temp) {
-		temp.setId(puzzle.getPuzzleAnswer());
-		temp.setOnAction(e -> {
-			puzzle.addObserver(LostTreasureMain.gui);
-			puzzle.ViewAnswer(room.getCurrentRoom());
-		});
-	}
-
-	public void searchRoomListener(Button temp) {
-		temp.setId(item.getItemDescription());
-		temp.setOnAction(e -> {
-			item.addObserver(LostTreasureMain.gui);
-			item.viewItems(room.getCurrentRoom());
-			for (Rooms roomTemp : room.getRoomsArray()) {
-				if (roomTemp.getRoomName().equals(dropdown)) {
-					roomTemp.setSearched(true);
-					System.out.println(roomTemp.isSearched());
-					room.enableButtons(LostTreasureMain.gui.pickupItem);
-				}
-			}
-		});
-
-	}
-
-	public void fleeMonsterListener(Button flee) {
-		flee.setOnAction(e -> {
-			monster.fleeMonster();
-		});
-	}
-
-	public void attactMonsterListener(Button attack) {
-		attack.setOnAction(e -> {
-			System.out.println("you have attacked the monster");
-			// LostTreasureMain.gui.mapPane().setVisible(true);
-		});
-	}
 
 	// refreshes the map pane
 	// re populates the drop-down with the available rooms
 	public void refreshMap(Button temp) {
 
 		temp.setOnAction(e -> {
->>>>>>> master
+
 			nav.addObserver(LostTreasureMain.gui);
 			dropdown = GUI.gui.getRoomsDropDown().getValue();
 
