@@ -11,6 +11,7 @@ public class Controller {
 	Login login = new Login();
 	Items item = new Items();
 	Navigation nav = new Navigation();
+	String dropdown;
 
 	public void newGameListener(Button button) {
 		button.setOnAction(e -> {
@@ -41,10 +42,18 @@ public class Controller {
 	public void examineRoomListener(Button temp) {
 		//System.out.println("examine room");
 		temp.setId("r"+room.getRoomID());
+
 		temp.setOnAction(e -> {
 			room.addObserver(LostTreasureMain.gui);
 			room.ExamineRoom();
-			
+			for(Rooms roomTemp : room.getRoomsArray()){
+				if(roomTemp.getRoomName().equals(dropdown)){
+					roomTemp.setExamined(true);
+					room.enableButtons(LostTreasureMain.gui.searchRoom);	
+				}
+			}
+				
+
 		});
 	}
 	
@@ -54,6 +63,7 @@ public class Controller {
 			item.addObserver(LostTreasureMain.gui);
 			item.viewItems(room.getCurrentRoom());
 			Items.getInventory().add(item);
+		
 		});
 	}
 	
@@ -88,11 +98,18 @@ public class Controller {
 			});
 		}
 
-		public void ViewItemListener(Button temp){
+		public void searchRoomListener(Button temp){
 			temp.setId(item.getItemDescription());
 			temp.setOnAction(e -> {
 				item.addObserver(LostTreasureMain.gui);
 				item.viewItems(room.getCurrentRoom());
+				for(Rooms roomTemp : room.getRoomsArray()){
+					if(roomTemp.getRoomName().equals(dropdown)){
+						roomTemp.setSearched(true);
+						System.out.println(roomTemp.isSearched());
+						room.enableButtons(LostTreasureMain.gui.pickupItem);	
+					}
+				}
 			});
 			
 		}
@@ -116,7 +133,7 @@ public class Controller {
 	
 		temp.setOnAction(e->{
 			nav.addObserver(LostTreasureMain.gui);
-			String dropdown = GUI.gui.getRoomsDropDown().getValue();
+			 dropdown = GUI.gui.getRoomsDropDown().getValue();
 				
 			for(Rooms roomTemp : room.getRoomsArray()){
 				if(roomTemp.getRoomName().equals(dropdown)){
@@ -124,6 +141,7 @@ public class Controller {
 						if(Items.getInventory().contains(item)) {
 							roomTemp.setLocked(item.unlockDoor());
 							room.doorUnlockedPopUp(roomTemp.getRoomName());
+							System.out.println("is the room locked? " + roomTemp.isLocked());
 							break;
 						}
 						room.loadPopUp(roomTemp.getRoomName());
@@ -136,14 +154,23 @@ public class Controller {
 					GUI.gui.getRoomsDropDown().getItems().clear();//clears the previous drop-down
 					room.availableRoom(room.getCurrentRoom());//calls the available room method wit the room number that user went to
 					//GUI.gui.getRoomsDropDown().getItems().addAll(roomTemp.getRoomIDArray());
-					System.out.println(roomTemp.isLocked());
+					//System.out.println("is the room locked? " + roomTemp.isLocked());
+					System.out.println("is the room examined? " + roomTemp.isExamined());
+					room.enableButtons(LostTreasureMain.gui.examine);
+					
+					if(roomTemp.isExamined()==false) {
+						room.disableButton(LostTreasureMain.gui.searchRoom);
+					}
+					if(roomTemp.isSearched()==false) {
+						room.disableButton(LostTreasureMain.gui.pickupItem);
+					}
+					
 				}
 				
 				//
 			
 			}
 
-			//System.out.println(dropdown);
 
 			room.getCurrentRoom();
 		});

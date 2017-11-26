@@ -6,6 +6,7 @@ import java.util.Random;
 import java.util.Scanner;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 
 
 public class Rooms extends Observable {
@@ -19,6 +20,10 @@ public class Rooms extends Observable {
 	private String puzzleID;
 	private String randomProbability;
 	private boolean isLocked;
+	private boolean isExamined;
+	private boolean isSearched;
+
+
 	private int numRoomID;
 	private int currentRoom;
 	private ArrayList<Rooms> roomsArray = new ArrayList<>();
@@ -39,7 +44,8 @@ public class Rooms extends Observable {
 		}
 	}
 
-	public Rooms(String roomID, int numRoomID, String roomName, String roomDescription, String availableRoom, String monster, String puzzleID, String item, String randomProbability, boolean isLocked) {
+	public Rooms(String roomID, int numRoomID, String roomName, String roomDescription, String availableRoom, String monster, 
+			     String puzzleID, String item, String randomProbability, boolean isLocked, boolean isExamined, boolean isSearched) {
 		this.roomID = roomID;
 		this.numRoomID = numRoomID;
 		this.roomName = roomName;
@@ -50,6 +56,7 @@ public class Rooms extends Observable {
 		this.item = item;
 		this.randomProbability = randomProbability;
 		this.isLocked = isLocked;
+		this.isExamined = isExamined;
 	}
 
 	public void setRoomDescription(String roomDescriptionn) {
@@ -70,6 +77,7 @@ public class Rooms extends Observable {
 
 		return roomDescription;
 	}
+	//used to make sure the update method in the gui is updating the mvc properly 
 	public boolean hasExaminedRoom(boolean bool){
 
 		return bool;
@@ -97,6 +105,12 @@ public class Rooms extends Observable {
 			}
 		}
 	}
+	public void enableButtons(Button disabledButton) {
+		disabledButton.setDisable(false);
+	}
+	public void disableButton(Button enableButton) {
+		enableButton.setDisable(true);
+	}
 
 	public void roomReader() throws FileNotFoundException {
 		@SuppressWarnings("resource")
@@ -114,9 +128,10 @@ public class Rooms extends Observable {
 			String puzzleID = reader.nextLine();
 			String randomProbability = reader.nextLine();
 			String lockedString = reader.nextLine();
-			boolean isLocked = Boolean.parseBoolean(lockedString);//reader.nextBoolean();
-
-			Rooms room = new Rooms(roomID, roomNumID, roomName, roomDescription, puzzle, item, monster, puzzleID, randomProbability, isLocked);
+			boolean isLocked = Boolean.parseBoolean(lockedString);
+			boolean isExamined = false;
+			boolean isSearched = false;
+			Rooms room = new Rooms(roomID, roomNumID, roomName, roomDescription, puzzle, item, monster, puzzleID, randomProbability, isLocked, isExamined, isSearched);
 			roomsArray.add(room);
 		}
 		//System.out.println("" + roomsArray.get(0).roomDescription);
@@ -237,5 +252,23 @@ public class Rooms extends Observable {
 	public void setLocked(boolean isLocked) {
 		this.isLocked = isLocked;
 	}
+
+	public boolean isExamined() {
+		return isExamined;
+	}
+
+	public void setExamined(boolean isExamined) {
+		this.isExamined = isExamined;
+	}
+
+	public boolean isSearched() {
+		return isSearched;
+	}
+
+	public void setSearched(boolean isSearched) {
+		this.isSearched = isSearched;
+	}
+	
+	
 
 }
