@@ -4,6 +4,16 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Scanner;
 
+import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+
 /**
  * @author Humberto Michael Lopez
  * @version 1.0 
@@ -20,15 +30,8 @@ public class Items extends Observable {
 	private String itemUsage;
 	private String itemStrength;
 	private static ArrayList<Items> itemsArray = new ArrayList<>();
-	public static ArrayList<Items> inventory = new ArrayList<>();
+	public static ArrayList<String> inventory = new ArrayList<>();
 	
-	public static ArrayList<Items> getInventory() {
-		return inventory;
-	}
-
-	public static void setInventory(ArrayList<Items> inventory) {
-		Items.inventory = inventory;
-	}
 
 	public Items( String itemID, String itemName, String itemDescription, String itemType, String itemUsage, String itemStrength ){
 		this.itemID = itemID;
@@ -48,6 +51,36 @@ public class Items extends Observable {
 		}
 	}
 	
+	public void inventoryPopUp(ArrayList<String> inventoryArray) {
+		Alert popUp = new Alert(AlertType.INFORMATION);
+		popUp.setTitle("Inventory");
+		popUp.setHeaderText("Select an item");
+		ImageView logo = new ImageView("logo.png");
+		logo.setFitWidth(64);
+	    logo.setFitHeight(64);
+		popUp.setGraphic(logo);
+		VBox pop = new VBox();
+		pop.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
+				+ "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
+		pop.setPadding(new Insets(50, 50, 50, 50));
+		RadioButton cb; 
+		ToggleGroup toggleGroup = new ToggleGroup();
+
+		for (String temp : inventoryArray) {
+			cb = new RadioButton(temp);
+			cb.setFont(Font.font("Verdana", 16));
+
+			cb.setToggleGroup(toggleGroup);
+			pop.getChildren().add(cb);
+			if (temp.equals(cb.getText())) {
+				cb.setOnAction(e -> {
+					System.out.println(temp);
+				});
+			}
+		}
+		popUp.getDialogPane().setContent(pop);
+		popUp.show();
+	}
 	public void equipItem() {
 		
 	}
@@ -77,7 +110,7 @@ public class Items extends Observable {
 	}
 
 
-	String viewItems(int currentRoom){
+	public String viewItems(int currentRoom){
 		System.out.println(getitemsArray().get(currentRoom).getItemName());
 		setItemDescription(getitemsArray().get(currentRoom).getItemName());
 		return itemDescription;
@@ -109,7 +142,15 @@ public class Items extends Observable {
 	public String getItemID() {
 		return itemID;
 	}
+	
+	public  ArrayList<String> getInventory() {
+		return inventory;
+	}
 
+	public  void setInventory(ArrayList<String> inventory) {
+		Items.inventory = inventory;
+	}
+	
 	public void setItemID(String itemID) {
 		this.itemID = itemID;
 	}
