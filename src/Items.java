@@ -87,7 +87,7 @@ public class Items extends Observable {
 	public void itemsReader() throws FileNotFoundException {
 		@SuppressWarnings("resource")
 		Scanner reader = new Scanner(new File("artifact.txt"));
-		;
+		
 
 		while(reader.hasNext()){
 			String itemID = reader.nextLine();

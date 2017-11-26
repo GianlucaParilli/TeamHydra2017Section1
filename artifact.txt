@@ -102,7 +102,7 @@ Ancient gem used to unlock certain door
 none
 K5
 The Kings Sapphire 
-The King’s Sapphire	A sapphire that once belonged to the king.
+A sapphire that once belonged to the king.
 Key
 Ancient gem used to unlock certain door
 none
@@ -112,7 +112,7 @@ A key made of solid gold
 Key
 Key that opens the door
 none
-K7 
+K7
 Silver Key
 A key made of solid silver
 Key

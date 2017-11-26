@@ -99,12 +99,14 @@ public class GUI extends Login implements Observer {
 		searchRoom =  new Button("Search Room");
 		examine = new Button("Examine Room");
 		pickupItem = new Button("Pickup Item");
+		searchRoom.setDisable(true);
+		pickupItem.setDisable(true);
 		hBox.getChildren().add(examine);
 		hBox.getChildren().add(searchRoom);
 		hBox.getChildren().add(pickupItem);
 		//adding the action listener from the controller class
 		control.examineRoomListener(examine);
-		control.ViewItemListener(searchRoom);
+		control.searchRoomListener(searchRoom);
 		control.pickupItemListener(pickupItem);
 
 		return hBox;
@@ -177,21 +179,16 @@ public class GUI extends Login implements Observer {
 		//hBox1.getChildren().add(userInput);
 		vBox.getChildren().add(hBox1);
 		hBox2.setPadding(new Insets(15, 15, 15, 15));
-	
-		
 		RadioButton StarsButton = new RadioButton("Stars");
 		RadioButton TreesButton = new RadioButton("Trees");
 		RadioButton FlowersButton = new RadioButton("Flowers");
 		RadioButton MountainButton = new RadioButton("Mountain");
 	
 		
-		
 		hBox2.getChildren().add(StarsButton);
 		hBox2.getChildren().add(TreesButton );
 		hBox2.getChildren().add(FlowersButton);
 		hBox2.getChildren().add(MountainButton);
-		
-		
 		ToggleGroup toggleGroup = new ToggleGroup();;
 
 		StarsButton.setToggleGroup(toggleGroup);
