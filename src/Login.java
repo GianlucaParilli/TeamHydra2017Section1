@@ -187,7 +187,7 @@ public class Login extends LostTreasureMain implements Observer {
 		
 		hBox2.getChildren().add(archeologistButton);
 		hBox2.getChildren().add(thiefButton);
-		ToggleGroup toggleGroup = new ToggleGroup();;
+		ToggleGroup toggleGroup = new ToggleGroup();
 
 		archeologistButton.setToggleGroup(toggleGroup);
 		thiefButton.setToggleGroup(toggleGroup);
