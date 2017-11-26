@@ -1,4 +1,6 @@
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert.AlertType;
 
 public class Controller {
 	//Monster monster;
@@ -27,6 +29,14 @@ public class Controller {
 	//method that takes a button, then a listener is glued to the button
 	//the model's method is called within here
 	//model is the Rooms Class
+	
+	public void showInventoryListener(Button button) {
+		button.setOnAction(e -> {
+			Alert popUp = new Alert(AlertType.CONFIRMATION);
+			popUp.getDialogPane().setContentText(Items.getInventory().toString());
+			popUp.showAndWait();
+		});
+	}
 
 	public void examineRoomListener(Button temp) {
 		//System.out.println("examine room");
@@ -37,6 +47,16 @@ public class Controller {
 			
 		});
 	}
+	
+	public void pickupItemListener(Button temp) {
+		temp.setId(item.getItemID() + "Added to Inventory");
+		temp.setOnAction(e -> {
+			item.addObserver(LostTreasureMain.gui);
+			item.viewItems(room.getCurrentRoom());
+			Items.getInventory().add(item);
+		});
+	}
+	
 	public void viewPuzzleListener(Button temp){
 		temp.setId(puzzle.getPuzzleDescription());
 		temp.setOnAction(e -> {
@@ -76,6 +96,18 @@ public class Controller {
 			});
 			
 		}
+		public void fleeMonsterListener(Button flee) {
+			flee.setOnAction(e->{
+				monster.fleeMonster();
+			});
+		}
+		public void attactMonsterListener(Button attack) {
+			attack.setOnAction(e->{
+				System.out.println("you have attacked the monster");
+				LostTreasureMain.gui.mapPane().setVisible(true);
+			});
+		}
+		
 		
 	
 //refreshes the map pane
@@ -89,6 +121,11 @@ public class Controller {
 			for(Rooms roomTemp : room.getRoomsArray()){
 				if(roomTemp.getRoomName().equals(dropdown)){
 					if(roomTemp.isLocked() == true){
+						if(Items.getInventory().contains(item)) {
+							roomTemp.setLocked(item.unlockDoor());
+							room.doorUnlockedPopUp(roomTemp.getRoomName());
+							break;
+						}
 						room.loadPopUp(roomTemp.getRoomName());
 					
 						break;

@@ -7,6 +7,7 @@ Use as a melee weapon take out enemies and monsters
 W2
 Spear
 10ft Wooden pole with sharp steel tip
+Weapon
 Use as a melee weapon take out enemies and monsters
 10 Attack Points
 W3
@@ -113,5 +114,7 @@ Key that opens the door
 none
 K7 
 Silver Key
+A key made of solid silver
 Key
 Key that opens the door
+none1

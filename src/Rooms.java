@@ -74,12 +74,17 @@ public class Rooms extends Observable {
 
 		return bool;
 	}
-	public void ExitRoom() { //Placeholder
 
-	}
-	public void SearchRoom() { //Placeholder
+	public String SearchRoom() {
+		try{
+			setRoomDescription(getRoomsArray().get(getCurrentRoom()).getItem());
+			System.out.println(item);
+		}catch(Exception e){
 
+		}
+		return item;
 	}
+	
 	public void randomPuzzle(){
 		Random rand = new Random();
 
@@ -154,6 +159,8 @@ public class Rooms extends Observable {
 
 				}
 				Login.gui.getRoomsDropDown().getItems().addAll(roomNameArray);
+				Login.gui.getRoomsDropDown().setPromptText(tempAvailable.getRoomName());
+
 
 			}		
 		}	
@@ -162,6 +169,12 @@ public class Rooms extends Observable {
 	public void loadPopUp(String lockedRoom) {
 		Alert errorPopUp = new Alert(AlertType.ERROR);
 		errorPopUp.setHeaderText("The Room " + lockedRoom + " is locked");
+		errorPopUp.show();
+	}
+	
+	public void doorUnlockedPopUp(String lockedRoom) {
+		Alert errorPopUp = new Alert(AlertType.INFORMATION);
+		errorPopUp.setHeaderText("The Room " + lockedRoom + " is now unlocked!");
 		errorPopUp.show();
 	}
 
@@ -181,6 +194,8 @@ public class Rooms extends Observable {
 	}
 	public void setItem(String item) {
 		this.item = item;
+		setChanged();
+		notifyObservers(item);
 	}
 	public String getMonster() {
 		return monster;

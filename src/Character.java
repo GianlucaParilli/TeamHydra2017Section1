@@ -13,7 +13,7 @@ public class Character extends Observable{
 		this.charName = charName;
 		this.charDescription = charDescription;
 		this.charHealth = charHealth;
-		
+				
 	}
 
 	public String getCharID() {
@@ -48,6 +48,4 @@ public class Character extends Observable{
 		this.charHealth = charHealth;
 	}
 
-	
-	
 }

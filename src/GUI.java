@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Optional;
-
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -27,8 +26,9 @@ import javafx.stage.Stage;
 
 public class GUI extends Login implements Observer {
 	Button examine, goButton, searchRoom, fightMonster, 
-	fleeMonster, examineMonster, viewPuzzle, answerPuzzle, hintPuzzle;
+	fleeMonster, examineMonster, viewPuzzle, answerPuzzle, pickupItem, hintPuzzle;
 	static Stage guiStage = new Stage();
+	static Stage inventoryStage = new Stage();
 	Label descriptionText;
 	ImageView mapView;
 	Rooms room = new Rooms();
@@ -96,15 +96,16 @@ public class GUI extends Login implements Observer {
 		HBox hBox = new HBox(5);
 		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
 				+ "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
-
-		examine = new Button("Examine Room");
-		hBox.getChildren().add(examine);
-
 		searchRoom =  new Button("Search Room");
+		examine = new Button("Examine Room");
+		pickupItem = new Button("Pickup Item");
+		hBox.getChildren().add(examine);
 		hBox.getChildren().add(searchRoom);
-
+		hBox.getChildren().add(pickupItem);
+		//adding the action listener from the controller class
 		control.examineRoomListener(examine);
 		control.ViewItemListener(searchRoom);
+		control.pickupItemListener(pickupItem);
 
 		return hBox;
 	}
@@ -124,7 +125,8 @@ public class GUI extends Login implements Observer {
 
 		// adds the listener to the button
 		control.viewMonsterListener(examineMonster);
-
+		control.fleeMonsterListener(fleeMonster);
+		control.attactMonsterListener(fightMonster);
 		//System.out.println();
 
 		return hBox;
@@ -152,7 +154,7 @@ public class GUI extends Login implements Observer {
 		answerPuzzle.setOnAction(e -> {
 			
 			Alert popUp = new Alert(AlertType.CONFIRMATION);
-			popUp.getDialogPane().setContent(popUpPane());
+			popUp.getDialogPane().setContent(puzzlePopUpPane());
 			popUp.setTitle("Answer Puzzle");
 			
 			Optional<ButtonType> result = popUp.showAndWait();
@@ -164,7 +166,7 @@ public class GUI extends Login implements Observer {
 		return hBox;
 	}
 	
-	private VBox popUpPane() {
+	private VBox puzzlePopUpPane() {
 		VBox vBox = new VBox();
 		HBox hBox1 = new HBox(15);
 		HBox hBox2 = new HBox(30);
@@ -197,7 +199,7 @@ public class GUI extends Login implements Observer {
 		FlowersButton.setToggleGroup(toggleGroup);
 		MountainButton.setToggleGroup(toggleGroup);
 		
-		MountainButton.setOnMouseClicked(e -> {
+		MountainButton.setOnAction(e -> {
 			LostTreasureMain.gui.descriptionText.setText("correct!");
 		
 		});
@@ -226,7 +228,7 @@ public class GUI extends Login implements Observer {
 		return hBox;
 	}
 
-	private HBox mapPane() {
+	public HBox mapPane() {
 		HBox hBox = new HBox(15);
 		hBox.setStyle("-fx-padding: 10;" + "-fx-border-style: solid inside;" + "-fx-border-width: 1;"
 				+ "-fx-border-insets: 10;" + "-fx-border-radius: 10;" + "-fx-border-color: black;");
@@ -235,6 +237,7 @@ public class GUI extends Login implements Observer {
 		mapView.setFitHeight(300);
 		mapView.setFitWidth(300);
 		hBox.getChildren().add(mapView);
+		//hBox.setVisible(false);
 		return hBox;
 	}
 
@@ -253,6 +256,7 @@ public class GUI extends Login implements Observer {
 		bag.setFont(Font.font("Verdana", 20));
 		hBox.getChildren().add(buttonInventory);
 		hBox.getChildren().add(bag);
+		control.showInventoryListener(buttonInventory);
 		return hBox;
 	}
 	private HBox healthPane() {
@@ -281,16 +285,9 @@ public class GUI extends Login implements Observer {
 		for(Rooms temp : room.getRoomsArray()){
 			roomNameArray.add(temp.getRoomName());
 		}
-		//roomArray.add("Guards Quarters A");
-		//roomArray.add("Guards Quarters B");
-		//roomArray.add("Guards Quarters C");
-		//roomArray.add("Guards Quarters D");
-		//roomArray.add("Guards Quarters E");
-		//roomArray.add("Guards Quarters F");
-		//roomArray.add("Guards Quarters G");
-		//roomArray.add("Guards Quarters H");
 
 		roomsDropDown.getItems().addAll(roomNameArray);
+		roomsDropDown.setPromptText("Entrance Hall");
 		hBox.getChildren().add(text);
 		hBox.getChildren().add(roomsDropDown);
 		hBox.getChildren().add(goButton);
