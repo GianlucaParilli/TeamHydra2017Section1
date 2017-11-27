@@ -320,9 +320,12 @@ public class GUI extends Login implements Observer {
 			mapView.setImage(new Image("Maps/r" + arg + ".png"));
 		} 
 		else if (o instanceof Rooms) {
-			if(((Rooms) o).hasExaminedRoom(examine.isArmed())){
+			if(((Rooms) o).hasExaminedRoom(examine.isArmed()))
+			{
 				descriptionText.setText(arg.toString());
-			}else if(((Rooms) o).hasExaminedRoom(goButton.isArmed())){
+			}
+			else if(((Rooms) o).hasExaminedRoom(goButton.isArmed()))
+			{
 				System.out.println("f");
 			}
 		}
@@ -331,6 +334,16 @@ public class GUI extends Login implements Observer {
 		}
 		else if( o instanceof Monster) {
 			descriptionText.setText(arg.toString());
+		} 
+		else if( o instanceof Items) {
+			if(((Items)o).hasSearchedRoom(searchRoom.isArmed()))
+			{
+				descriptionText.setText("There is a "+arg.toString() + " in the room");
+			}
+			else if(((Items)o).hasSearchedRoom(pickupItem.isArmed()))
+			{
+				descriptionText.setText("You picked up a "+arg.toString());
+			}
 		} 
 
 	}		

@@ -132,7 +132,10 @@ public class Items extends Observable {
 			itemsArray.add(items);
 		}
 	}
+	public boolean hasSearchedRoom(boolean bool){
 
+		return bool;
+	}
 	private ArrayList<Items> getitemsArray() {
 		return itemsArray;
 	}

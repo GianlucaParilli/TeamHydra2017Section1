@@ -288,8 +288,8 @@ none
 true
 r32
 Elevator
-Description: elevator
-none
+Description: There is a large hole in the center of the room. It looks like this must be a lift to the lower level (find the switch to operate the lift).
+r16, r21
 none
 none
 none
