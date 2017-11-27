@@ -286,11 +286,3 @@ none
 none
 0
 true
-r32
-Elevator
-Description: elevator room
-none
-none
-none
-0
-true
