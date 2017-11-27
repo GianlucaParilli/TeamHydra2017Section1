@@ -130,11 +130,16 @@ public class Controller {
 				item.addObserver(LostTreasureMain.gui);
 				item.viewItems(room.getCurrentRoom());
 				for(Rooms roomTemp : room.getRoomsArray()){
-					if(roomTemp.getRoomName().equals(dropdown)){
-						roomTemp.setSearched(true);
-						System.out.println(roomTemp.isSearched());
-						room.enableButtons(LostTreasureMain.gui.pickupItem);	
+					if (roomTemp.getRoomName().equals(dropdown) && roomTemp.isLooted() == false) {
+						if(roomTemp.getRoomName().equals(dropdown)){
+							roomTemp.setSearched(true);
+							System.out.println(roomTemp.isSearched());
+							room.enableButtons(LostTreasureMain.gui.pickupItem);	
+						} else {
+							System.out.println("Already Looted");
+						}
 					}
+					
 				}
 			});
 			
