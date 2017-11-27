@@ -22,8 +22,7 @@ public class Rooms extends Observable {
 	private boolean isLocked;
 	private boolean isExamined;
 	private boolean isSearched;
-
-
+	private boolean isLooted;
 	private int numRoomID;
 	private int currentRoom;
 	private ArrayList<Rooms> roomsArray = new ArrayList<>();
@@ -45,7 +44,8 @@ public class Rooms extends Observable {
 	}
 
 	public Rooms(String roomID, int numRoomID, String roomName, String roomDescription, String availableRoom, String monster, 
-			     String puzzleID, String item, String randomProbability, boolean isLocked, boolean isExamined, boolean isSearched) {
+			     String puzzleID, String item, String randomProbability, boolean isLocked, boolean isExamined, boolean isSearched,
+			     boolean isLooted) {
 		this.roomID = roomID;
 		this.numRoomID = numRoomID;
 		this.roomName = roomName;
@@ -131,7 +131,8 @@ public class Rooms extends Observable {
 			boolean isLocked = Boolean.parseBoolean(lockedString);
 			boolean isExamined = false;
 			boolean isSearched = false;
-			Rooms room = new Rooms(roomID, roomNumID, roomName, roomDescription, puzzle, item, monster, puzzleID, randomProbability, isLocked, isExamined, isSearched);
+			boolean isLooted = false;
+			Rooms room = new Rooms(roomID, roomNumID, roomName, roomDescription, puzzle, item, monster, puzzleID, randomProbability, isLocked, isExamined, isSearched, isLooted);
 			roomsArray.add(room);
 		}
 		//System.out.println("" + roomsArray.get(0).roomDescription);
@@ -269,6 +270,12 @@ public class Rooms extends Observable {
 		this.isSearched = isSearched;
 	}
 	
-	
+	public boolean isLooted() {
+		return isLooted;
+	}
+
+	public void setLooted(boolean isLooted) {
+		this.isLooted = isLooted;
+	}
 
 }

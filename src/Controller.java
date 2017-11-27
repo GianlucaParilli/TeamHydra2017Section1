@@ -17,6 +17,7 @@ public class Controller {
 	Items item = new Items();
 	Navigation nav = new Navigation();
 	String dropdown;
+	boolean isLooted;
 
 	public void newGameListener(Button button) {
 		button.setOnAction(e -> {
@@ -65,7 +66,12 @@ public class Controller {
 		temp.setOnAction(e -> {
 			item.addObserver(LostTreasureMain.gui);
 			item.viewItems(room.getCurrentRoom());
-			item.getInventory().add(item.getItemDescription());
+			for (Rooms roomTemp : room.getRoomsArray()) {
+				if (roomTemp.getRoomName().equals(dropdown) && roomTemp.isLooted() == false) {
+					roomTemp.setLooted(true);
+					item.getInventory().add(item.getItemDescription());
+				}
+			}
 
 		});
 	}
